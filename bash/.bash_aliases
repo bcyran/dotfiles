@@ -8,14 +8,16 @@ alias untar='tar -zxvf '
 alias c='clear'
 
 # Change directory and list it
-alias cdl='cd $1 && ls'
+function cdl() {
+	cd "$@" && ls
+}
 
 # Function for quick switching between websites on the server
-www() {
+function www() {
     if [ -z $1 ]; then
         cd /srv/www
     else
-        cd /srv/www/"$1"/public_html
+        cd /srv/www/$1/public_html
     fi
 }
 
