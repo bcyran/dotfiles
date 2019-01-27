@@ -1,4 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/etc/apt/sources.list.d'
-let g:netrw_dirhist_2='/home/bazyli/Studia/AK2-P/src'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/home/bazyli/Studia/PEA-P/TSP'
