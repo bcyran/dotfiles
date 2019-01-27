@@ -1,4 +1,8 @@
 " Vundle plugin manager
+" Clone Vundle if it doesn't exist
+if !filereadable($HOME . '/.vim/bundle/Vundle.vim/.git/config') && confirm("Clone Vundle?","Y\nn") == 1
+    exec '!git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim/'
+endif
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
