@@ -34,6 +34,11 @@ function cdl() {
 	cd "$@" && ls
 }
 
+# Create directory and open it
+function mkc() {
+	mkdir "$@" && cd "$@"
+}
+
 # Function for quick switching between websites on the server
 function www() {
     if [ -z $1 ]; then
