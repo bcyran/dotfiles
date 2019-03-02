@@ -30,13 +30,13 @@ spotify {
 backlight {
 		command = "light"
 		low_tune_threshold = 20
-		cache_timeout = 1
+		cache_timeout = 10
 		brightness_delta = 10
 		format = " {level}%"
 }
 
 volume_status {
-		cache_timeout = 1
+		cache_timeout = 10
 		format = " {percentage}%"
 		max_volume = 100
 		format_muted = " {percentage}%"
