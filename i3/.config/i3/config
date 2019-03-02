@@ -161,10 +161,6 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-# Assign applications to workspaces
-assign [class="Spotify"] $ws10
-for_window [class="Spotify"] move to workspace $ws10
-
 
 ###############################################################################
 # APPEARANCE
@@ -254,6 +250,21 @@ bindsym $mod+backslash exec playerctl play-pause && killall -USR1 py3status
 
 
 ###############################################################################
+# APP SPECIFIC SETUP
+###############################################################################
+
+# Assign Spotift to workspace 10
+assign [class="Spotify"] $ws10
+for_window [class="Spotify"] move to workspace $ws10
+
+# Keepass in floating window
+for_window [class="keepassxc"] floating enable, resize set 1000 700
+
+# Image browser in floating window
+for_window [class="Eog"] floating enable, resize 1800 900
+
+
+###############################################################################
 # STARTUP SETUP
 ###############################################################################
 
@@ -262,7 +273,6 @@ exec_always --no-startup-id feh --bg-scale ~/Obrazy/Tapety/hania-bieszczady.jpg
 
 # KeepassXC
 exec keepassxc
-for_window [class="keepassxc"] floating enable, resize set 1000 700
 
 # Redshift
 exec --no-startup-id redshift
