@@ -271,4 +271,4 @@ exec --no-startup-id redshift
 exec_always --no-startup-id ~/.screenlayout/xrandr-setup.sh
 
 # Compton
-exec_always --no-startup-id compton -f --fade-in-step=0.2 --fade-out-step=0.2
+exec_always --no-startup-id compton
