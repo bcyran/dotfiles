@@ -49,7 +49,7 @@ volume_status {
 }
 
 wireless _first_ {
-		format_up = "%quality %essid"	
+		format_up = " %quality %essid"	
 		format_down = ""
 }
 		
