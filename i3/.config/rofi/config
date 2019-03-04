@@ -103,7 +103,7 @@ rofi.modi:                           window,run,ssh,drun
 ! "New style theme file" Set from: Default
 ! rofi.theme:                          
 ! "Color scheme for normal row" Set from: Default
- rofi.color-normal: #383838, #c4c4c4, #383838, #484848, #ffffff  
+ rofi.color-normal: #383838, #c4c4c4, #383838, #4285f4, #ffffff  
 ! "Color scheme for urgent row" Set from: Default
 ! rofi.color-urgent:                   
 ! "Color scheme for active row" Set from: Default

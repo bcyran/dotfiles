@@ -9,8 +9,8 @@
 general {
         colors = true
         color_good = "#c4c4c4"
-        color_bad = "#c4c4c4"
         color_degraded = "#c4c4c4"
+        color_bad = "#ff8f00"
         interval = 10
 }
 
@@ -49,7 +49,7 @@ volume_status {
 }
 
 wireless _first_ {
-		format_up = " %quality %essid"	
+		format_up = "%quality %essid"	
 		format_down = ""
 }
 		
@@ -62,7 +62,7 @@ battery_level {
         hide_seconds = true
 		blocks = ""
 		charging_character = ""
-        format = "{icon} {percent}% {time_remaining}"
+        format = "{icon} {percent}%[ {time_remaining}]"
 }
 
 tztime local {
