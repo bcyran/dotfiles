@@ -15,11 +15,16 @@ general {
 }
 
 order += "spotify"
+order += "redshift"
 order += "backlight"
 order += "volume_status"
 order += "frame network"
 order += "battery_level"
 order += "tztime local"
+
+redshift {
+		format = " [\?if=enabled {temperature}K|off]"
+}
 
 spotify {
 		format = " {artist}: {title}"
@@ -43,10 +48,10 @@ volume_status {
 }
 
 frame network {
-		format_separator = "   "	
+		format_separator = "  "	
 	
 		wireless _first_ {
-				format_up = " %essid: %quality"	
+				format_up = "%quality %essid"	
 				format_down = ""
 		}
 		
