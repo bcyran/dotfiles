@@ -185,13 +185,15 @@ bar {
 		output				$dp
 		position 			top
        	status_command 		py3status --include ~/.config/py3status/
-       	separator_symbol	"│"
-       	tray_output 		primary
+       	separator_symbol	"  "
+       	tray_output 		$dp
+       	tray_padding		4
 
 		# Bar colors
         colors {
 				background				$bg
 		    	separator				$text
+		    	statusline				$text
 		    	#						border			background		text 
 		    	focused_workspace		$active-bg		$active-bg		$active-text
 		    	active_workspace		$active-bg		$active-bg		$active-text
