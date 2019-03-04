@@ -109,12 +109,12 @@ bindsym $mod+r mode "resize"
 set $ws1 "1: "
 set $ws2 "2: "
 set $ws3 "3: "
-set $ws4 "4: …"
+set $ws4 "4: "
 set $ws5 "5: "
 set $ws6 "6: "
 set $ws7 "7: "
 set $ws8 "8: …"
-set $ws9 "9: …"
+set $ws9 "9: "
 set $ws10 "10: "
 
 # Define display names
@@ -184,7 +184,7 @@ client.urgent				$contrast		$contrast		$active-text	$contrast
 # finds out, if available)
 bar {
 		position 			top
-       	status_command 		py3status
+       	status_command 		py3status --include ~/.config/py3status/
        	separator_symbol	"│"
        	tray_output 		primary
 
@@ -257,6 +257,11 @@ bindsym $mod+backslash exec playerctl play-pause && killall -USR1 py3status
 assign [class="Spotify"] $ws10
 for_window [class="Spotify"] move to workspace $ws10
 
+# Geary and calendar in workspace 9
+assign [class="Geary"] $ws9
+assign [class="Gnome-calendar"] $ws9
+for_window [class="Gnome-calendar"] layout tabbed
+
 # Keepass in floating window
 for_window [class="keepassxc"] floating enable, resize set 1000 700
 
@@ -268,17 +273,20 @@ for_window [class="Eog"] floating enable, resize 1800 900
 # STARTUP SETUP
 ###############################################################################
 
-# Wallpaper
-exec_always --no-startup-id feh --bg-scale ~/Obrazy/Tapety/hania-bieszczady.jpg
-
-# KeepassXC
-exec keepassxc
-
-# Redshift
-exec --no-startup-id redshift
-
 # Xrandr 
 exec_always --no-startup-id ~/.screenlayout/xrandr-setup.sh
 
 # Compton
 exec_always --no-startup-id compton
+
+# Wallpaper
+exec_always --no-startup-id feh --bg-scale ~/Obrazy/Tapety/hania-bieszczady.jpg
+
+# Redshift
+exec --no-startup-id redshift
+
+# KeepassXC
+exec keepassxc
+
+# Mail client
+exec geary
