@@ -171,14 +171,15 @@ set $bg					#383838
 set $text				#c4c4c4
 set $active-bg			#484848
 set $active-text		#ffffff 
-set $contrast 			#4285f4
+set $focused 			#4285f4
+set $urgent				#ff8f00
 
 # window colors
-#	  					 	border			background		text			indicator
-client.focused				$contrast		$contrast		$active-text	$contrast
-client.focused_inactive		$bg				$bg				$text			$bg
-client.unfocused			$bg				$bg				$text			$bg
-client.urgent				$contrast		$contrast		$active-text	$contrast
+#	  					 	border			background		text			indicator		child border
+client.focused				$focused		$focused		$active-text	$focused	 	$focused
+client.focused_inactive		$active-bg		$active-bg		$active-text	$active-bg		$active-bg
+client.unfocused			$bg				$bg				$text			$bg				$bg
+client.urgent				$urgent			$urgent			$active-text	$urgent			$urgent
 
 # Primary display bar
 bar {
@@ -195,10 +196,10 @@ bar {
 		    	separator				$text
 		    	statusline				$text
 		    	#						border			background		text 
-		    	focused_workspace		$active-bg		$active-bg		$active-text
+		    	focused_workspace		$focused		$focused		$active-text
 		    	active_workspace		$active-bg		$active-bg		$active-text
 		    	inactive_workspace		$bg				$bg				$text
-		    	urgent_workspace		$contrast		$contrast		$active-text
+		    	urgent_workspace		$urgent			$urgent			$active-text
 		}
 }
 
@@ -211,12 +212,12 @@ bar {
 		# Bar colors
         colors {
 				background				$bg
-		    	separator				$text
+		    	statusline				$text
 		    	#						border			background		text 
-		    	focused_workspace		$active-bg		$active-bg		$active-text
+		    	focused_workspace		$focused		$focused		$active-text
 		    	active_workspace		$active-bg		$active-bg		$active-text
 		    	inactive_workspace		$bg				$bg				$text
-		    	urgent_workspace		$contrast		$contrast		$active-text
+		    	urgent_workspace		$urgent			$urgent			$active-text
 		}
 }
 
