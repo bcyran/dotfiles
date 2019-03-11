@@ -46,6 +46,8 @@ volume_status {
 		format = " {percentage}%"
 		max_volume = 100
 		format_muted = " {percentage}%"
+		color_muted = "#c4c4c4"
+		color_bad = "#c4c4c4"
 }
 
 wireless _first_ {
