@@ -236,15 +236,15 @@ gaps outer 0
 set $system_mode "System (p) poweroff, (l) lock, (e) exit, (s) suspend, (h) hibernate"
 mode $system_mode {
 		# Shutdown the computer
-		bindsym p exec "i3-nagbar -t warning -m 'Shutdown?' -b 'Yes, shutdown' 'systemctl poweroff -i'"
+		bindsym p exec "i3-nagbar -t warning -m 'Shutdown?' -b 'Yes, shutdown' 'systemctl poweroff -i'"; mode default
 		# Lock
-		bindsym l exec "i3-nagbar -t warning -m 'Lock?' -b 'Yes, ock' 'i3lock'"
+		bindsym l exec i3lock; mode default
 		# Exit i3 (logs you out of your X session)
-		bindsym e exec "i3-nagbar -t warning -m 'Logout?' -b 'Yes, exit i3' 'i3-msg exit'"
+		bindsym e exec "i3-nagbar -t warning -m 'Logout?' -b 'Yes, exit i3' 'i3-msg exit'"; mode default
 		# Suspend
-		bindsym s exec "i3-nagbar -t warning -m 'Suspend?' -b 'Yes, suspend' 'systemctl suspend'"
+		bindsym s exec "i3-nagbar -t warning -m 'Suspend?' -b 'Yes, suspend' 'systemctl suspend'"; mode default
 		# Hibernate
-		bindsym h exec "i3-nagbar -t warning -m 'Hibernate?' -b 'Yes, hibernate' 'systemctl hibernate'"
+		bindsym h exec "i3-nagbar -t warning -m 'Hibernate?' -b 'Yes, hibernate' 'systemctl hibernate'"; mode default
 		# Return to normal
 		bindsym Escape mode "default"
 		bindsym Return mode "default"
@@ -281,10 +281,13 @@ for_window [class="Spotify"] move to workspace $ws10
 # Geary and calendar in workspace 9
 assign [class="Geary"] $ws9
 assign [class="Gnome-calendar"] $ws9
-for_window [class="Gnome-calendar"] layout tabbed
+assign [class="Gnome-todo"] $ws9
+for_window [class="Geary"] layout tabbed
 
 # Keepass in floating window
 for_window [class="keepassxc"] floating enable, resize set 1000 700
+bindsym $mod+p [class="keepassxc"] move scratchpad 
+bindsym $mod+shift+p [class="keepassxc"] scratchpad show
 
 # Image browser in floating window
 for_window [class="Eog"] floating enable, resize 1800 900
@@ -294,14 +297,11 @@ for_window [class="Eog"] floating enable, resize 1800 900
 # STARTUP SETUP
 ###############################################################################
 
-# Xrandr 
-exec_always --no-startup-id ~/.screenlayout/xrandr-setup.sh
+# Xrandr & wallpaper
+exec_always --no-startup-id ~/bin/display-setup.sh ~/Obrazy/Tapety/hania-bieszczady.jpg
 
 # Compton
 exec_always --no-startup-id compton
-
-# Wallpaper
-exec_always --no-startup-id feh --bg-scale ~/Obrazy/Tapety/hania-bieszczady.jpg
 
 # Redshift
 exec --no-startup-id redshift
@@ -309,5 +309,7 @@ exec --no-startup-id redshift
 # KeepassXC
 exec keepassxc
 
-# Mail client
+# Other apps
 exec geary
+exec gnome-calendar
+exec gnome-todo
