@@ -232,25 +232,24 @@ gaps outer 0
 # CUSTOM BINDINGS
 ###############################################################################
 
+# Locking command
+set $locker i3lock 
+
 # System mode
-set $system_mode "System (p) poweroff, (l) lock, (e) exit, (s) suspend, (h) hibernate"
+set $system_mode "System: (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) shutdown"
 mode $system_mode {
-		# Shutdown the computer
-		bindsym p exec "i3-nagbar -t warning -m 'Shutdown?' -b 'Yes, shutdown' 'systemctl poweroff -i'"; mode default
-		# Lock
-		bindsym l exec i3lock; mode default
-		# Exit i3 (logs you out of your X session)
-		bindsym e exec "i3-nagbar -t warning -m 'Logout?' -b 'Yes, exit i3' 'i3-msg exit'"; mode default
-		# Suspend
-		bindsym s exec "i3-nagbar -t warning -m 'Suspend?' -b 'Yes, suspend' 'systemctl suspend'"; mode default
-		# Hibernate
-		bindsym h exec "i3-nagbar -t warning -m 'Hibernate?' -b 'Yes, hibernate' 'systemctl hibernate'"; mode default
+		bindsym l exec --no-startup-id $locker, mode "default"
+		bindsym e exec --no-startup-id i3-msg exit, mode "default"
+		bindsym s exec --no-startup-id $locker && systemctl suspend, mode "default"
+		bindsym h exec --no-startup-id $locker && systemctl hibernate, mode "default"
+		bindsym r exec --no-startup-id systemctl reboot, mode "default"
+		bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
 		# Return to normal
 		bindsym Escape mode "default"
 		bindsym Return mode "default"
 		bindsym $mod+shift+s "default"
 }
-bindsym $mod+shift+s mode $system_mode
+bindsym $mod+End mode $system_mode
 
 # Rofi app launcher
 bindsym $mod+d exec --no-startup-id rofi -show drun 
