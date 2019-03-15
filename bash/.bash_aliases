@@ -7,6 +7,9 @@ alias update='sudo apt update && sudo apt upgrade'
 # Clear screen
 alias c='clear'
 
+# Clear and return to home
+alias cc='cd && c'
+
 # Extract various archives
 function extract(){
 	if [ -f $1 ] ; then
