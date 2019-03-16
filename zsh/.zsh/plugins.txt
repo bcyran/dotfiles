@@ -1,4 +1,4 @@
 robbyrussell/oh-my-zsh path:plugins/autojump
-robbyrussell/oh-my-zsh path:lib/git.zsh
-robbyrussell/oh-my-zsh path:lib/theme-and-appearance.zsh
 zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
+zdharma/fast-syntax-highlighting
