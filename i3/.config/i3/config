@@ -235,6 +235,9 @@ gaps outer 0
 # Locking command
 set $locker i3lock 
 
+# Refresh status bar command
+set $refresh-status killall -USR1 py3status
+
 # System mode
 set $system_mode "System: (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) shutdown"
 mode $system_mode {
@@ -254,42 +257,43 @@ bindsym $mod+End mode $system_mode
 # Rofi app launcher
 bindsym $mod+d exec --no-startup-id rofi -show drun 
 
+# Move window to and form scratchpad
+bindsym $mod+p move scratchpad 
+bindsym $mod+shift+p scratchpad show
+
 # Volume controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && killall -USR1 py3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && killall -USR1 py3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && killall -USR1 py3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && $refresh-status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && $refresh-status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && $refresh-status
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec light -A 10 && killall -USR1 py3status
-bindsym XF86MonBrightnessDown exec light -U 10 && killall -USR1 py3status
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10 && $refresh-status
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10 && $refresh-status
 
 # Music controls
-bindsym $mod+bracketleft exec playerctl previous && killall -USR1 py3status
-bindsym $mod+bracketright exec playerctl next && killall -USR1 py3status
-bindsym $mod+backslash exec playerctl play-pause && killall -USR1 py3status
+bindsym $mod+bracketleft exec --no-startup-id playerctl previous && $refresh-status
+bindsym $mod+bracketright exec --no-startup-id playerctl next && $refresh-status
+bindsym $mod+backslash exec --no-startup-id playerctl play-pause && $refresh-status
 
 
 ###############################################################################
 # APP SPECIFIC SETUP
 ###############################################################################
 
-# Assign Spotift to workspace 10
+# Assign Spotify to workspace 10
 assign [class="Spotify"] $ws10
 for_window [class="Spotify"] move to workspace $ws10
 
-# Geary and calendar in workspace 9
-assign [class="Geary"] $ws9
+# Office like stuff in workspace 9, tabbed layout 
+assign [class="Thunderbird"] $ws9
 assign [class="Gnome-calendar"] $ws9
 assign [class="Gnome-todo"] $ws9
-for_window [class="Geary"] layout tabbed
+for_window [class="Thunderbird"] layout tabbed
 
-# Keepass in floating window
+# Floating windows
 for_window [class="keepassxc"] floating enable, resize set 1000 700
-bindsym $mod+p [class="keepassxc"] move scratchpad 
-bindsym $mod+shift+p [class="keepassxc"] scratchpad show
-
-# Image browser in floating window
-for_window [class="Eog"] floating enable, resize 1800 900
+for_window [class="Eog"] floating enable, resize 1800 900 # Image viewer
+for_window [class="Gnome-calculator"] floating enable
 
 
 ###############################################################################
@@ -297,7 +301,7 @@ for_window [class="Eog"] floating enable, resize 1800 900
 ###############################################################################
 
 # Xrandr & wallpaper
-exec_always --no-startup-id ~/bin/display-setup.sh ~/Obrazy/Tapety/hania-bieszczady.jpg
+exec_always --no-startup-id display-setup.sh detect ~/Obrazy/Wallpapers/wallpaper.jpg
 
 # Compton
 exec_always --no-startup-id compton
@@ -309,6 +313,6 @@ exec --no-startup-id redshift
 exec keepassxc
 
 # Other apps
-exec geary
-exec gnome-calendar
 exec gnome-todo
+exec gnome-calendar
+exec thunderbird 
