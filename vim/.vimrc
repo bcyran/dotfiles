@@ -11,6 +11,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'crusoexia/vim-monokai'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'itchyny/lightline.vim'
+Plugin 'lervag/vimtex'
 call vundle#end()
 filetype plugin indent on
 
@@ -39,6 +40,13 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase
+
+" Splits
+set splitbelow
+set splitright
+
+" Spell check
+set spelllang=pl,en
 
 " File tree sidebar
 let g:netrw_winsize=15
