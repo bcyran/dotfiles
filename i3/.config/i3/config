@@ -286,9 +286,6 @@ for_window [class="Spotify"] move to workspace $ws10
 
 # Office like stuff in workspace 9, tabbed layout 
 assign [class="Thunderbird"] $ws9
-assign [class="Gnome-calendar"] $ws9
-assign [class="Gnome-todo"] $ws9
-for_window [class="Thunderbird"] layout tabbed
 
 # Floating windows
 for_window [class="keepassxc"] floating enable, resize set 1000 700
