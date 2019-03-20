@@ -258,8 +258,8 @@ bindsym $mod+End mode $system_mode
 bindsym $mod+d exec --no-startup-id rofi -show drun 
 
 # Move window to and form scratchpad
-bindsym $mod+p move scratchpad 
-bindsym $mod+shift+p scratchpad show
+bindsym $mod+shift+p move scratchpad 
+bindsym $mod+p scratchpad show
 
 # Volume controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && $refresh-status
@@ -313,6 +313,4 @@ exec --no-startup-id redshift
 exec keepassxc
 
 # Other apps
-exec gnome-todo
-exec gnome-calendar
 exec thunderbird 

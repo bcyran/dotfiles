@@ -19,6 +19,10 @@ filetype plugin indent on
 syntax on
 colorscheme monokai
 
+" Fuzzy search
+set path+=**
+set wildignore+=*/node_modules/*,*/venv/*
+
 " UI
 set number
 set wildmenu
@@ -37,7 +41,6 @@ set smarttab
 
 " Searching
 set incsearch
-set hlsearch
 set ignorecase
 set smartcase
 
