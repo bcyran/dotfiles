@@ -12,6 +12,7 @@ Plugin 'crusoexia/vim-monokai'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'itchyny/lightline.vim'
 Plugin 'lervag/vimtex'
+Plugin 'nvie/vim-flake8'
 call vundle#end()
 filetype plugin indent on
 
