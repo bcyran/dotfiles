@@ -178,7 +178,7 @@ set $urgent				#ff8f00
 #	  					 	border			background		text			indicator		child border
 client.focused				$focused		$focused		$active-text	$focused	 	$focused
 client.focused_inactive		$active-bg		$active-bg		$active-text	$active-bg		$active-bg
-client.unfocused			$bg				$bg				$text			$bg				$bg
+client.unfocused			$active-bg		$bg				$text			$bg				$bg
 client.urgent				$urgent			$urgent			$active-text	$urgent			$urgent
 
 # Primary display bar
