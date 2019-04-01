@@ -15,6 +15,7 @@ general {
 }
 
 order += "spotify"
+order += "apt_updates"
 order += "redshift"
 order += "backlight"
 order += "volume_status"
@@ -22,6 +23,10 @@ order += "wireless _first_"
 order += "ethernet _first_"
 order += "battery_level"
 order += "tztime local"
+
+apt_updates {
+		format = "[\?if=apt  {apt}]"
+}
 
 redshift {
 		format = " [\?if=enabled {temperature}K|off]"
