@@ -1,0 +1,18 @@
+[user]
+	email = bazyli.cyran@gmail.com
+	name = Bazyli Cyran
+[core]
+	editor = vim
+[alias]
+	st = status
+	co = checkout
+	cob = checkout -b
+	br = branch
+	aa = add --all
+	r = reset HEAD
+	cm = commit
+	cmm = commit -m
+	cma = commit --amend
+	l = log --oneline -10
+	df = diff
+	dfc = diff --cached
