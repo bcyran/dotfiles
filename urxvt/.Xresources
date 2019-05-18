@@ -1,0 +1,65 @@
+! COLOR SCHEME
+! special
+URxvt*foreground:   #a5a2a2
+URxvt*background:   rgba:2500/2e00/3200/f800
+URxvt*cursorColor:  #a5a2a2
+
+! black
+URxvt*color0:       #073642
+URxvt*color8:       #586e75
+
+! red
+URxvt*color1:       #dc322f
+URxvt*color9:       #cb4b16
+
+! green
+URxvt*color2:       #859900
+URxvt*color10:      #859900
+
+! yellow
+URxvt*color3:       #b58900
+URxvt*color11:      #b58900
+
+! blue
+URxvt*color4:       #268bd2
+URxvt*color12:      #268bd2
+
+! magenta
+URxvt*color5:       #ec0048
+URxvt*color13:      #d33682
+
+! cyan
+URxvt*color6:       #2aa198
+URxvt*color14:      #2aa198
+
+! white
+URxvt*color7:       #94a3a5
+URxvt*color15:      #6c71c4
+
+! FONTS
+URxvt*allow_bold: true
+URxvt*font: xft:Source Code Pro:pixelsize=17:style=Regular
+URxvt*boldFont: xft:Source Code Pro:pixelsize=17:style=Bold
+URxvt*italicFont: xft:Source Code Pro:pixelsize=17:style=Italic
+URxvt*boldItalicFont: xft:Source Code Pro:pixelsize=17:style=Bold Italic
+
+! APPEARANCE
+URxvt*letterSpace: 0
+URxvt*lineSpace: 0
+URxvt*geometry: 92x24
+URxvt*cursorBlink: true
+URxvt*cursorUnderline: false
+URxvt*saveline: 2048
+URxvt*scrollBar: false
+URxvt*scrollBar_right: false
+URxvt*urgentOnBell: true
+URxvt*depth: 32
+URxvt*iso14755: false
+
+! EXTENSIONS
+URxvt*perl-ext-common: default,matcher,clipboard
+URxvt*url-launcher: /usr/bin/xdg-open
+URxvt*matcher.button: 1
+URxvt*clipboard.autocopy: true
+URxvt*keysym.Shift-Control-V: eval:paste_clipboard
+URxvt*keysym.Shift-Control-C: eval:selection_to_clipboard
