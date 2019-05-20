@@ -275,6 +275,10 @@ bindsym $mod+bracketleft exec --no-startup-id playerctl previous && $refresh-sta
 bindsym $mod+bracketright exec --no-startup-id playerctl next && $refresh-status
 bindsym $mod+backslash exec --no-startup-id playerctl play-pause && $refresh-status
 
+# Screenshot
+bindsym --release Print exec gnome-screenshot
+bindsym --release $mod+Print exec gnome-screenshot -w
+bindsym --release Shift+Print exec gnome-screenshot -a
 
 ###############################################################################
 # APP SPECIFIC SETUP
