@@ -31,6 +31,10 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# Set default editor to vim
+export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
+
 # Load antibody plugins and settings
 source <(antibody init)
 antibody bundle < ~/.zsh/plugins.txt
