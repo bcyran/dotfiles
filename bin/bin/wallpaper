@@ -1,0 +1,20 @@
+#/bin/bash
+base_dir="$HOME/Obrazy/Tapety/"
+base_name="wallpaper"
+ext="jpg"
+base_path="$base_dir/$base_name.$ext"
+command="feh --bg-fill $base_path"
+
+if [ ! -z "$1" ]; then
+	path="$base_dir/$base_name-$1.$ext"
+	if [ -f $path ]; then
+		rm -f "$base_path"
+		ln -s "$path" "$base_path"
+		echo "Wallpaper '$1' set."
+	else
+		echo "Wallpaper '$1' does not exist."
+	fi
+fi
+
+eval "$command"
+
