@@ -1,4 +1,5 @@
-#/bin/bash
+#!/bin/bash
+
 base_dir="$HOME/Obrazy/Tapety/"
 base_name="wallpaper"
 ext="jpg"

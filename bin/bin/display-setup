@@ -73,6 +73,6 @@ esac
 
 # If second argument is specified set wallpaper
 if [ ! -z "$2" ]; then
-	feh --bg-scale "$2" 
+	feh --bg-fill "$2" 
 	echo "Setting wallpaper to $2."
 fi

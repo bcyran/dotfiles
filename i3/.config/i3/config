@@ -302,7 +302,7 @@ for_window [class="Gnome-calculator"] floating enable
 ###############################################################################
 
 # Xrandr & wallpaper
-exec_always --no-startup-id display-setup.sh detect ~/Obrazy/Tapety/wallpaper.jpg
+exec_always --no-startup-id display-setup detect ~/Obrazy/Tapety/wallpaper.jpg
 
 # Compton
 exec_always --no-startup-id compton
