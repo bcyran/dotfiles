@@ -305,13 +305,17 @@ for_window [class="Gnome-calculator"] floating enable
 exec_always --no-startup-id display-setup detect ~/Obrazy/Tapety/wallpaper.jpg
 
 # Compton
-exec_always --no-startup-id compton
+exec --no-startup-id compton
 
 # Redshift
 exec --no-startup-id redshift
+
+# Deja Dup backup
+exec --no-startup-id /usr/lib/deja-dup/deja-dup-monitor
 
 # KeepassXC
 exec keepassxc
 
 # Other apps
 exec thunderbird 
+
