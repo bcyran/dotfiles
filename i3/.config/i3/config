@@ -64,9 +64,6 @@ bindsym $mod+space focus mode_toggle
 # Focus the parent container
 bindsym $mod+a focus parent
 
-# Focus the child container
-#bindsym $mod+d focus child
-
 # Reload the configuration file
 bindsym $mod+Shift+c reload
 
@@ -187,42 +184,42 @@ client.urgent				$urgent			$urgent			$active-text	$urgent			$urgent
 
 # Primary display bar
 bar {
-		output				$dp
-		position 			top
-       	status_command 		py3status --include ~/.config/py3status/
-       	separator_symbol	"  "
-       	tray_output 		$dp
-       	tray_padding		4
+	output				$dp
+	position 			top
+	status_command 		py3status --include ~/.config/py3status/
+	separator_symbol	"  "
+	tray_output 		$dp
+	tray_padding		4
 
-		# Bar colors
-        colors {
-				background				$bg
-		    	separator				$text
-		    	statusline				$text
-		    	#						border			background		text 
-		    	focused_workspace		$focused		$focused		$active-text
-		    	active_workspace		$active-bg		$active-bg		$active-text
-		    	inactive_workspace		$bg				$bg				$text
-		    	urgent_workspace		$urgent			$urgent			$active-text
-		}
+	# Bar colors
+	colors {
+		background				$bg
+		separator				$text
+		statusline				$text
+		#						border			background		text 
+		focused_workspace		$focused		$focused		$active-text
+		active_workspace		$active-bg		$active-bg		$active-text
+		inactive_workspace		$bg				$bg				$text
+		urgent_workspace		$urgent			$urgent			$active-text
+	}
 }
 
 # Secondary display bar
 bar {
-		output				$ds
-		position			top
-		tray_output			none
+	output				$ds
+	position			top
+	tray_output			none
 
-		# Bar colors
-        colors {
-				background				$bg
-		    	statusline				$text
-		    	#						border			background		text 
-		    	focused_workspace		$focused		$focused		$active-text
-		    	active_workspace		$active-bg		$active-bg		$active-text
-		    	inactive_workspace		$bg				$bg				$text
-		    	urgent_workspace		$urgent			$urgent			$active-text
-		}
+	# Bar colors
+	colors {
+		background				$bg
+		statusline				$text
+		#						border			background		text 
+		focused_workspace		$focused		$focused		$active-text
+		active_workspace		$active-bg		$active-bg		$active-text
+		inactive_workspace		$bg				$bg				$text
+		urgent_workspace		$urgent			$urgent			$active-text
+	}
 }
 
 # Gaps
