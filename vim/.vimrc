@@ -8,17 +8,19 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'crusoexia/vim-monokai'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'itchyny/lightline.vim'
 Plugin 'lervag/vimtex'
 Plugin 'nvie/vim-flake8'
+Plugin 'joshdick/onedark.vim'
 call vundle#end()
 filetype plugin indent on
 
 " Syntax highlighting
 syntax on
-colorscheme monokai
+let g:onedark_termcolors=16
+let g:onedark_terminal_italics=1
+colorscheme onedark
 
 " Fuzzy search
 set path+=**
@@ -62,3 +64,7 @@ let g:netrw_browse_split=4
 " Lightline
 set laststatus=2
 set ttimeout ttimeoutlen=30
+set noshowmode
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ }

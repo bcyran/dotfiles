@@ -168,12 +168,12 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 ###############################################################################
 
 # Colors definitions
-set $bg					#383838
-set $text				#c4c4c4
-set $active-bg			#484848
-set $active-text		#ffffff 
-set $focused 			#4285f4
-set $urgent				#ff8f00
+set $bg					#282c34
+set $text				#abb2bf
+set $active-bg			#282c34
+set $active-text		#282c34 
+set $focused 			#61afef
+set $urgent				#e5c07b
 
 # window colors
 #	  					 	border			background		text			indicator		child border
