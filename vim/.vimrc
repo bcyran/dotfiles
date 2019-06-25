@@ -13,6 +13,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'lervag/vimtex'
 Plugin 'nvie/vim-flake8'
 Plugin 'joshdick/onedark.vim'
+Plugin 'mengelbrecht/lightline-bufferline'
 call vundle#end()
 filetype plugin indent on
 
@@ -54,6 +55,14 @@ set splitright
 " Spell check
 set spelllang=pl,en
 
+" Buffer navigation
+" Jump to buffer n by typing ngb
+let c = 1
+while c <= 99
+  execute "nnoremap " . c . "gb :" . c . "b\<CR>"
+  let c += 1
+endwhile
+
 " File tree sidebar
 let g:netrw_winsize=15
 let g:netrw_banner=0
@@ -68,3 +77,10 @@ set noshowmode
 let g:lightline = {
   \ 'colorscheme': 'onedark',
   \ }
+
+" Lightline bufferline
+set showtabline=2
+let g:lightline#bufferline#show_number  = 1
+let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
