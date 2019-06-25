@@ -8,9 +8,9 @@
 
 general {
         colors = true
-        color_good = "#c4c4c4"
-        color_degraded = "#c4c4c4"
-        color_bad = "#ff8f00"
+        color_good = "#abb2bf"
+        color_degraded = "#abb2bf"
+        color_bad = "#e06c75"
         interval = 10
 }
 
@@ -51,8 +51,8 @@ volume_status {
 		format = " {percentage}%"
 		max_volume = 100
 		format_muted = " {percentage}%"
-		color_muted = "#c4c4c4"
-		color_bad = "#c4c4c4"
+		color_muted = "#abb2bf"
+		color_bad = "#abb2bf"
 }
 
 wireless _first_ {
@@ -69,6 +69,7 @@ battery_level {
         hide_seconds = true
 		blocks = ""
 		charging_character = ""
+		color_charging = "#e5c07b"
         format = "{icon} {percent}%[ {time_remaining}]"
 }
 
