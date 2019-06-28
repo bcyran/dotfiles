@@ -106,12 +106,12 @@ bindsym $mod+r mode "resize"
 set $ws1 "1 "
 set $ws2 "2 "
 set $ws3 "3 "
-set $ws4 "4 "
+set $ws4 "4 "
 set $ws5 "5 "
 set $ws6 "6 "
 set $ws7 "7 "
-set $ws8 "8 …"
-set $ws9 "9 "
+set $ws8 "8 "
+set $ws9 "9 "
 set $ws10 "10 "
 
 # Define display names
@@ -170,17 +170,19 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # Colors definitions
 set $bg					#282c34
 set $text				#abb2bf
-set $active-bg			#282c34
-set $active-text		#282c34 
+set $active-bg			#5c6370
+set $active-text		#abb2bf 
 set $focused 			#61afef
+set $focused-text		#282c34
 set $urgent				#e5c07b
+set $urgent-text		#282c34
 
 # window colors
 #	  					 	border			background		text			indicator		child border
-client.focused				$focused		$focused		$active-text	$focused	 	$focused
+client.focused				$focused		$focused		$focused-text	$focused	 	$focused
 client.focused_inactive		$active-bg		$active-bg		$active-text	$active-bg		$active-bg
 client.unfocused			$active-bg		$bg				$text			$bg				$bg
-client.urgent				$urgent			$urgent			$active-text	$urgent			$urgent
+client.urgent				$urgent			$urgent			$urgent-text	$urgent			$urgent
 
 # Primary display bar
 bar {
@@ -197,10 +199,10 @@ bar {
 		separator				$text
 		statusline				$text
 		#						border			background		text 
-		focused_workspace		$focused		$focused		$active-text
+		focused_workspace		$focused		$focused		$focused-text
 		active_workspace		$active-bg		$active-bg		$active-text
 		inactive_workspace		$bg				$bg				$text
-		urgent_workspace		$urgent			$urgent			$active-text
+		urgent_workspace		$urgent			$urgent			$urgent-text
 	}
 }
 
@@ -215,10 +217,10 @@ bar {
 		background				$bg
 		statusline				$text
 		#						border			background		text 
-		focused_workspace		$focused		$focused		$active-text
+		focused_workspace		$focused		$focused		$focused-text
 		active_workspace		$active-bg		$active-bg		$active-text
 		inactive_workspace		$bg				$bg				$text
-		urgent_workspace		$urgent			$urgent			$active-text
+		urgent_workspace		$urgent			$urgent			$urgent-text
 	}
 }
 
