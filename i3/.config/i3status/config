@@ -7,15 +7,15 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-        colors = true
-        color_good = "#abb2bf"
-        color_degraded = "#e5c07b"
-        color_bad = "#e06c75"
-        interval = 10
+	colors = true
+	color_good = "#abb2bf"
+	color_degraded = "#e5c07b"
+	color_bad = "#e06c75"
+	interval = 10
 }
 
 order += "spotify"
-order += "apt_updates"
+order += "arch_updates"
 order += "redshift"
 order += "backlight"
 order += "volume_status"
@@ -24,56 +24,57 @@ order += "ethernet _first_"
 order += "battery_level"
 order += "tztime local"
 
-apt_updates {
-		format = "[\?if=apt  {apt}]"
+spotify {
+	format = " {artist}: {title}"
+	format_down = ""
+	format_stopped = ""
+}
+
+arch_updates {
+	format = " {total}"
+	hide_if_zero = True
 }
 
 redshift {
-		format = " [\?if=enabled {temperature}K|off]"
-}
-
-spotify {
-		format = " {artist}: {title}"
-		format_down = ""
-		format_stopped = ""
+	format = " [\?if=enabled {temperature}K|off]"
 }
 
 backlight {
-		command = "light"
-		low_tune_threshold = 20
-		cache_timeout = 10
-		brightness_delta = 10
-		format = " {level}%"
+	command = "light"
+	low_tune_threshold = 20
+	cache_timeout = 10
+	brightness_delta = 10
+	format = " {level}%"
 }
 
 volume_status {
-		cache_timeout = 10
-		format = " {percentage}%"
-		max_volume = 100
-		format_muted = " {percentage}%"
-		color_muted = "#abb2bf"
-		color_degraded = "#abb2bf"
-		color_bad = "#abb2bf"
+	cache_timeout = 10
+	format = " {percentage}%"
+	max_volume = 100
+	format_muted = " {percentage}%"
+	color_muted = "#abb2bf"
+	color_degraded = "#abb2bf"
+	color_bad = "#abb2bf"
 }
 
 wireless _first_ {
-		format_up = " %quality %essid"	
-		format_down = ""
+	format_up = " %quality %essid"	
+	format_down = ""
 }
 		
 ethernet _first_ {
-		format_up = " eth"
-		format_down = ""
+	format_up = " eth"
+	format_down = ""
 }
 
 battery_level {
-        hide_seconds = true
-		blocks = ""
-		charging_character = ""
-		color_charging = "#98c379"
-        format = "{icon} {percent}%[ {time_remaining}]"
+	hide_seconds = true
+	blocks = ""
+	charging_character = ""
+	color_charging = "#98c379"
+	format = "{icon} {percent}%[ {time_remaining}]"
 }
 
 tztime local {
-        format = " %-d %b, %H:%M  "
+	format = " %-d %b, %H:%M  "
 }

@@ -12,7 +12,7 @@ font pango:Roboto, Font Awesome 5 Free, Font Awesome 5 Brands 11
 floating_modifier $mod
 
 # Start a terminal
-bindsym $mod+Return exec urxvt -e /bin/zsh
+bindsym $mod+Return exec urxvt -e /usr/bin/zsh
 
 # Kill focused window
 bindsym $mod+Shift+q kill
@@ -115,8 +115,8 @@ set $ws9 "9 "
 set $ws10 "10 "
 
 # Define display names
-set $dp "eDP-1"
-set $ds "DP-1" 
+set $dp "eDP1"
+set $ds "DP1" 
 
 # Assign workspaces to displays
 workspace $ws1 output $dp
@@ -271,8 +271,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master
 bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse sset Master toggle && $refresh-status
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10 && $refresh-status
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10 && $refresh-status
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10% && $refresh-status
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10% && $refresh-status
 
 # Music controls
 bindsym $mod+bracketleft exec --no-startup-id playerctl previous && $refresh-status
@@ -283,6 +283,9 @@ bindsym $mod+backslash exec --no-startup-id playerctl play-pause && $refresh-sta
 bindsym --release Print exec gnome-screenshot
 bindsym --release $mod+Print exec gnome-screenshot -w
 bindsym --release Shift+Print exec gnome-screenshot -a
+
+# Gnome settings
+bindsym $mod+c exec gnome-control-center
 
 ###############################################################################
 # APP SPECIFIC SETUP
@@ -305,17 +308,19 @@ for_window [class="Gnome-calculator"] floating enable
 # STARTUP SETUP
 ###############################################################################
 
-# Xrandr & wallpaper
-exec_always --no-startup-id display-setup detect ~/Obrazy/Tapety/wallpaper.jpg
+# i3-gnome integration
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id gnome-flashback
+
+# Disable bell sound
+exec --no-startup-id xset -b
 
 # Compton
 exec --no-startup-id compton
 
 # Redshift
 exec --no-startup-id redshift
-
-# Deja Dup backup
-exec --no-startup-id /usr/lib/deja-dup/deja-dup-monitor
 
 # KeepassXC
 exec keepassxc
