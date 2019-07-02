@@ -10,8 +10,8 @@ alias l='ls -CF'
 # Enable aliases when using sudo
 alias sudo='sudo '
 
-# Update and upgrade
-alias update='sudo apt update && sudo apt upgrade'
+# Alias vim to nvim
+alias vim='nvim'
 
 # Clear screen
 alias c='clear'
