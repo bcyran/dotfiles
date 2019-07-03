@@ -1,8 +1,3 @@
-# History
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-
 # Options
 setopt autocd # Change dir without cd
 #setopt correct_all # Autocorrect commands
@@ -26,14 +21,15 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate # en
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' menu select # select completions with arrow keys
 
-# Load bash aliases
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+# Load aliases
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
 fi
 
-# Set default editor to vim
-export EDITOR=/usr/bin/vim
-export VISUAL=/usr/bin/vim
+# Load env
+if [ -f ~/.env ]; then
+    source ~/.env
+fi
 
 # Load antibody plugins and settings
 source <(antibody init)

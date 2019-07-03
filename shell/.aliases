@@ -1,4 +1,4 @@
-# Ubuntu's default .bashrc aliases
+# Colors and shortcuts for ls and grep
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -18,6 +18,28 @@ alias c='clear'
 
 # Clear and return to home
 alias cc='cd && c'
+
+# Change directory and list it
+function cdl() {
+	cd "$@" && ls
+}
+
+# Create directory and open it
+function mkc() {
+	mkdir "$@" && cd "$@"
+}
+
+# Alert aliast for long running commands
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Function for quick switching between websites on the server
+function www() {
+    if [ -z $1 ]; then
+        cd /srv/www
+    else 
+    	cd /srv/www/$1/public_html
+    fi
+}
 
 # Extract various archives
 function extract(){
@@ -41,23 +63,3 @@ function extract(){
         echo "'$1' is not a valid file"
     fi
 }
-
-# Change directory and list it
-function cdl() {
-	cd "$@" && ls
-}
-
-# Create directory and open it
-function mkc() {
-	mkdir "$@" && cd "$@"
-}
-
-# Function for quick switching between websites on the server
-function www() {
-    if [ -z $1 ]; then
-        cd /srv/www
-    else 
-    	cd /srv/www/$1/public_html
-    fi
-}
-
