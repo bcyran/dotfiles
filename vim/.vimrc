@@ -14,6 +14,7 @@ Plugin 'lervag/vimtex'
 Plugin 'nvie/vim-flake8'
 Plugin 'joshdick/onedark.vim'
 Plugin 'mengelbrecht/lightline-bufferline'
+Plugin 'Yggdroot/indentLine'
 call vundle#end()
 filetype plugin indent on
 
@@ -32,6 +33,7 @@ set number
 set wildmenu
 set lazyredraw
 set showmatch
+set cursorline
 
 " Indentation
 set tabstop=4
