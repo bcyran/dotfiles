@@ -265,6 +265,10 @@ bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+shift+p move scratchpad 
 bindsym $mod+p scratchpad show
 
+# Toggle window transparency
+bindsym $mod+shift+t exec --no-startup-id transset-df -i $(xprop -root _NET_ACTIVE_WINDOW | awk '{ print $5 }') .85
+bindsym $mod+t exec --no-startup-id transset-df -i $(xprop -root _NET_ACTIVE_WINDOW | awk '{ print $5 }') 1
+
 # Volume controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ && $refresh-status
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- && $refresh-status
@@ -286,6 +290,7 @@ bindsym --release Shift+Print exec gnome-screenshot -a
 
 # Gnome settings
 bindsym $mod+c exec gnome-control-center
+
 
 ###############################################################################
 # APP SPECIFIC SETUP
