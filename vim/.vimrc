@@ -11,10 +11,14 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'itchyny/lightline.vim'
 Plugin 'lervag/vimtex'
-Plugin 'nvie/vim-flake8'
 Plugin 'joshdick/onedark.vim'
 Plugin 'mengelbrecht/lightline-bufferline'
 Plugin 'Yggdroot/indentLine'
+Plugin 'w0rp/ale'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'deoplete-plugins/deoplete-jedi'
 call vundle#end()
 filetype plugin indent on
 
@@ -34,6 +38,9 @@ set wildmenu
 set lazyredraw
 set showmatch
 set cursorline
+set signcolumn=yes
+set pumheight=10
+set completeopt-=preview
 
 " Indentation
 set tabstop=4
@@ -76,13 +83,31 @@ let g:netrw_browse_split=4
 set laststatus=2
 set ttimeout ttimeoutlen=30
 set noshowmode
-let g:lightline = {
-  \ 'colorscheme': 'onedark',
-  \ }
+let g:lightline={'colorscheme': 'onedark'}
 
 " Lightline bufferline
 set showtabline=2
-let g:lightline#bufferline#show_number  = 1
-let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
-let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
-let g:lightline.component_type   = {'buffers': 'tabsel'}
+let g:lightline#bufferline#show_number=1
+let g:lightline.tabline={'left': [['buffers']], 'right': [['bufnum']]}
+let g:lightline.component_expand={'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type={'buffers': 'tabsel'}
+
+" Ale
+let g:ale_fixers={
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'python': ['isort'],
+\}
+let g:ale_fix_on_save=1
+
+" Deoplete
+let g:deoplete#enable_at_startup=1
+let g:deoplete#max_list=20
+function g:Multiple_cursors_before()
+	call deoplete#custom#buffer_option('auto_complete', v:false)
+endfunction
+function g:Multiple_cursors_after()
+	call deoplete#custom#buffer_option('auto_complete', v:true)
+endfunction
+
+" LaTeX
+let g:tex_conceal = ""
