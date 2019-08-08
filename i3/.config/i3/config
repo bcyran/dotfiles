@@ -115,8 +115,8 @@ set $ws9 "9 "
 set $ws10 "10 "
 
 # Define display names
-set $dp "eDP1"
-set $ds "DP1" 
+set $dp "eDP-1"
+set $ds "DP-1"
 
 # Assign workspaces to displays
 workspace $ws1 output $dp
@@ -171,7 +171,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 set $bg					#282c34
 set $text				#abb2bf
 set $active-bg			#5c6370
-set $active-text		#abb2bf 
+set $active-text		#abb2bf
 set $focused 			#61afef
 set $focused-text		#282c34
 set $urgent				#e5c07b
@@ -181,7 +181,7 @@ set $urgent-text		#282c34
 #	  					 	border			background		text			indicator		child border
 client.focused				$focused		$focused		$focused-text	$focused	 	$focused
 client.focused_inactive		$active-bg		$active-bg		$active-text	$active-bg		$active-bg
-client.unfocused			$active-bg		$bg				$text			$bg				$bg
+client.unfocused			$active-bg		$bg				$text			$bg				$active-bg
 client.urgent				$urgent			$urgent			$urgent-text	$urgent			$urgent
 
 # Primary display bar
@@ -198,7 +198,7 @@ bar {
 		background				$bg
 		separator				$text
 		statusline				$text
-		#						border			background		text 
+		#						border			background		text
 		focused_workspace		$focused		$focused		$focused-text
 		active_workspace		$active-bg		$active-bg		$active-text
 		inactive_workspace		$bg				$bg				$text
@@ -216,7 +216,7 @@ bar {
 	colors {
 		background				$bg
 		statusline				$text
-		#						border			background		text 
+		#						border			background		text
 		focused_workspace		$focused		$focused		$focused-text
 		active_workspace		$active-bg		$active-bg		$active-text
 		inactive_workspace		$bg				$bg				$text
@@ -225,7 +225,7 @@ bar {
 }
 
 # Gaps
-for_window [class="^.*"] border pixel 2 
+for_window [class="^.*"] border pixel 2
 smart_gaps on
 gaps inner 5
 gaps outer 0
@@ -237,7 +237,7 @@ smart_borders no_gaps
 ###############################################################################
 
 # Locking command
-set $locker i3lock 
+set $locker i3lock
 
 # Refresh status bar command
 set $refresh-status killall -USR1 py3status
@@ -259,10 +259,10 @@ mode $system_mode {
 bindsym $mod+End mode $system_mode
 
 # Rofi app launcher
-bindsym $mod+d exec --no-startup-id rofi -show drun 
+bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # Move window to and form scratchpad
-bindsym $mod+shift+p move scratchpad 
+bindsym $mod+shift+p move scratchpad
 bindsym $mod+p scratchpad show
 
 # Toggle window transparency
@@ -275,8 +275,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master
 bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse sset Master toggle && $refresh-status
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10% && $refresh-status
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10% && $refresh-status
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10 && $refresh-status
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10 && $refresh-status
 
 # Music controls
 bindsym $mod+bracketleft exec --no-startup-id playerctl previous && $refresh-status
@@ -300,7 +300,7 @@ bindsym $mod+c exec gnome-control-center
 assign [class="Spotify"] $ws10
 for_window [class="Spotify"] move to workspace $ws10
 
-# Office like stuff in workspace 9, tabbed layout 
+# Office like stuff in workspace 9, tabbed layout
 assign [class="Thunderbird"] $ws9
 
 # Floating windows
@@ -331,5 +331,4 @@ exec --no-startup-id redshift
 exec keepassxc
 
 # Other apps
-exec thunderbird 
-
+exec thunderbird
