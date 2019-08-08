@@ -30,7 +30,7 @@ colorscheme onedark
 
 " Fuzzy search
 set path+=**
-set wildignore+=*/node_modules/*,*/venv/*
+set wildignore+=*/node_modules/*,*/venv/*,*__pycache__*
 
 " UI
 set number
@@ -51,6 +51,15 @@ set copyindent
 set shiftwidth=4
 set shiftround
 set smarttab
+
+" Folding
+set foldmethod=indent
+set nofoldenable
+augroup AutoSaveFolds
+  autocmd!
+  autocmd BufWinLeave,BufLeave,BufWritePost ?* nested silent! mkview!
+  autocmd BufWinEnter ?* silent! loadview
+augroup end
 
 " Searching
 set incsearch
