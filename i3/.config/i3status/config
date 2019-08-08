@@ -28,6 +28,7 @@ spotify {
 	format = " {artist}: {title}"
 	format_down = ""
 	format_stopped = ""
+	color_paused = "#abb2bf"
 }
 
 arch_updates {
@@ -58,10 +59,10 @@ volume_status {
 }
 
 wireless _first_ {
-	format_up = " %quality %essid"	
+	format_up = " %quality %essid"
 	format_down = ""
 }
-		
+
 ethernet _first_ {
 	format_up = " eth"
 	format_down = ""
