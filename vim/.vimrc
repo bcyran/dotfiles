@@ -1,4 +1,7 @@
-" Vundle plugin manager
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VUNDLE PLUGIN MANAGER                                                      "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Clone Vundle if it doesn't exist
 if !filereadable($HOME . '/.vim/bundle/Vundle.vim/.git/config') && confirm("Clone Vundle?","Y\nn") == 1
     exec '!git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim/'
@@ -22,17 +25,12 @@ Plugin 'deoplete-plugins/deoplete-jedi'
 call vundle#end()
 filetype plugin indent on
 
-" Syntax highlighting
-syntax on
-let g:onedark_termcolors=16
-let g:onedark_terminal_italics=1
-colorscheme onedark
 
-" Fuzzy search
-set path+=**
-set wildignore+=*/node_modules/*,*/venv/*,*__pycache__*
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" GENERAL VIM CONFIGURATION                                                  "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" UI
+" User interface
 set number
 set wildmenu
 set lazyredraw
@@ -52,14 +50,11 @@ set shiftwidth=4
 set shiftround
 set smarttab
 
-" Folding
-set foldmethod=indent
-set nofoldenable
-augroup AutoSaveFolds
-  autocmd!
-  autocmd BufWinLeave,BufLeave,BufWritePost ?* nested silent! mkview!
-  autocmd BufWinEnter ?* silent! loadview
-augroup end
+" Syntax highlighting
+syntax on
+let g:onedark_termcolors=16
+let g:onedark_terminal_italics=1
+colorscheme onedark
 
 " Searching
 set incsearch
@@ -73,13 +68,47 @@ set splitright
 " Spell check
 set spelllang=pl,en
 
+" Fuzzy search
+set path+=**
+set wildignore+=*/node_modules/*,*/venv/*,*__pycache__*
+
+" Folding
+set foldmethod=indent
+set nofoldenable
+augroup AutoSaveFolds
+  autocmd!
+  autocmd BufWinLeave,BufLeave,BufWritePost ?* nested silent! mkview!
+  autocmd BufWinEnter ?* silent! loadview
+augroup end
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CUSTOM KEY BINDINGS                                                        "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Toggle search highlighting
+:map <leader>h :set hls!<CR>
+
 " Buffer navigation
-" Jump to buffer n by typing ngb
+" Jump to nth buffer by typing ngb
 let c = 1
 while c <= 99
   execute "nnoremap " . c . "gb :" . c . "b\<CR>"
   let c += 1
 endwhile
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SYNTAX SPECIFIC CONFIGURATION                                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" LaTeX
+let g:tex_conceal = ""
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN SPECIFIC CONFIGURATION                                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " File tree sidebar
 let g:netrw_winsize=15
@@ -117,6 +146,3 @@ endfunction
 function g:Multiple_cursors_after()
 	call deoplete#custom#buffer_option('auto_complete', v:true)
 endfunction
-
-" LaTeX
-let g:tex_conceal = ""
