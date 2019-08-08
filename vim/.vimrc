@@ -68,6 +68,9 @@ set splitright
 " Spell check
 set spelllang=pl,en
 
+" Buffers
+set hidden
+
 " Fuzzy search
 set path+=**
 set wildignore+=*/node_modules/*,*/venv/*,*/__pycache__/*
