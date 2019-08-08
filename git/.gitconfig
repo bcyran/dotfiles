@@ -2,7 +2,7 @@
 	email = bazyli.cyran@gmail.com
 	name = Bazyli Cyran
 [core]
-	editor = vim
+	editor = nvim
 [alias]
 	st = status
 	co = checkout
