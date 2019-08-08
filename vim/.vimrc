@@ -70,7 +70,7 @@ set spelllang=pl,en
 
 " Fuzzy search
 set path+=**
-set wildignore+=*/node_modules/*,*/venv/*,*__pycache__*
+set wildignore+=*/node_modules/*,*/venv/*,*/__pycache__/*
 
 " Folding
 set foldmethod=indent
