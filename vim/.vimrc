@@ -1,6 +1,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VUNDLE PLUGIN MANAGER                                                      "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" {{{
 
 " Clone Vundle if it doesn't exist
 if !filereadable($HOME . '/.vim/bundle/Vundle.vim/.git/config') && confirm("Clone Vundle?","Y\nn") == 1
@@ -20,15 +21,17 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'w0rp/ale'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'terryma/vim-multiple-cursors'
 Plugin 'deoplete-plugins/deoplete-jedi'
 call vundle#end()
 filetype plugin indent on
+
+" }}}
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GENERAL VIM CONFIGURATION                                                  "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" {{{
 
 " User interface
 set number
@@ -42,6 +45,7 @@ set completeopt-=preview
 
 " Indentation
 set tabstop=4
+set softtabstop=4
 set autoindent
 set backspace=indent,eol,start
 set autoindent
@@ -73,7 +77,10 @@ set hidden
 
 " Fuzzy search
 set path+=**
-set wildignore+=*/node_modules/*,*/venv/*,*/__pycache__/*
+set wildignore+=*/.git/*,*/node_modules/*,*/venv/*,*/__pycache__/*,*.o,*~,*.pyc
+
+" Auto read modifications from outside
+set autoread
 
 " Folding
 set foldmethod=indent
@@ -84,34 +91,67 @@ augroup AutoSaveFolds
   autocmd BufWinEnter ?* silent! loadview
 augroup end
 
+" }}}
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CUSTOM KEY BINDINGS                                                        "
+" CUSTOM KEY BINDINGS AND COMMANDS                                           "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" {{{
+
+" Backslash is the real leader but space is mapped to it
+let mapleader='\'
+map <Space> \
 
 " Toggle search highlighting
-:map <leader>h :set hls!<CR>
+nnoremap <Leader>hl :setlocal hls!<CR>
+
+" Clear search
+nnoremap <Leader>cs :let @/=''<CR>
+
+" Select all text in buffer
+nnoremap <Leader>a ggVG
+
+" Toggle spell check
+nnoremap <Leader>sc :setlocal spell!<CR>
+
+" Save current session
+nnoremap <Leader>ms :mksession<CR>
+
+" Load saved session
+nnoremap <Leader>ls :source Session.vim<CR>
+
+" Source my {vimrc,ftplugin} file
+nnoremap <silent> <Leader>sv :source $MYVIMRC<CR>
+nnoremap <silent> <Leader>ss :source <C-r>=Evaluate_ftplugin_path()<CR><CR>
+
+" Edit my {vimrc,ftplugin} file
+nnoremap <silent> <Leader>ev :tabe $MYVIMRC<CR>
+nnoremap <silent> <Leader>es :tabe <C-r>=Evaluate_ftplugin_path()<CR><CR>
+
+" Move vertically by visual line
+nnoremap j gj
+nnoremap k gk
 
 " Buffer navigation
-" Jump to nth buffer by typing ngb
+" Jump to the nth buffer by typing ngb
 let c = 1
 while c <= 99
-  execute "nnoremap " . c . "gb :" . c . "b\<CR>"
-  let c += 1
+    execute "nnoremap " . c . "gb :" . c . "b\<CR>"
+    let c += 1
 endwhile
 
+" :W sudo saves the file
+" (useful for handling the permission-denied error)
+command! W w !sudo tee % > /dev/null
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" SYNTAX SPECIFIC CONFIGURATION                                              "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" LaTeX
-let g:tex_conceal = ""
+" }}}
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN SPECIFIC CONFIGURATION                                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" {{{
 
 " File tree sidebar
 let g:netrw_winsize=15
@@ -143,9 +183,35 @@ let g:ale_fix_on_save=1
 " Deoplete
 let g:deoplete#enable_at_startup=1
 let g:deoplete#max_list=20
-function g:Multiple_cursors_before()
-	call deoplete#custom#buffer_option('auto_complete', v:false)
+
+" }}}
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FUNCTIONS                                                                  "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" {{{
+
+" Get the path for the ftplugin of the current file.
+function! Evaluate_ftplugin_path()
+    return "$HOME/.vim/after/ftplugin/" . &filetype . ".vim"
 endfunction
-function g:Multiple_cursors_after()
-	call deoplete#custom#buffer_option('auto_complete', v:true)
-endfunction
+
+" }}}
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CREDITS                                                                    "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" {{{
+
+" - https://github.com/amix/vimrc
+" - https://gist.github.com/simonista/8703722
+" - https://www.reddit.com/r/vim/comments/cog6tg/mappings_i_use_to_develop_my_vim_a_lil_more_easily/
+" - https://superuser.com/a/693644
+" - https://dougblack.io/words/a-good-vimrc.html
+
+" }}}
+
+
+" vim:foldmethod=marker:foldlevel=0
