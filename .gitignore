@@ -1,4 +1,3 @@
-**.netrwhist
-**.uuid
-**.spl
-vim/.vim
+vim/.vim/*
+!vim/.vim/after/
+!vim/.vim/after/*
