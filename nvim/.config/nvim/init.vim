@@ -5,9 +5,9 @@
 
 " Load vim-plug
 if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
-	silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Plugins directory
@@ -52,14 +52,15 @@ set completeopt-=preview
 
 " Indentation
 set tabstop=4
+set shiftwidth=4
 set softtabstop=4
+set expandtab
+set smarttab
 set autoindent
 set backspace=indent,eol,start
 set autoindent
 set copyindent
-set shiftwidth=4
 set shiftround
-set smarttab
 
 " Syntax highlighting
 syntax on
@@ -93,9 +94,9 @@ set autoread
 set foldmethod=indent
 set nofoldenable
 augroup AutoSaveFolds
-  autocmd!
-  autocmd BufWinLeave,BufLeave,BufWritePost ?* nested silent! mkview!
-  autocmd BufWinEnter ?* silent! loadview
+    autocmd!
+    autocmd BufWinLeave,BufLeave,BufWritePost ?* nested silent! mkview!
+    autocmd BufWinEnter ?* silent! loadview
 augroup end
 
 " }}}
@@ -136,6 +137,10 @@ nnoremap <silent> <Leader>ss :source <C-r>=Evaluate_ftplugin_path()<CR><CR>
 nnoremap <silent> <Leader>ev :tabe $MYVIMRC<CR>
 nnoremap <silent> <Leader>es :tabe <C-r>=Evaluate_ftplugin_path()<CR><CR>
 
+" Navigate between ale errors
+nmap <silent> [e <Plug>(ale_previous_wrap)
+nmap <silent> ]e <Plug>(ale_next_wrap)
+
 " Move vertically by visual line
 nnoremap j gj
 nnoremap k gk
@@ -147,7 +152,10 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Buffer listing and switching
-nnoremap <Leader>b :ls<cr>:b<space>
+nnoremap <Leader>b :ls<CR>:b<Space>
+
+" Quick file searching
+nnoremap <Leader>f :find<Space>
 
 " Auto closing brackets
 inoremap \[ \[\]<Left>
@@ -181,7 +189,21 @@ let g:netrw_browse_split=4
 set laststatus=2
 set ttimeout ttimeoutlen=30
 set noshowmode
-let g:lightline={'colorscheme': 'onedark'}
+let g:lightline={
+\   'colorscheme': 'onedark',
+\   'active': {
+\       'left': [
+\           ['mode', 'paste'], ['readonly', 'filename', 'modified']
+\       ],
+\       'right': [
+\           ['lineinfo'], ['percent'],
+\           ['ale', 'fileformat', 'fileencoding', 'filetype']
+\       ]
+\   },
+\   'component_function': {
+\       'ale': 'LinterStatus'
+\   }
+\}
 
 " Ale
 let g:ale_fixers={
@@ -205,6 +227,18 @@ let g:deoplete#max_list=20
 " Get the path for the ftplugin of the current file.
 function! Evaluate_ftplugin_path()
     return "$HOME/.config/nvim/after/ftplugin/" . &filetype . ".vim"
+endfunction
+
+" Count ALE linting errors to display in the lightline
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE', all_non_errors, all_errors
+    \)
 endfunction
 
 " }}}
