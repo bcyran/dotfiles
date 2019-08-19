@@ -56,10 +56,10 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # Toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+d floating toggle
 
 # Change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+d focus mode_toggle
 
 # Focus the parent container
 bindsym $mod+a focus parent
@@ -259,7 +259,7 @@ mode $system_mode {
 bindsym $mod+End mode $system_mode
 
 # Rofi app launcher
-bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+space exec --no-startup-id rofi -show drun
 
 # Move window to and form scratchpad
 bindsym $mod+shift+p move scratchpad
