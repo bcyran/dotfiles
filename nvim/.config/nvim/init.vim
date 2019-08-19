@@ -13,15 +13,18 @@ endif
 " Plugins directory
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'itchyny/lightline.vim'
-Plug 'lervag/vimtex'
 Plug 'joshdick/onedark.vim'
+Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-commentary'
 Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim'
-Plug 'deoplete-plugins/deoplete-jedi'
+
+Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
+Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
 
 " Initialize plugin system
 call plug#end()
@@ -41,7 +44,7 @@ set nocompatible
 filetype plugin indent on
 
 " User interface
-set number
+set number relativenumber
 set wildmenu
 set lazyredraw
 set showmatch
@@ -49,6 +52,7 @@ set cursorline
 set signcolumn=yes
 set pumheight=10
 set completeopt-=preview
+set scrolloff=5
 
 " Indentation
 set tabstop=4
@@ -61,6 +65,10 @@ set backspace=indent,eol,start
 set autoindent
 set copyindent
 set shiftround
+set breakindent
+
+" Display whitespace
+set listchars=eol:¬,tab:>-,space:·,trail:~,extends:>,precedes:<
 
 " Syntax highlighting
 syntax on
@@ -85,10 +93,15 @@ set hidden
 
 " Fuzzy search
 set path+=**
-set wildignore+=*/.git/*,*/node_modules/*,*/venv/*,*/__pycache__/*,*.o,*~,*.pyc
+set wildignore+=*/.git/*,*/node_modules/*,*/venv/*,*/__pycache__/*,*.o,*~
+set wildignore+=*.pyc,*.vim,*/.idea/*
 
 " Auto read modifications from outside
 set autoread
+
+" Auto read local 'vimrc' files
+set exrc
+set secure
 
 " Folding
 set foldmethod=indent
@@ -123,11 +136,20 @@ nnoremap <silent> <Leader>a ggVG
 " Toggle spell check
 nnoremap <silent> <Leader>sc :setlocal spell!<CR>
 
+" Toggle relativenumber
+nnoremap <silent> <Leader>rn :setlocal relativenumber!<CR>
+
+" Toggle list (displaying whitespace)
+nnoremap <silent> <Leader>sw :set list!<CR>
+
 " Save current session
-nnoremap <silent> <Leader>ms :mksession<CR>
+nnoremap <silent> <Leader>ms :mksession!<CR>
 
 " Load saved session
 nnoremap <silent> <Leader>ls :source Session.vim<CR>
+
+" Toggle netrw
+nnoremap <silent> <Leader>ls :call ToggleNetrw()<CR>
 
 " Source my {vimrc,ftplugin} file
 nnoremap <silent> <Leader>sv :source $MYVIMRC<CR>
@@ -143,7 +165,9 @@ nmap <silent> ]e <Plug>(ale_next_wrap)
 
 " Move vertically by visual line
 nnoremap j gj
+vnoremap j gj
 nnoremap k gk
+vnoremap k gk
 
 " Natural splits navigation
 nnoremap <C-J> <C-W><C-J>
@@ -156,15 +180,6 @@ nnoremap <Leader>b :ls<CR>:b<Space>
 
 " Quick file searching
 nnoremap <Leader>f :find<Space>
-
-" Auto closing brackets
-inoremap \[ \[\]<Left>
-inoremap ( ()<Left>
-inoremap { {}<Left>
-" Auto expand grouping symbols
-inoremap \[<CR> \[\]<Esc>i<CR><CR><Esc>ki<Tab>
-inoremap (<CR> ()<Esc>i<CR><CR><Esc>ki<Tab>
-inoremap {<CR> {}<Esc>i<CR><CR><Esc>ki<Tab>
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
@@ -179,11 +194,13 @@ command! W w !sudo tee % > /dev/null
 " {{{
 
 " File tree sidebar
-let g:netrw_winsize=15
+let g:netrw_winsize=-24
 let g:netrw_banner=0
 let g:netrw_liststyle=3
 let g:netrw_altv=1
 let g:netrw_browse_split=4
+let g:netrw_list_hide= '.*\.git/.*,.*node_modules/.*,.*venv/.*,.*__pycache__/.*,.*/\.o,
+\   .*~,.*\.pyc,.*\.vim,.*\.idea/.*'
 
 " Lightline
 set laststatus=2
@@ -239,6 +256,22 @@ function! LinterStatus() abort
     return l:counts.total == 0 ? 'OK' : printf(
     \   '%dW %dE', all_non_errors, all_errors
     \)
+endfunction
+
+" Netrw toggling
+function! ToggleNetrw()
+        let i = bufnr("$")
+        let wasOpen = 0
+        while (i >= 1)
+            if (getbufvar(i, "&filetype") == "netrw")
+                silent exe "bwipeout " . i
+                let wasOpen = 1
+            endif
+            let i-=1
+        endwhile
+    if !wasOpen
+        silent Lexplore
+    endif
 endfunction
 
 " }}}
