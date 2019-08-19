@@ -1,3 +1,4 @@
 vim/.vim/*
 !vim/.vim/after/
 !vim/.vim/after/*
+.netrwhist
