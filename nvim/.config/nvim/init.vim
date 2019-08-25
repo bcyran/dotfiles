@@ -219,15 +219,16 @@ let g:lightline={
 \   'colorscheme': 'onedark',
 \   'active': {
 \       'left': [
-\           ['mode', 'paste'], ['readonly', 'filename', 'modified']
+\           ['mode', 'paste'], ['readonly', 'filename', 'branch', 'modified'], ['linter']
 \       ],
 \       'right': [
 \           ['lineinfo'], ['percent'],
-\           ['ale', 'fileformat', 'fileencoding', 'filetype']
+\           ['fileformat', 'fileencoding', 'filetype']
 \       ]
 \   },
 \   'component_function': {
-\       'ale': 'LinterStatus'
+\       'linter': 'LinterStatus',
+\       'branch': 'fugitive#head'
 \   }
 \}
 
