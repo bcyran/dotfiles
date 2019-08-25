@@ -158,7 +158,7 @@ nnoremap <silent> <Leader>ms :mksession!<CR>
 nnoremap <silent> <Leader>ls :source Session.vim<CR>
 
 " Toggle netrw
-nnoremap <silent> <Leader>ls :call ToggleNetrw()<CR>
+nnoremap <silent> <Leader>ll :call ToggleNetrw()<CR>
 
 " Source my {vimrc,ftplugin} file
 nnoremap <silent> <Leader>sv :source $MYVIMRC<CR>
