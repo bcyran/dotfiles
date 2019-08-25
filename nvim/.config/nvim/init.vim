@@ -21,7 +21,11 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim'
+Plug 'RRethy/vim-illuminate'
+Plug 'tpope/vim-fugitive'
 
+" Language specific plugins
+Plug 'mattn/emmet-vim'
 Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
@@ -103,6 +107,12 @@ set autoread
 set exrc
 set secure
 
+" Persistent undo
+set undolevels=1000
+set undoreload=10000
+call mkdir(&undodir, 'p')
+set undofile
+
 " Folding
 set foldmethod=indent
 set nofoldenable
@@ -113,7 +123,6 @@ augroup AutoSaveFolds
 augroup end
 
 " }}}
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM KEY BINDINGS AND COMMANDS                                           "
@@ -232,6 +241,14 @@ let g:ale_fix_on_save=1
 " Deoplete
 let g:deoplete#enable_at_startup=1
 let g:deoplete#max_list=20
+
+" Illuminate
+let g:Illuminate_delay=500
+
+" Emmet
+let g:user_emmet_install_global=0
+autocmd FileType html,css EmmetInstall
+let g:user_emmet_leader_key=','
 
 " }}}
 
