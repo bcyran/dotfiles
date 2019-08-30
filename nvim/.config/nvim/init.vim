@@ -23,11 +23,12 @@ Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim'
 Plug 'RRethy/vim-illuminate'
 Plug 'tpope/vim-fugitive'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'sheerun/vim-polyglot'
 
 " Language specific plugins
 Plug 'mattn/emmet-vim'
 Plug 'lervag/vimtex', { 'for': 'tex' }
-Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
 
 " Initialize plugin system
@@ -96,7 +97,7 @@ set spelllang=pl,en
 set hidden
 
 " Fuzzy search
-set path+=**
+set path=**
 set wildignore+=*/.git/*,*/node_modules/*,*/venv/*,*/__pycache__/*,*.o,*~
 set wildignore+=*.pyc,*.vim,*/.idea/*
 
@@ -116,13 +117,23 @@ set undofile
 " Folding
 set foldmethod=indent
 set nofoldenable
-augroup AutoSaveFolds
+
+" Views
+set viewoptions=cursor,folds,slash,unix
+let nosaveview=['help', 'netrw', 'vim-plug', 'gitcommit']
+augroup AutoSaveView
     autocmd!
-    autocmd BufWinLeave,BufLeave,BufWritePost ?* nested silent! mkview!
-    autocmd BufWinEnter ?* silent! loadview
+    autocmd BufWinLeave,BufLeave,BufWritePost ?* nested
+        \ if index(nosaveview, &ft) < 0 | silent! mkview!
+    autocmd BufWinEnter ?*
+        \ if index(nosaveview, &ft) < 0 | silent! loadview
 augroup end
 
+" Enable modelines
+set modeline
+
 " }}}
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM KEY BINDINGS AND COMMANDS                                           "
@@ -172,6 +183,9 @@ nnoremap <silent> <Leader>es :tabe <C-r>=Evaluate_ftplugin_path()<CR><CR>
 nmap <silent> [e <Plug>(ale_previous_wrap)
 nmap <silent> ]e <Plug>(ale_next_wrap)
 
+" Go to file under cursor
+nnoremap <silent> <Leader>gf :vertical wincmd f<CR>
+
 " Move vertically by visual line
 nnoremap j gj
 vnoremap j gj
@@ -189,6 +203,9 @@ nnoremap <Leader>b :ls<CR>:b<Space>
 
 " Quick file searching
 nnoremap <Leader>f :find<Space>
+
+" Goto tag
+nnoremap <Leader>t :ta<Space>
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
@@ -251,6 +268,16 @@ let g:user_emmet_install_global=0
 autocmd FileType html,css EmmetInstall
 let g:user_emmet_leader_key=','
 
+" Indentline
+let g:indentLine_first_char='┊'
+let g:indentLine_char='┊'
+let g:indentLine_showFirstIndentLevel=1
+
+" Gutentags
+let g:gutentags_cache_dir='/home/bazyli/.local/share/nvim/tags/'
+let g:gutentags_ctags_auto_set_tags=1
+
+
 " }}}
 
 
@@ -306,8 +333,9 @@ endfunction
 " - https://superuser.com/a/693644
 " - https://dougblack.io/words/a-good-vimrc.html
 " - https://www.reddit.com/r/vim/comments/coqoih/braces_autocomplete/ewku3k9
+" - https://gist.github.com/csswizardry/9a33342dace4786a9fee35c73fa5deeb
 
 " }}}
 
 
-" vim:foldmethod=marker:foldlevel=0
+" vim:foldmethod=marker:foldlevel=0:foldenable
