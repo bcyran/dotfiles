@@ -5,6 +5,7 @@ setopt auto_list # automatically list choices on ambiguous completion
 setopt auto_menu # automatically use menu completion
 setopt always_to_end # move cursor to end if word had one match
 bindkey -v # Vim mode
+bindkey '^R' history-incremental-pattern-search-backward # Search history on ctrl+r
 
 # Autocompletions with cache
 autoload -Uz compinit
