@@ -12,7 +12,7 @@ font pango:Roboto, Font Awesome 5 Free, Font Awesome 5 Brands 11
 floating_modifier $mod
 
 # Start a terminal
-bindsym $mod+Return exec urxvt -e /usr/bin/zsh
+bindsym $mod+Return exec urxvt
 
 # Kill focused window
 bindsym $mod+Shift+q kill
@@ -291,6 +291,12 @@ bindsym --release Shift+Print exec gnome-screenshot -a
 # Gnome settings
 bindsym $mod+c exec gnome-control-center
 
+# Firefox
+bindsym $mod+y exec firefox
+
+# File manager
+bindsym $mod+n exec nautilus
+
 
 ###############################################################################
 # APP SPECIFIC SETUP
@@ -307,6 +313,9 @@ assign [class="Thunderbird"] $ws9
 for_window [class="keepassxc"] floating enable, resize set 1000 700
 for_window [class="Eog"] floating enable, resize 1800 900 # Image viewer
 for_window [class="Gnome-calculator"] floating enable
+
+# "handy" urxvt in a second workspace
+assign [instance="handyterm"] $ws2
 
 
 ###############################################################################
@@ -329,6 +338,12 @@ exec --no-startup-id redshift
 
 # KeepassXC
 exec keepassxc
+
+# Browser
+exec firefox
+
+# Launch handy urxvt instance
+exec urxvt -name handyterm
 
 # Other apps
 exec thunderbird
