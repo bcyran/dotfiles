@@ -1,3 +1,40 @@
 #!/usr/bin/env bash
 
-i3lock-fancy-rapid 5 3 "$@"
+# Note that this requires i3lock-color for of i3lock:
+# https://github.com/PandorasFox/i3lock-color
+
+E='#00000000'   # just opacity
+B='#282c34dd'   # background
+C='#282c34dd'   # inside
+D='#61afefff'   # default
+T='#abb2bfff'   # text
+W='#e06c75ff'   # wrong
+V='#e5c07bff'   # verifying
+
+i3lock \
+    --insidevercolor=$C     \
+    --ringvercolor=$V       \
+    \
+    --insidewrongcolor=$C   \
+    --ringwrongcolor=$W     \
+    \
+    --insidecolor=$B        \
+    --ringcolor=$D          \
+    --linecolor=$B          \
+    --separatorcolor=$D     \
+    \
+    --verifcolor=$T         \
+    --wrongcolor=$T         \
+    --timecolor=$T          \
+    --datecolor=$T          \
+    --keyhlcolor=$V         \
+    --bshlcolor=$W          \
+    --line-uses-inside      \
+    \
+    --screen 1              \
+    --blur 5                \
+    --clock                 \
+    --indicator             \
+    --timestr="%H:%M"       \
+    --datestr="%-d %B"      \
+    "$@" # Mainly for passing `--nofork` when needed
