@@ -11,7 +11,7 @@ xautolock \
     -time 10 \
     -locker "$locker" \
     -corners "+-00" \
-    -cornerdelay 10 \
-    -cornersize 50 \
+    -cornerdelay 15 \
+    -cornersize 10 \
     -notify 10 \
     -notifier "$notifier" \
