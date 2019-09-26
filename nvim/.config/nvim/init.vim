@@ -25,6 +25,7 @@ Plug 'RRethy/vim-illuminate'
 Plug 'tpope/vim-fugitive'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'sheerun/vim-polyglot'
+Plug 'Shougo/echodoc.vim'
 
 " Language specific plugins
 Plug 'mattn/emmet-vim'
@@ -58,6 +59,7 @@ set signcolumn=yes
 set pumheight=10
 set completeopt-=preview
 set scrolloff=5
+set shortmess+=c
 
 " Indentation
 set tabstop=4
@@ -117,6 +119,7 @@ set undofile
 " Folding
 set foldmethod=indent
 set nofoldenable
+set foldignore=
 
 " Views
 set viewoptions=cursor,folds,slash,unix
@@ -169,7 +172,7 @@ nnoremap <silent> <Leader>ms :mksession!<CR>
 nnoremap <silent> <Leader>ls :source Session.vim<CR>
 
 " Toggle netrw
-nnoremap <silent> <Leader>ll :call ToggleNetrw()<CR>
+nnoremap <silent> <Leader>le :call ToggleNetrw()<CR>
 
 " Source my {vimrc,ftplugin} file
 nnoremap <silent> <Leader>sv :source $MYVIMRC<CR>
@@ -272,11 +275,22 @@ let g:user_emmet_leader_key=','
 let g:indentLine_first_char='┊'
 let g:indentLine_char='┊'
 let g:indentLine_showFirstIndentLevel=1
+let g:indentLine_faster=1
 
 " Gutentags
 let g:gutentags_cache_dir='/home/bazyli/.local/share/nvim/tags/'
 let g:gutentags_ctags_auto_set_tags=1
 
+" Vimtex
+let g:tex_flavor='latex'
+let g:vimtex_compiler_progname='nvr'
+
+" Polyglot
+let g:polyglot_disabled=['latex']
+
+" Echodoc
+let g:echodoc#enable_at_startup=1
+let g:echodoc#type='echo'
 
 " }}}
 
