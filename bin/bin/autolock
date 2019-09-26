@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-locker="/home/bazyli/bin/lock"
+locker="/home/bazyli/bin/lock --nofork"
 notifier="notify-send \
     -t 8000 \
     'Screen lock' \

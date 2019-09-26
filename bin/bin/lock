@@ -1,10 +1,3 @@
 #!/usr/bin/env bash
 
-# I want nofork by default but also need to have option to fork
-if [ "$1" == "fork" ]; then
-    argv=""
-else
-    argv="--nofork"
-fi
-
-i3lock-fancy-rapid 5 3 "$argv"
+i3lock-fancy-rapid 5 3 "$@"
