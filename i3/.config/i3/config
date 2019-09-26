@@ -261,6 +261,9 @@ bindsym $mod+End mode $system_mode
 # Rofi app launcher
 bindsym $mod+space exec --no-startup-id rofi -show drun
 
+# Floating terminal
+bindsym $mod+shift+Return exec urxvt -name floating
+
 # Move window to and form scratchpad
 bindsym $mod+shift+p move scratchpad
 bindsym $mod+p scratchpad show
@@ -316,6 +319,9 @@ for_window [class="Gnome-calculator"] floating enable
 
 # "handy" urxvt in a second workspace
 assign [instance="handyterm"] $ws2
+
+# Floating urxvt
+for_window [instance="floating"] floating enable
 
 
 ###############################################################################
