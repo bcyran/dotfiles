@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+locker="/home/bazyli/bin/lock"
+notifier="notify-send \
+    -t 8000 \
+    'Screen lock' \
+    'The screen will be locked in 10 seconds'"
+
+xautolock \
+    -detectsleep \
+    -time 10 \
+    -locker "$locker" \
+    -corners "+-00" \
+    -cornerdelay 10 \
+    -cornersize 50 \
+    -notify 10 \
+    -notifier "$notifier" \

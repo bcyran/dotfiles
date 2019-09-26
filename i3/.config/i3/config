@@ -237,7 +237,7 @@ smart_borders no_gaps
 ###############################################################################
 
 # Locking command
-set $locker i3lock
+set $locker /home/bazyli/bin/lock
 
 # Refresh status bar command
 set $refresh-status killall -USR1 py3status
@@ -327,8 +327,11 @@ exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id gnome-flashback
 
+# Enable auto screen locker
+exec /home/bazyli/bin/autolock
+
 # Disable bell sound
-exec --no-startup-id xset -b
+exec_always --no-startup-id xset -b
 
 # Compton
 exec --no-startup-id compton
