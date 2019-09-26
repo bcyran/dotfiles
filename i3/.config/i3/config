@@ -255,16 +255,16 @@ set $refresh-status killall -USR1 py3status
 # System mode
 set $system_mode "System: (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) shutdown"
 mode $system_mode {
-		bindsym l exec --no-startup-id $locker, mode "default"
-		bindsym e exec --no-startup-id i3-msg exit, mode "default"
-		bindsym s exec --no-startup-id $locker && systemctl suspend, mode "default"
-		bindsym h exec --no-startup-id $locker && systemctl hibernate, mode "default"
-		bindsym r exec --no-startup-id systemctl reboot, mode "default"
-		bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
+		bindsym l mode "default", exec --no-startup-id $locker
+		bindsym e mode "default", exec --no-startup-id i3-msg exit
+		bindsym s mode "default", exec --no-startup-id $locker fork && systemctl suspend
+		bindsym h mode "default", exec --no-startup-id $locker fork && systemctl hibernate
+		bindsym r mode "default", exec --no-startup-id systemctl reboot
+		bindsym p mode "default", exec --no-startup-id systemctl poweroff -i
 		# Return to normal
 		bindsym Escape mode "default"
 		bindsym Return mode "default"
-		bindsym $mod+shift+s "default"
+		bindsym $mod+End "default"
 }
 bindsym $mod+End mode $system_mode
 
