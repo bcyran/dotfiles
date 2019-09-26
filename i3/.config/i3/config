@@ -58,6 +58,13 @@ bindsym $mod+e layout toggle split
 # Toggle tiling / floating
 bindsym $mod+Shift+d floating toggle
 
+# Toggle sticky
+bindsym $mod+Shift+x sticky toggle
+
+# Move window to and form scratchpad
+bindsym $mod+shift+p move scratchpad
+bindsym $mod+p scratchpad show
+
 # Change focus between tiling / floating windows
 bindsym $mod+d focus mode_toggle
 
@@ -162,6 +169,9 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+# Enable workspace back-and-forth
+workspace_auto_back_and_forth yes
+
 
 ###############################################################################
 # APPEARANCE
@@ -264,27 +274,33 @@ bindsym $mod+space exec --no-startup-id rofi -show drun
 # Floating terminal
 bindsym $mod+shift+Return exec urxvt -name floating
 
-# Move window to and form scratchpad
-bindsym $mod+shift+p move scratchpad
-bindsym $mod+p scratchpad show
-
 # Toggle window transparency
-bindsym $mod+shift+t exec --no-startup-id transset-df -i $(xprop -root _NET_ACTIVE_WINDOW | awk '{ print $5 }') .85
-bindsym $mod+t exec --no-startup-id transset-df -i $(xprop -root _NET_ACTIVE_WINDOW | awk '{ print $5 }') 1
+bindsym $mod+shift+t exec --no-startup-id \
+    transset-df -i $(xprop -root _NET_ACTIVE_WINDOW | awk '{ print $5 }') .85
+bindsym $mod+t exec --no-startup-id \
+    transset-df -i $(xprop -root _NET_ACTIVE_WINDOW | awk '{ print $5 }') 1
 
 # Volume controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ && $refresh-status
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- && $refresh-status
-bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse sset Master toggle && $refresh-status
+bindsym XF86AudioRaiseVolume exec --no-startup-id \
+    amixer -q -D pulse sset Master 5%+ && $refresh-status
+bindsym XF86AudioLowerVolume exec --no-startup-id \
+    amixer -q -D pulse sset Master 5%- && $refresh-status
+bindsym XF86AudioMute exec --no-startup-id \
+    amixer -q -D pulse sset Master toggle && $refresh-status
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10 && $refresh-status
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10 && $refresh-status
+bindsym XF86MonBrightnessUp exec --no-startup-id \
+    light -A 10 && $refresh-status
+bindsym XF86MonBrightnessDown exec --no-startup-id \
+    light -U 10 && $refresh-status
 
 # Music controls
-bindsym $mod+bracketleft exec --no-startup-id playerctl previous && $refresh-status
-bindsym $mod+bracketright exec --no-startup-id playerctl next && $refresh-status
-bindsym $mod+backslash exec --no-startup-id playerctl play-pause && $refresh-status
+bindsym $mod+bracketleft exec --no-startup-id \
+    playerctl previous && $refresh-status
+bindsym $mod+bracketright exec --no-startup-id \
+    playerctl next && $refresh-status
+bindsym $mod+backslash exec --no-startup-id \
+    playerctl play-pause && $refresh-status
 
 # Screenshot
 bindsym --release Print exec gnome-screenshot
@@ -317,11 +333,13 @@ for_window [class="keepassxc"] floating enable, resize set 1000 700
 for_window [class="Eog"] floating enable, resize 1800 900 # Image viewer
 for_window [class="Gnome-calculator"] floating enable
 
-# "handy" urxvt in a second workspace
-assign [instance="handyterm"] $ws2
+# Always have a terminal on secod workspace
+assign [class="URxvt" instance="workspace"] $ws2
 
-# Floating urxvt
-for_window [instance="floating"] floating enable
+# Floating terminal
+for_window [class="URxvt" instance="floating"] floating enable, \
+    resize set 800 500, move position center
+
 
 
 ###############################################################################
@@ -351,8 +369,8 @@ exec keepassxc
 # Browser
 exec firefox
 
-# Launch handy urxvt instance
-exec urxvt -name handyterm
+# Launch urxvt on second workspace
+exec urxvt -name workspace
 
 # Other apps
 exec thunderbird
