@@ -60,6 +60,7 @@ set pumheight=10
 set completeopt-=preview
 set scrolloff=5
 set shortmess+=c
+set title
 
 " Indentation
 set tabstop=4
