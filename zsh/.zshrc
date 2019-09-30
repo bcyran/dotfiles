@@ -44,6 +44,6 @@ source ~/.zsh/prompt.zsh
 case $TERM in
 	xterm*|rxvt*)
 		precmd () { print -Pn "\e]0;$USER@$HOST:$PWD\007" }
-		prexec () { printf "\033]0;%s\a" "$1" }
+		preexec () { printf "\033]0;%s\a" "$1" }
 	;;
 esac
