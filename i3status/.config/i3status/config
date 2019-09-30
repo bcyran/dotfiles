@@ -19,7 +19,6 @@ order += "arch_updates"
 order += "redshift"
 order += "backlight"
 order += "volume_status"
-order += "bluetooth"
 order += "wireless _first_"
 order += "ethernet _first_"
 order += "battery_level"
@@ -47,13 +46,6 @@ backlight {
 	cache_timeout = 10
 	brightness_delta = 10
 	format = " {level}%"
-}
-
-bluetooth {
-	format = "[\?if=format_device  {format_device} ]"
-	format_device = "{name}"
-	format_separator = ", "
-	color_bad = "#abb2bf"
 }
 
 volume_status {

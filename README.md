@@ -19,10 +19,14 @@ Start by cloning this repo to your home directory:
 ## Configs explanation
 * `bash` - just `.bashrc` file, can be out of date as I currently use zsh
 * `bin` - some scripts
+* `compton` - config
+* `dunst` - config and script to set firefox window as urgent on notifications
 * `git` - mainly aliases, don't forget to change email and name!
-* `i3` - configs for i3wm end everything I use with it, e.g. dunst, py3status, rofi, compton
+* `i3` - config for i3wm
+* `i3status` - config file and custom redshift module
 * `nvim` - `init.vim` and `ftplugin` for neovim
 * `redshift` - just redshift config file
+* `rofi` - config file
 * `shell` - `.aliases` and `.env` files, common for both bash and zsh configs
 * `tmux` - tmux conf and terminfo file fixing some problem I dont even remember
 * `urxvt` - URxvt color scheme and other settings
