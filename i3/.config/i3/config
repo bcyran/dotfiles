@@ -194,46 +194,6 @@ client.focused_inactive		$active-bg		$active-bg		$active-text	$active-bg		$activ
 client.unfocused			$active-bg		$bg				$text			$bg				$active-bg
 client.urgent				$urgent			$urgent			$urgent-text	$urgent			$urgent
 
-# Primary display bar
-bar {
-	output				$dp
-	position 			top
-	status_command 		py3status --include ~/.config/py3status/
-	separator_symbol	"  "
-	tray_output 		$dp
-	tray_padding		4
-
-	# Bar colors
-	colors {
-		background				$bg
-		separator				$text
-		statusline				$text
-		#						border			background		text
-		focused_workspace		$focused		$focused		$focused-text
-		active_workspace		$active-bg		$active-bg		$active-text
-		inactive_workspace		$bg				$bg				$text
-		urgent_workspace		$urgent			$urgent			$urgent-text
-	}
-}
-
-# Secondary display bar
-bar {
-	output				$ds
-	position			top
-	tray_output			none
-
-	# Bar colors
-	colors {
-		background				$bg
-		statusline				$text
-		#						border			background		text
-		focused_workspace		$focused		$focused		$focused-text
-		active_workspace		$active-bg		$active-bg		$active-text
-		inactive_workspace		$bg				$bg				$text
-		urgent_workspace		$urgent			$urgent			$urgent-text
-	}
-}
-
 # Gaps
 for_window [class="^.*"] border pixel 2
 smart_gaps on
@@ -250,7 +210,7 @@ smart_borders no_gaps
 set $locker /home/bazyli/bin/lock
 
 # Refresh status bar command
-set $refresh-status killall -USR1 py3status
+set $refresh-status ""
 
 # System mode
 set $system_mode "System: (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) shutdown"
@@ -340,7 +300,6 @@ assign [class="URxvt" instance="workspace"] $ws2
 for_window [class="URxvt" instance="floating"] floating enable, \
     resize set 800 500, move position center
 
-
 ###############################################################################
 # STARTUP SETUP
 ###############################################################################
@@ -349,6 +308,9 @@ for_window [class="URxvt" instance="floating"] floating enable, \
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id gnome-flashback
+
+# Launch polybar
+exec_always --no-startup-id /home/bazyli/.config/polybar/launch.sh
 
 # Enable auto screen locker
 exec /home/bazyli/bin/autolock
