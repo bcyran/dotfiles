@@ -25,6 +25,7 @@ Start by cloning this repo to your home directory:
 * `i3` - config for i3wm
 * `i3status` - config file and custom redshift module
 * `nvim` - `init.vim` and `ftplugin` for neovim
+* `oomox` - theme file
 * `redshift` - just redshift config file
 * `rofi` - config file
 * `shell` - `.aliases` and `.env` files, common for both bash and zsh configs
