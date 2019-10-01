@@ -180,7 +180,7 @@ workspace_auto_back_and_forth yes
 # Colors definitions
 set $bg					#282c34
 set $text				#abb2bf
-set $active-bg			#5c6370
+set $active-bg			#3e4452
 set $active-text		#abb2bf
 set $focused 			#61afef
 set $focused-text		#282c34
@@ -339,7 +339,6 @@ assign [class="URxvt" instance="workspace"] $ws2
 # Floating terminal
 for_window [class="URxvt" instance="floating"] floating enable, \
     resize set 800 500, move position center
-
 
 
 ###############################################################################
