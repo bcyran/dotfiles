@@ -3,3 +3,4 @@ vim/.vim/*
 !vim/.vim/after/*
 .netrwhist
 nvim/.config/nvim/spell
+__pycache__/
