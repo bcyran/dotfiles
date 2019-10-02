@@ -263,12 +263,9 @@ bindsym $mod+backslash exec --no-startup-id \
     playerctl play-pause && $refresh-status
 
 # Screenshot
-bindsym --release Print exec gnome-screenshot
-bindsym --release $mod+Print exec gnome-screenshot -w
-bindsym --release Shift+Print exec gnome-screenshot -a
-
-# Gnome settings
-bindsym $mod+c exec gnome-control-center
+bindsym --release Print exec i3-scrot -d
+bindsym --release $mod+Print exec i3-scrot -w
+bindsym --release $mod+Shift+Print exec i3-scrot -s
 
 # Firefox
 bindsym $mod+y exec firefox
@@ -304,22 +301,23 @@ for_window [class="URxvt" instance="floating"] floating enable, \
 # STARTUP SETUP
 ###############################################################################
 
-# i3-gnome integration
-exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id gnome-flashback
-
-# Launch polybar
-exec_always --no-startup-id /home/bazyli/.config/polybar/launch.sh
-
-# Enable auto screen locker
-exec /home/bazyli/bin/autolock
-
 # Disable bell sound
 exec_always --no-startup-id xset -b
 
+# Setup xrandr, wallpaper and polybar
+exec_always --no-startup-id ~/bin/display-setup
+
+# Run srandr dameon to handle display hotplugging
+exec --no-startup-id srandrd ~/bin/display-setup
+
+# Enable auto screen locker
+exec --no-startup-id ~/bin/autolock
+
 # Compton
 exec --no-startup-id compton
+
+# Deja-dup backup
+exec --no-startup-id /usr/lib/deja-dup/deja-dup-monitor
 
 # Redshift
 exec --no-startup-id redshift

@@ -1,13 +1,10 @@
 #!/usr/bin/env bash
 
-# Without this both bars start on secondary monitor, WTF?
-sleep 1
-
 # Terminate already running bar instances
 killall -q polybar
 
 # Wait until the processes have been shut down
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+while pgrep -x polybar > /dev/null; do sleep 1; done
 
 # Launch primary bar
 polybar primary &
