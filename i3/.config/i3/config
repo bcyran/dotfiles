@@ -207,7 +207,7 @@ smart_borders no_gaps
 ###############################################################################
 
 # Locking command
-set $locker /home/bazyli/bin/lock
+set $locker xautolock -locknow
 
 # Refresh status bar command
 set $refresh-status ""
@@ -296,6 +296,7 @@ assign [class="URxvt" instance="workspace"] $ws2
 # Floating terminal
 for_window [class="URxvt" instance="floating"] floating enable, \
     resize set 800 500, move position center
+
 
 ###############################################################################
 # STARTUP SETUP

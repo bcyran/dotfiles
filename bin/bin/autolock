@@ -15,3 +15,5 @@ xautolock \
     -cornersize 10 \
     -notify 10 \
     -notifier "$notifier" \
+    -killtime 10 \
+    -killer "systemctl suspend"
