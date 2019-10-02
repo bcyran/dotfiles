@@ -29,6 +29,7 @@ Start by cloning this repo to your home directory:
 * `polybar` - config file, launching script, and some custom modules
 * `redshift` - just redshift config file
 * `rofi` - config file
+* `services` - systemd `.service` files
 * `shell` - `.aliases` and `.env` files, common for both bash and zsh configs
 * `tmux` - tmux conf and terminfo file fixing some problem I dont even remember
 * `urxvt` - URxvt color scheme and other settings
