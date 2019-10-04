@@ -102,7 +102,7 @@ set hidden
 " Fuzzy search
 set path=**
 set wildignore+=*/.git/*,*/node_modules/*,*/venv/*,*/__pycache__/*,*.o,*~
-set wildignore+=*.pyc,*.vim,*/.idea/*
+set wildignore+=*.pyc,*/.idea/*
 
 " Auto read modifications from outside
 set autoread
@@ -283,8 +283,8 @@ let g:gutentags_cache_dir='/home/bazyli/.local/share/nvim/tags/'
 let g:gutentags_ctags_auto_set_tags=1
 
 " Vimtex
-let g:tex_flavor='latex'
 let g:vimtex_compiler_progname='nvr'
+let g:vimtex_view_method='zathura'
 
 " Polyglot
 let g:polyglot_disabled=['latex']
