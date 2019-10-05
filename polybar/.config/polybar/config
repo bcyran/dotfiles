@@ -33,7 +33,7 @@ secondary       = DP-1
 
 [bar/base]
 width = 100%
-height = 25
+height = 27
 fixed-center = true
 
 background = ${colors.bg}
