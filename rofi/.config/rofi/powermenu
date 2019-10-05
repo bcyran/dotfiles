@@ -1,0 +1,16 @@
+rofi.width: 9
+rofi.lines: 6
+rofi.columns: 1
+rofi.font: Roboto 12
+rofi.bw: 2
+rofi.location: 3
+rofi.padding: 5
+rofi.xoffset: -15
+rofi.yoffset: 43
+rofi.cycle: false
+rofi.show-match: false
+rofi.separator-style: solid
+rofi.hide-scrollbar: true
+rofi.case-sensitive: false
+rofi.color-window: #282c34,#3e4452,#3e4452
+rofi.color-normal: #282c34,#abb2bf,#282c34,#e5c07b,#282c34

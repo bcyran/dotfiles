@@ -213,23 +213,11 @@ set $locker xautolock -locknow
 set $refresh-status ""
 
 # System mode
-set $system_mode "System: (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) shutdown"
-mode $system_mode {
-		bindsym l mode "default", exec --no-startup-id $locker
-		bindsym e mode "default", exec --no-startup-id i3-msg exit
-		bindsym s mode "default", exec --no-startup-id $locker && systemctl suspend
-		bindsym h mode "default", exec --no-startup-id $locker && systemctl hibernate
-		bindsym r mode "default", exec --no-startup-id systemctl reboot
-		bindsym p mode "default", exec --no-startup-id systemctl poweroff -i
-		# Return to normal
-		bindsym Escape mode "default"
-		bindsym Return mode "default"
-		bindsym $mod+End "default"
-}
-bindsym $mod+End mode $system_mode
+bindsym $mod+End exec --no-startup-id ~/.config/rofi/scripts/powermenu.sh
 
 # Rofi app launcher
-bindsym $mod+space exec --no-startup-id rofi -show drun
+bindsym $mod+space exec --no-startup-id \
+    rofi -no-lazy-grab -show drun -config ~/.config/rofi/appmenu
 
 # Floating terminal
 bindsym $mod+shift+Return exec urxvt -name floating
