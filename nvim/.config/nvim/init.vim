@@ -13,24 +13,28 @@ endif
 " Plugins directory
 call plug#begin('~/.local/share/nvim/plugged')
 
+" Colors and visual
 Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
+Plug 'RRethy/vim-illuminate'
+Plug 'mhinz/vim-startify'
+
+" Productivity
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
-Plug 'w0rp/ale'
-Plug 'Shougo/deoplete.nvim'
-Plug 'RRethy/vim-illuminate'
 Plug 'tpope/vim-fugitive'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'sheerun/vim-polyglot'
-Plug 'Shougo/echodoc.vim'
 
-" Language specific plugins
+" Code completion on linting
+Plug 'w0rp/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Languages support
+Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim'
 Plug 'lervag/vimtex', { 'for': 'tex' }
-Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
 
 " Initialize plugin system
 call plug#end()
@@ -124,7 +128,7 @@ set foldignore=
 
 " Views
 set viewoptions=cursor,folds,slash,unix
-let nosaveview=['help', 'netrw', 'vim-plug', 'gitcommit']
+let nosaveview=['help', 'netrw', 'vim-plug', 'gitcommit', '']
 augroup AutoSaveView
     autocmd!
     autocmd BufWinLeave,BufLeave,BufWritePost ?* nested
@@ -211,6 +215,14 @@ nnoremap <Leader>f :find<Space>
 " Goto tag
 nnoremap <Leader>t :ta<Space>
 
+" coc.nvim bindings
+nnoremap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> gi <Plug>(coc-implementation)
+nnoremap <silent> gy <Plug>(coc-type-definition)
+nnoremap <silent> gr <Plug>(coc-references)
+nnoremap <silent> gh :call <SID>show_documentation()<CR>
+nnoremap <leader> cr <Plug>(coc-rename)
+
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
 command! W w !sudo tee % > /dev/null
@@ -259,10 +271,6 @@ let g:ale_fixers={
 \   'python': ['isort'],
 \}
 let g:ale_fix_on_save=1
-
-" Deoplete
-let g:deoplete#enable_at_startup=1
-let g:deoplete#max_list=20
 
 " Illuminate
 let g:Illuminate_delay=500
@@ -332,6 +340,15 @@ function! ToggleNetrw()
     if !wasOpen
         silent Lexplore
     endif
+endfunction
+
+" Show either coc or vim documentation
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
 endfunction
 
 " }}}
