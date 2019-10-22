@@ -1,7 +1,9 @@
 # Dotfiles
 Personal setup for i3wm, vim, zsh, tmux and more.
 
-![Setup screenshot](readme-image.png)
+![Setup screenshot](screenshots/scrot-1.png)
+![Setup screenshot](screenshots/scrot-2.png)
+![Setup screenshot](screenshots/scrot-3.png)
 
 ## Usage
 These dotfiles are managed using [GNU stow](https://alexpearce.me/2016/02/managing-dotfiles-with-stow/) so you should have it installed.
