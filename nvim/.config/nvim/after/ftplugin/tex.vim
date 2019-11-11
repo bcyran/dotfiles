@@ -7,8 +7,10 @@ set textwidth=79
 " Display ruler at 80 column
 set colorcolumn=80
 
-" Disable conceal
-let g:tex_conceal = ""
+" Conceal settings
+" Indentline breaks conceal, this disables indentline on line with the cursor
+" but fixes conceal
+let g:indentLine_concealcursor = ''
 
 " Vimtex expression folding
 set foldmethod=expr

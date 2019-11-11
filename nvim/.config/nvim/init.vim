@@ -126,6 +126,10 @@ set foldmethod=indent
 set nofoldenable
 set foldignore=
 
+" Conceal
+set conceallevel=2
+set concealcursor=""
+
 " Views
 set viewoptions=cursor,folds,slash,unix
 let nosaveview=['help', 'netrw', 'vim-plug', 'gitcommit', '']
