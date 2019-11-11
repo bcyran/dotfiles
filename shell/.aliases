@@ -7,6 +7,9 @@ alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# Use t instead of todo.sh
+alias t='todo.sh'
+
 # Enable aliases when using sudo
 alias sudo='sudo '
 
