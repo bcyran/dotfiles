@@ -219,6 +219,10 @@ bindsym $mod+End exec --no-startup-id ~/.config/rofi/scripts/powermenu.sh
 bindsym $mod+space exec --no-startup-id \
     rofi -no-lazy-grab -show drun -config ~/.config/rofi/appmenu
 
+# Rofi run launcher
+bindsym $mod+shift+space exec --no-startup-id \
+    rofi -no-lazy-grab -show run -config ~/.config/rofi/runmenu
+
 # Floating terminal
 bindsym $mod+shift+Return exec urxvt -name floating
 
