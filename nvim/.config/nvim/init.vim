@@ -227,10 +227,6 @@ nnoremap <silent> gr <Plug>(coc-references)
 nnoremap <silent> gh :call <SID>show_documentation()<CR>
 nnoremap <leader> cr <Plug>(coc-rename)
 
-" :W sudo saves the file
-" (useful for handling the permission-denied error)
-command! W w !sudo tee % > /dev/null
-
 " }}}
 
 
