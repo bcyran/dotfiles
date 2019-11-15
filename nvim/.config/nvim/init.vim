@@ -195,6 +195,10 @@ nnoremap <silent> <Leader>es :tabe <C-r>=Evaluate_ftplugin_path()<CR><CR>
 nmap <silent> [e <Plug>(ale_previous_wrap)
 nmap <silent> ]e <Plug>(ale_next_wrap)
 
+" Navigate between git hunks
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+
 " Go to file under cursor
 nnoremap <silent> <Leader>gf :vertical wincmd f<CR>
 
