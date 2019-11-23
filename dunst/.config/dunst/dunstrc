@@ -261,7 +261,7 @@
     #icon = /path/to/icon
 
 [urgency_critical]
-    background = "#484848"
+    background = "#282c34"
     foreground = "#abb2bf"
     frame_color = "#61afef"
     timeout = 0
@@ -289,7 +289,7 @@
 
 [urgent-notification]
 	appname = "*"
-	script = ~/.config/dunst/notify-urgent.sh 
+	script = ~/.config/dunst/notify-urgent.sh
 
 #[espeak]
 #    summary = "*"
