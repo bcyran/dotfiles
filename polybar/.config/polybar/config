@@ -69,7 +69,7 @@ monitor = ${monitors.primary}
 
 modules-left = i3 xwindow
 modules-center = date
-modules-right = mpris updates redshift backlight pulseaudio bluetooth wlan eth battery
+modules-right = mpris updates discrete redshift backlight pulseaudio bluetooth wlan eth battery
 
 tray-position = right
 tray-padding = 2
@@ -147,6 +147,13 @@ type = custom/script
 interval = 600
 exec = ~/.config/polybar/modules/updates.sh
 label =  %output%
+
+[module/discrete]
+type = custom/script
+exec = ~/bin/discrete status
+tail = false
+label =  %output%
+click-left = ~/bin/discrete toggle
 
 [module/redshift]
 type = custom/script
