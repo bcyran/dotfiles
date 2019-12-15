@@ -278,7 +278,7 @@ for_window [class="Spotify"] move to workspace $ws10
 assign [class="Thunderbird"] $ws9
 
 # Floating windows
-for_window [class="keepassxc"] floating enable, \
+for_window [class="KeePassXC"] floating enable, \
     resize set 1000 700, move position center
 for_window [class="Eog"] floating enable, move position center
 for_window [class="Gnome-calculator"] floating enable
