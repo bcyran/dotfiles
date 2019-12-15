@@ -122,8 +122,8 @@ set $ws9 "9 "
 set $ws10 "10 "
 
 # Define display names
-set $dp "eDP-1"
-set $ds "DP-1"
+set $dp "eDP1"
+set $ds "DP1"
 
 # Assign workspaces to displays
 workspace $ws1 output $dp
@@ -298,10 +298,11 @@ for_window [class="URxvt" instance="floating"] floating enable, \
 # Disable bell sound
 exec_always --no-startup-id xset -b
 
-# Setup xrandr, wallpaper and polybar
-exec_always --no-startup-id ~/bin/display-setup
+# Setup xrandr
+exec_always --no-startup-id autorandr -c
 
-# Run srandr dameon to handle display hotplugging
+# Setup wallpaper and polybar and run srandrd for hotplugging
+exec_always --no-startup-id ~/bin/display-setup
 exec --no-startup-id srandrd ~/bin/display-setup
 
 # Enable auto screen locker

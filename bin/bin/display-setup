@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
-autorandr --change
 ~/bin/wallpaper
 ~/.config/polybar/launch.sh
