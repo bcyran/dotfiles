@@ -311,7 +311,7 @@ exec --no-startup-id ~/bin/autolock
 exec --no-startup-id xbanish
 
 # Compton
-exec --no-startup-id compton
+exec --no-startup-id picom
 
 # Deja-dup backup
 exec --no-startup-id /usr/lib/deja-dup/deja-dup-monitor
