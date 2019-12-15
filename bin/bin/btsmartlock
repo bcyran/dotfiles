@@ -36,5 +36,5 @@ while true; do
     echo "armed"
     wait_for_status "no"
     echo "locking"
-    lock --nofork
+    ~/bin/lock --nofork
 done

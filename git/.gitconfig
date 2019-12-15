@@ -1,5 +1,5 @@
 [user]
-	email = bazyli.cyran@gmail.com
+	email = bazyli.cyran@nokia.com
 	name = Bazyli Cyran
 	signingkey = 93DCA98548AD35EBDDEC44E85B94D1C37EEA263B
 [core]
@@ -18,5 +18,6 @@
 	l = log --oneline -10
 	df = diff
 	dfc = diff --cached
+    pf = push --force-with-lease
 [pull]
 	ff = only

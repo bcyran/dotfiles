@@ -3,7 +3,7 @@
 # Simple screenshot script similar to i3-scrot, but less shitty
 
 # Dir to save the screenshots to
-scr_dir="$(xdg-user-dir PICTURES)/Zrzuty ekranu"
+scr_dir="$(xdg-user-dir PICTURES)/Screenshots"
 
 call_scrot() {
     cd "$scr_dir" && scrot "$@" && notify-send "Screenshot" "saved in $scr_dir"

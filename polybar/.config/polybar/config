@@ -88,11 +88,11 @@ ws-icon-0 = 1 ;
 ws-icon-1 = 2 ;
 ws-icon-2 = 3 ;
 ws-icon-3 = 4 ;
-ws-icon-4 = 5 ;
-ws-icon-5 = 6 ;
-ws-icon-6 = 7 ;
+ws-icon-4 = 5 ;
+ws-icon-5 = 6 ;
+ws-icon-6 = 7 ;
 ws-icon-7 = 8 ;
-ws-icon-8 = 9 ;
+ws-icon-8 = 9 ;
 ws-icon-9 = 10 ;
 ws-icon-default = 
 
@@ -172,6 +172,13 @@ format-volume = <label-volume>
 label-volume =  %percentage%%
 label-muted =  %percentage%%
 
+[module/smartlock]
+type = custom/script
+exec = ~/bin/btsmartlock AC:37:43:AF:92:24
+tail = true
+label =  %output%
+click-left = ~/bin/lock
+
 [module/bluetooth]
 type = custom/script
 exec = ~/.config/polybar/modules/bluetooth.sh
@@ -189,7 +196,7 @@ format-disconnected =
 [module/eth]
 type = internal/network
 interval = 3.0
-interface = enp1s0
+interface = enp0s31f6
 
 label-connected =  eth
 format-disconnected =

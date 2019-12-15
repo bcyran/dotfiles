@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-wall_dir="$HOME/Obrazy/Tapety/"
+wall_dir="$HOME/Pictures/Wallpapers/"
 wall_ext="jpg"
 symlink_name="wallpaper"
 symlink_path="$wall_dir/$symlink_name.$wall_ext"

@@ -113,29 +113,32 @@ bindsym $mod+r mode "resize"
 set $ws1 "1 "
 set $ws2 "2 "
 set $ws3 "3 "
-set $ws4 "4 "
-set $ws5 "5 "
-set $ws6 "6 "
-set $ws7 "7 "
-set $ws8 "8 "
-set $ws9 "9 "
+set $ws4 "4 "
+set $ws5 "5 "
+set $ws6 "6 "
+set $ws7 "7 "
+set $ws8 "8 "
+set $ws9 "9 "
 set $ws10 "10 "
 
 # Define display names
-set $dp "HDMI1"
-set $ds "eDP1"
+# set $ldp "DP2"
+# set $mdp "DP1-2"
+# set $rdp "DP1-1"
+set $mdp "DP1"
+set $rdp "eDP1"
 
 # Assign workspaces to displays
-workspace $ws1 output $dp
-workspace $ws2 output $dp
-workspace $ws3 output $dp
-workspace $ws4 output $dp
-workspace $ws5 output $ds
-workspace $ws6 output $ds
-workspace $ws7 output $ds
-workspace $ws8 output $dp
-workspace $ws9 output $dp
-workspace $ws10 output $dp
+workspace $ws1 output $mdp
+workspace $ws2 output $mdp
+workspace $ws3 output $mdp
+workspace $ws4 output $mdp
+workspace $ws5 output $rdp
+workspace $ws6 output $rdp
+workspace $ws9 output $mdp
+workspace $ws10 output $mdp
+workspace $ws7 output $rdp
+workspace $ws8 output $rdp
 
 # Switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -246,9 +249,9 @@ bindsym XF86AudioMute exec --no-startup-id \
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id \
-    light -A 10 && $refresh-status
+    xbacklight -inc 10 && $refresh-status
 bindsym XF86MonBrightnessDown exec --no-startup-id \
-    light -U 10 && $refresh-status
+    xbacklight -dec 10 && $refresh-status
 
 # Music controls
 bindsym $mod+bracketleft exec --no-startup-id \
@@ -294,6 +297,11 @@ for_window [class="Alacritty" instance="floating"] floating enable, \
 # Always have a terminal on secod workspace
 assign [class="Alacritty" instance="workspace"] $ws2
 
+# MS teams notifications
+for_window [title="Microsoft Teams Notification" class="microsoft teams - preview"] floating enable
+for_window [title="Microsoft Teams Notification" class="Microsoft Teams - Preview"] floating enable
+no_focus [title="Microsoft Teams Notification"]
+
 
 ###############################################################################
 # STARTUP SETUP
@@ -303,7 +311,10 @@ assign [class="Alacritty" instance="workspace"] $ws2
 exec_always --no-startup-id xset -b
 
 # Setup xrandr
-exec_always --no-startup-id autorandr -cf
+exec_always --no-startup-id "sleep 1 && autorandr -cf"
+
+# Dunst
+exec --no-startup-id dunst
 
 # Enable auto screen locker
 exec --no-startup-id ~/bin/autolock
@@ -320,9 +331,8 @@ exec --no-startup-id redshift
 # KeepassXC
 exec keepassxc
 
+# Browser
+exec firefox
+
 # Launch terminal on second workspace
 exec alacritty --class "workspace"
-
-# Other apps
-exec thunderbird
-exec megasync

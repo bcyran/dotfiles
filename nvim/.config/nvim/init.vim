@@ -299,16 +299,19 @@ let g:lightline={
 " Ale
 let g:ale_fixers={
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'python': ['isort'],
+\   'python': ['black', 'isort'],
 \   'javascript': ['eslint'],
 \   'javascriptreact': ['eslint'],
 \}
 let g:ale_linters={
+\   'python': ['flake8', 'black', 'isort'],
 \   'javascript': [],
 \   'javascriptreact': [],
 \   'rust': [],
 \}
 let g:ale_fix_on_save=1
+let g:ale_python_black_options="--line-length 100"
+let g:ale_python_isort_options="--profile black --line-length 100 --lines-after-imports 2 --combine-as"
 
 " Illuminate
 let g:Illuminate_delay=500
