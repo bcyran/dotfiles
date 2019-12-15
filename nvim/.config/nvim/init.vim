@@ -96,6 +96,7 @@ set smartcase
 " Splits
 set splitbelow
 set splitright
+set noequalalways
 
 " Spell check
 set spelllang=pl,en
@@ -224,12 +225,12 @@ nnoremap <Leader>f :find<Space>
 nnoremap <Leader>t :ta<Space>
 
 " coc.nvim bindings
-nnoremap <silent> gd <Plug>(coc-definition)
-nnoremap <silent> gi <Plug>(coc-implementation)
-nnoremap <silent> gy <Plug>(coc-type-definition)
-nnoremap <silent> gr <Plug>(coc-references)
-nnoremap <silent> gh :call <SID>show_documentation()<CR>
-nnoremap <leader> cr <Plug>(coc-rename)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gh :call <SID>show_documentation()<CR>
+nmap <Leader>cr <Plug>(coc-rename)
 
 " }}}
 
