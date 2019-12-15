@@ -50,9 +50,6 @@ font-1 = Font Awesome 5 Free:size=11;2
 font-2 = Font Awesome 5 Free Solid:size=11;2
 font-3 = Font Awesome 5 Brands:size=11;2
 
-scroll-up = i3wm-wsnext
-scroll-down = i3wm-wsprev
-
 cursor-click = pointer
 
 locale = pl_PL.UTF-8
