@@ -211,6 +211,9 @@ vnoremap j gj
 nnoremap k gk
 vnoremap k gk
 
+" Exit terminal mode with C-\
+tnoremap <C-\> <C-\><C-n>
+
 " Natural splits navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
