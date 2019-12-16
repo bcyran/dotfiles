@@ -25,6 +25,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-surround'
+Plug 'rking/ag.vim'
 
 " Code completion on linting
 Plug 'w0rp/ale'
@@ -215,10 +218,10 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Buffer listing and switching
-nnoremap <Leader>b :ls<CR>:b<Space>
+nnoremap <Leader>b :Buffers<CR>
 
 " Quick file searching
-nnoremap <Leader>f :find<Space>
+nnoremap <expr> <Leader>f (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<cr>"
 
 " Goto tag
 nnoremap <Leader>t :ta<Space>
