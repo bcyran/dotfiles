@@ -19,7 +19,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'RRethy/vim-illuminate'
-Plug 'mhinz/vim-startify'
 
 " Productivity
 Plug 'jiangmiao/auto-pairs'
