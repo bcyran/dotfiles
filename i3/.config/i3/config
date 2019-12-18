@@ -263,7 +263,7 @@ bindsym --release $mod+Shift+Print exec i3-scrot -s
 bindsym $mod+y exec firefox
 
 # File manager
-bindsym $mod+n exec nautilus
+bindsym $mod+n exec thunar
 
 
 ###############################################################################
@@ -331,3 +331,4 @@ exec urxvt -name workspace
 
 # Other apps
 exec thunderbird
+exec megasync
