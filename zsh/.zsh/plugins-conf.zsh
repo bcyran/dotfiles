@@ -1,5 +1,6 @@
 # Autosuggestions
 ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history)
+bindkey '^n' autosuggest-accept
 
 # History substring search
 bindkey '\eOA' history-substring-search-up
