@@ -1,6 +1,7 @@
 [user]
 	email = bazyli.cyran@gmail.com
 	name = Bazyli Cyran
+	signingkey = 93DCA98548AD35EBDDEC44E85B94D1C37EEA263B
 [core]
 	editor = nvim
 [alias]
