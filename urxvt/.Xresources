@@ -31,15 +31,16 @@ URxvt*color15:		#5C6370
 
 ! FONTS
 URxvt*allow_bold: true
-URxvt*font: xft:Source Code Pro:pixelsize=17:style=Regular
-URxvt*boldFont: xft:Source Code Pro:pixelsize=17:style=Bold
-URxvt*italicFont: xft:Source Code Pro:pixelsize=17:style=Italic
-URxvt*boldItalicFont: xft:Source Code Pro:pixelsize=17:style=Bold Italic
+URxvt*font: xft:Fira Code:pixelsize=17:style=Regular
+URxvt*boldFont: xft:Fira Code:pixelsize=17:style=Bold
+URxvt*italicFont: xft:Fira Code:pixelsize=17:style=Italic
+URxvt*boldItalicFont: xft:Fira Code:pixelsize=17:style=Bold Italic
 
 ! APPEARANCE
 URxvt*letterSpace: 0
 URxvt*lineSpace: 0
 URxvt*geometry: 92x24
+URxvt*internalBorder: 6
 URxvt*cursorBlink: true
 URxvt*cursorUnderline: false
 URxvt*saveline: 2048
