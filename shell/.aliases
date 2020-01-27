@@ -22,6 +22,9 @@ alias c='clear'
 # Clear and return to home
 alias cc='cd && c'
 
+# Alias for deploying website to the remote server
+alias deploy='rsync -rlvzP '
+
 # Change directory and list it
 function cdl() {
 	cd "$@" && ls

@@ -81,7 +81,7 @@ tray-position = none
 type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
-wrapping-scroll = false
+enable-scroll = false
 
 ; Icons
 ws-icon-0 = 1 ;

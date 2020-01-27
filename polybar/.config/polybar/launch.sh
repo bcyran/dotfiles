@@ -12,11 +12,11 @@ killall -q polybar
 while pgrep -x polybar > /dev/null; do sleep 1; done
 
 # Launch primary bar
-MONITOR=eDP1 polybar primary &
+MONITOR=eDP-1 polybar primary &
 
 # Launch secondary bar if second monitor is plugged in
-if [ "$(polybar -m | grep -w DP1)" ]; then
-    MONITOR=DP1 polybar secondary &
+if [ "$(polybar -m | grep -w DP-1)" ]; then
+    MONITOR=DP-1 polybar secondary &
 fi
 
 echo "Bars launched..."

@@ -122,8 +122,8 @@ set $ws9 "9 "
 set $ws10 "10 "
 
 # Define display names
-set $dp "eDP1"
-set $ds "DP1"
+set $dp "eDP-1"
+set $ds "DP-1"
 
 # Assign workspaces to displays
 workspace $ws1 output $dp
