@@ -5,3 +5,4 @@ vim/.vim/*
 nvim/.config/nvim/spell
 __pycache__/
 systemd/.config/systemd/user/*.wants
+bin/bin/local
