@@ -299,11 +299,7 @@ for_window [class="URxvt" instance="floating"] floating enable, \
 exec_always --no-startup-id xset -b
 
 # Setup xrandr
-exec_always --no-startup-id autorandr -c
-
-# Setup wallpaper and polybar and run srandrd for hotplugging
-exec_always --no-startup-id ~/bin/display-setup
-exec --no-startup-id srandrd ~/bin/display-setup
+exec_always --no-startup-id autorandr -cf
 
 # Enable auto screen locker
 exec --no-startup-id ~/bin/autolock
