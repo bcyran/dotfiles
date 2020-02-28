@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#
+# Simple screenshot script similar to i3-scrot, but less shitty
+
+# Dir to save the screenshots to
+scr_dir="$(xdg-user-dir PICTURES)/Zrzuty ekranu"
+
+call_scrot() {
+    cd "$scr_dir" && scrot "$@" && notify-send "Screenshot" "saved in $scr_dir"
+}
+
+if ! [ -d $scrot_dir ]; then
+	mkdir -p $scrot_dir
+fi
+
+case "$1" in
+	full|$NULL)
+	    call_scrot;;
+	window)
+	    call_scrot -u;;
+	select)
+	    notify-send "Screenshot" "select an area for the screenshot"
+	    call_scrot -s;;
+	--help|-h|*)
+	    echo "usage: $0 {full|window|select}";;
+esac

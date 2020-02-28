@@ -255,9 +255,9 @@ bindsym $mod+backslash exec --no-startup-id \
     playerctl play-pause && $refresh-status
 
 # Screenshot
-bindsym --release Print exec i3-scrot -d
-bindsym --release $mod+Print exec i3-scrot -w
-bindsym --release $mod+Shift+Print exec i3-scrot -s
+bindsym --release Print exec ~/bin/scr full
+bindsym --release $mod+Print exec ~/bin/scr window
+bindsym --release $mod+Shift+Print exec ~/bin/scr select
 
 # Firefox
 bindsym $mod+y exec firefox
