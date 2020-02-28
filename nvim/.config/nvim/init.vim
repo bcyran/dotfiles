@@ -118,6 +118,10 @@ set autoread
 set exrc
 set secure
 
+" Backup file
+set backup
+set backupdir=~/.local/share/nvim/backup
+
 " Persistent undo
 set undolevels=1000
 set undoreload=10000
@@ -279,6 +283,12 @@ let g:lightline={
 let g:ale_fixers={
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'python': ['isort'],
+\   'javascript': ['eslint'],
+\   'javascriptreact': ['eslint'],
+\}
+let g:ale_linters={
+\   'javascript': [],
+\   'javascriptreact': [],
 \}
 let g:ale_fix_on_save=1
 
@@ -287,7 +297,7 @@ let g:Illuminate_delay=500
 
 " Emmet
 let g:user_emmet_install_global=0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,javascript,javascriptreact EmmetInstall
 let g:user_emmet_leader_key=','
 
 " Indentline
