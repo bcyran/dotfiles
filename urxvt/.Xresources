@@ -31,10 +31,10 @@ URxvt*color15:		#5C6370
 
 ! FONTS
 URxvt*allow_bold: true
-URxvt*font: xft:Fira Code:pixelsize=17:style=Regular
-URxvt*boldFont: xft:Fira Code:pixelsize=17:style=Bold
-URxvt*italicFont: xft:Fira Code:pixelsize=17:style=Italic
-URxvt*boldItalicFont: xft:Fira Code:pixelsize=17:style=Bold Italic
+URxvt*font: xft:Fira Code:pixelsize=17:style=Regular,xft:Fira Code Nerd Font:pixelsize=17:style=Regular
+URxvt*boldFont: xft:Fira Code:pixelsize=17:style=Bold,xft:Fira Code Nerd Font:pixelsize=17:style=Bold
+URxvt*italicFont: xft:Fira Code:pixelsize=17:style=Italic,xft:Fira Code Nerd Font:pixelsize=17:style=Italic
+URxvt*boldItalicFont: xft:Fira Code:pixelsize=17:style=Bold Italic,xft:Fira Code Nerd Font:pixelsize=17:style=Bold Italic
 
 ! APPEARANCE
 URxvt*letterSpace: 0

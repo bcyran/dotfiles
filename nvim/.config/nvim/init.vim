@@ -15,7 +15,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Colors and visual
 Plug 'joshdick/onedark.vim'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'RRethy/vim-illuminate'
@@ -25,9 +25,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
-Plug 'rking/ag.vim'
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
 
 " Code completion on linting
 Plug 'w0rp/ale'
@@ -262,22 +262,7 @@ let g:netrw_list_hide= '.*\.git/.*,.*node_modules/.*,.*venv/.*,.*__pycache__/.*,
 set laststatus=2
 set ttimeout ttimeoutlen=30
 set noshowmode
-let g:lightline={
-\   'colorscheme': 'onedark',
-\   'active': {
-\       'left': [
-\           ['mode', 'paste'], ['readonly', 'filename', 'branch', 'modified'], ['linter']
-\       ],
-\       'right': [
-\           ['lineinfo'], ['percent'],
-\           ['fileformat', 'fileencoding', 'filetype']
-\       ]
-\   },
-\   'component_function': {
-\       'linter': 'LinterStatus',
-\       'branch': 'fugitive#head'
-\   }
-\}
+let g:airline_powerline_fonts=1
 
 " Ale
 let g:ale_fixers={
@@ -316,6 +301,9 @@ let g:vimtex_view_method='zathura'
 
 " Polyglot
 let g:polyglot_disabled=['latex']
+
+" Ack
+let g:ackprg='ag --vimgrep'
 
 " }}}
 
