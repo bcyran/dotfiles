@@ -15,25 +15,25 @@ Start by cloning this repo to your home directory:
 `cd` to this directory and use `stow` to symlink specific configs, for example:
 
     cd ~/.dotfiles
-    stow zsh
+    stow i3
+    stow polybar
     stow nvim
+    ...
 
 ## Configs explanation
 * `bash` - just `.bashrc` file, can be out of date as I currently use zsh
 * `bin` - some scripts
-* `compton` - config
 * `dunst` - config and script to set firefox window as urgent on notifications
 * `git` - mainly aliases, don't forget to change email and name!
 * `i3` - config for i3wm
-* `i3status` - config file and custom redshift module
 * `nvim` - `init.vim` and `ftplugin` for neovim
 * `oomox` - theme file
+* `picom` - compositor config
 * `polybar` - config file, launching script, and some custom modules
 * `redshift` - just redshift config file
-* `rofi` - config file
-* `systemd` - systemd `.service` files
+* `rofi` - app menu, power menu
 * `shell` - `.aliases` and `.env` files, common for both bash and zsh configs
+* `systemd` - systemd `.service` files
 * `tmux` - tmux conf and terminfo file fixing some problem I dont even remember
 * `urxvt` - URxvt color scheme and other settings
-* `vim` - config for vim symlinked from `nvim`; I keep it just in case and I'm not even sure it will work because I currently use only neovim
 * `zsh` - `.zshrc`, antibody and plugins configs
