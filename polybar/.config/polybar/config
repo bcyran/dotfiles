@@ -131,9 +131,10 @@ label = %title:0:55:...%
 
 [module/mpris]
 type = custom/script
-exec = ~/.config/polybar/modules/player-mpris-tail.py -f '{icon} {artist} - {title}' --icon-playing  --icon-paused  -b vlc
-tail = true
+exec = ~/.config/polybar/modules/mpris.sh --icon-playing  --icon-paused 
+interval = 5
 label = %output:0:35:...%
+click-left = playerctl play-pause
 
 [module/updates]
 type = custom/script
@@ -144,8 +145,8 @@ label =  %output%
 [module/redshift]
 type = custom/script
 interval = 15
-exec = ~/.config/polybar/modules/redshift.sh
-label =  %output%
+exec = ~/.config/polybar/modules/redshift.sh --icon-on  --icon-off 
+label = %output%
 click-left = ~/.config/polybar/modules/redshift.sh toggle
 
 [module/date]
@@ -173,7 +174,7 @@ label-muted =  %percentage%%
 
 [module/bluetooth]
 type = custom/script
-exec = ~/.config/polybar/modules/system-bluetooth-buetoothctl.sh
+exec = ~/.config/polybar/modules/bluetooth.sh
 tail = true
 label =  %output%
 

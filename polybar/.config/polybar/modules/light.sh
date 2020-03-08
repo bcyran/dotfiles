@@ -1,10 +1,9 @@
-#!/bin/sh
-
-pid=$(pgrep -x redshift)
+#!/usr/bin/env bash
 
 light_print() {
     while true; do
         echo $(light -G | cut -d "." -f 1)
+
         inotifywait -e modify /sys/class/backlight/intel_backlight/brightness > /dev/null 2>&1
     done
 }

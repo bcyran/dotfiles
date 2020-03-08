@@ -1,5 +1,4 @@
 #!/bin/sh
-
 # Original: https://raw.githubusercontent.com/polybar/polybar-scripts/master/polybar-scripts/system-bluetooth-bluetoothctl/system-bluetooth-bluetoothctl.sh
 
 bluetoothctl | while read -r; do
