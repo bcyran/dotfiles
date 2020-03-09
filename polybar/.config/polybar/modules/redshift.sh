@@ -4,13 +4,13 @@ pid=$(pgrep -x redshift)
 
 redshift_print() {
     if [ "$pid" ]; then
-        temp=$(redshift -p 2> /dev/null | grep Temp | cut -d ' ' -f 3)
-        stat="$icon_on $temp"
+        temp=$(redshift -p 2>/dev/null | grep -i temp | cut -d ' ' -f 3)
+        status="$icon_on $temp"
     else
-        stat="$icon_off off"
+        status="$icon_off off"
     fi
 
-    echo "$stat"
+    echo "$status"
 }
 
 redshift_toggle() {
