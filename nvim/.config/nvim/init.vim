@@ -4,7 +4,7 @@
 " {{{
 
 " Load vim-plug
-if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -325,28 +325,16 @@ let g:ackprg='ag --vimgrep'
 
 " Get the path for the ftplugin of the current file.
 function! Evaluate_ftplugin_path()
-    return "$HOME/.config/nvim/after/ftplugin/" . &filetype . ".vim"
-endfunction
-
-" Count ALE linting errors to display in the lightline
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%dW %dE', all_non_errors, all_errors
-    \)
+    return '$HOME/.config/nvim/after/ftplugin/' . &filetype . '.vim'
 endfunction
 
 " Netrw toggling
 function! ToggleNetrw()
-        let i = bufnr("$")
+        let i = bufnr('$')
         let wasOpen = 0
         while (i >= 1)
-            if (getbufvar(i, "&filetype") == "netrw")
-                silent exe "bwipeout " . i
+            if (getbufvar(i, '&filetype') == 'netrw')
+                silent exe 'bwipeout ' . i
                 let wasOpen = 1
             endif
             let i-=1
