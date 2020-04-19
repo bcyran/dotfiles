@@ -227,14 +227,14 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Buffer listing and switching
-if exists(':Buffers')
+if executable('fzf')
     nnoremap <Leader>b :Buffers<CR>
 else
     nnoremap <Leader>b :buffers<CR>:buffer<space>
 endif
 
 " Quick file searching
-if exists(':Files')
+if executable('fzf')
     nnoremap <expr> <Leader>f (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<cr>"
 else
     nnoremap <Leader>f :find<space>
