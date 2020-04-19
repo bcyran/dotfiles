@@ -24,19 +24,19 @@ Plug 'RRethy/vim-illuminate'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-surround'
-Plug 'junegunn/fzf.vim'
-Plug 'mileszs/ack.vim'
+if executable('ag') | Plug 'mileszs/ack.vim' | endif
+if executable('ctags') | Plug 'ludovicchabant/vim-gutentags' | endif
+if executable('fzf') | Plug 'junegunn/fzf.vim' | endif
 
-" Code completion on linting
+" Code completion and linting
 Plug 'w0rp/ale'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+if executable('node') | Plug 'neoclide/coc.nvim', {'branch': 'release'} | endif
 
 " Languages support
 Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim'
-Plug 'lervag/vimtex', { 'for': 'tex' }
+if executable('latex') | Plug 'lervag/vimtex', {'for': 'tex'}| endif
 
 " Initialize plugin system
 call plug#end()
@@ -119,10 +119,12 @@ set exrc
 set secure
 
 " Backup file
-set backup
 set backupdir=~/.local/share/nvim/backup
+call mkdir(&backupdir, 'p')
+set backup
 
 " Persistent undo
+set undodir=~/.local/share/nvim/undo
 set undolevels=1000
 set undoreload=10000
 call mkdir(&undodir, 'p')
@@ -225,10 +227,18 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Buffer listing and switching
-nnoremap <Leader>b :Buffers<CR>
+if exists(':Buffers')
+    nnoremap <Leader>b :Buffers<CR>
+else
+    nnoremap <Leader>b :buffers<CR>:buffer<space>
+endif
 
 " Quick file searching
-nnoremap <expr> <Leader>f (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<cr>"
+if exists(':Files')
+    nnoremap <expr> <Leader>f (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<cr>"
+else
+    nnoremap <Leader>f :find<space>
+endif
 
 " Goto tag
 nnoremap <Leader>t :ta<Space>
@@ -258,7 +268,7 @@ let g:netrw_browse_split=4
 let g:netrw_list_hide= '.*\.git/.*,.*node_modules/.*,.*venv/.*,.*__pycache__/.*,.*/\.o,
 \   .*~,.*\.pyc,.*\.vim,.*\.idea/.*'
 
-" Lightline
+" Statusline
 set laststatus=2
 set ttimeout ttimeoutlen=30
 set noshowmode
@@ -292,12 +302,12 @@ let g:indentLine_showFirstIndentLevel=1
 let g:indentLine_faster=1
 
 " Gutentags
-let g:gutentags_cache_dir='/home/bazyli/.local/share/nvim/tags/'
+let g:gutentags_cache_dir='~/.local/share/nvim/tags/'
 let g:gutentags_ctags_auto_set_tags=1
 
 " Vimtex
-let g:vimtex_compiler_progname='nvr'
-let g:vimtex_view_method='zathura'
+if executable('nvr') | let g:vimtex_compiler_progname='nvr' | endif
+if executable('zathura') | let g:vimtex_view_method='zathura' | endif
 
 " Polyglot
 let g:polyglot_disabled=['latex']
