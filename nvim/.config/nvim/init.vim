@@ -25,7 +25,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-if executable('ag') | Plug 'mileszs/ack.vim' | endif
 if executable('ctags') | Plug 'ludovicchabant/vim-gutentags' | endif
 if executable('fzf') | Plug 'junegunn/fzf.vim' | endif
 
@@ -311,9 +310,6 @@ if executable('zathura') | let g:vimtex_view_method='zathura' | endif
 
 " Polyglot
 let g:polyglot_disabled=['latex']
-
-" Ack
-let g:ackprg='ag --vimgrep'
 
 " }}}
 
