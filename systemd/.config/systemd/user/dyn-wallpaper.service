@@ -1,0 +1,8 @@
+[Unit]
+Description=Update Dynamic Wallpaper
+
+[Service]
+ExecStart=/home/bazyli/bin/dyn-wallpaper
+
+[Install]
+WantedBy=default.target

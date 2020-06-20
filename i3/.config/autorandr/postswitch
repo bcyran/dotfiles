@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-~/bin/wallpaper
+~/bin/dyn-wallpaper
 ~/.config/polybar/launch.sh
