@@ -8,7 +8,7 @@ notifier="notify-send \
 
 xautolock \
     -detectsleep \
-    -time 10 \
+    -time 20 \
     -locker "$locker" \
     -corners "+-00" \
     -cornerdelay 15 \
