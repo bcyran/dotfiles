@@ -12,7 +12,7 @@ font pango:Roboto, Font Awesome 5 Free, Font Awesome 5 Brands 11
 floating_modifier $mod
 
 # Start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec alacritty
 
 # Kill focused window
 bindsym $mod+Shift+q kill
@@ -224,7 +224,7 @@ bindsym $mod+shift+space exec --no-startup-id \
     rofi -no-lazy-grab -show run -config ~/.config/rofi/runmenu
 
 # Floating terminal
-bindsym $mod+shift+Return exec urxvt -name floating
+bindsym $mod+shift+Return exec alacritty --class "floating"
 
 # Toggle window transparency
 bindsym $mod+shift+t exec --no-startup-id \
@@ -284,10 +284,10 @@ for_window [class="Eog"] floating enable, move position center
 for_window [class="Gnome-calculator"] floating enable
 
 # Always have a terminal on secod workspace
-assign [class="URxvt" instance="workspace"] $ws2
+assign [class="Alacritty" instance="workspace"] $ws2
 
 # Floating terminal
-for_window [class="URxvt" instance="floating"] floating enable, \
+for_window [class="Alacritty" instance="floating"] floating enable, \
     resize set 800 500, move position center
 
 # Floating megasync window
@@ -323,8 +323,8 @@ exec --no-startup-id redshift
 # KeepassXC
 exec keepassxc
 
-# Launch urxvt on second workspace
-exec urxvt -name workspace
+# Launch terminal on second workspace
+exec alacritty --class "workspace"
 
 # Other apps
 exec thunderbird
