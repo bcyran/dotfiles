@@ -4,10 +4,10 @@ pid=$(pgrep -x redshift)
 
 redshift_print() {
     if [ "$pid" ]; then
-        temp=$(redshift -p 2>/dev/null | grep -i temp | cut -d ' ' -f 3)
-        status="$icon_on $temp"
+        local temp=$(redshift -p 2>/dev/null | grep -i temp | cut -d ' ' -f 3)
+        local status="$icon_on $temp"
     else
-        status="$icon_off off"
+        local status="$icon_off off"
     fi
 
     echo "$status"
@@ -21,7 +21,7 @@ redshift_toggle() {
     fi
 }
 
-while [[ $# -gt 0 ]]; do
+while [ "$#" -gt 0 ]; do
     case "$1" in
         --icon-on)
             shift

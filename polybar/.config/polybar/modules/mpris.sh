@@ -1,23 +1,27 @@
 #!/usr/bin/env bash
 
 mpris_print() {
-    status=$(playerctl status 2>/dev/null)
+    local status=$(playerctl status 2>/dev/null)
 
     if [ "$status" == "Playing" ]; then
-        icon="$icon_playing"
+        local icon="$icon_playing"
     elif [ "$status" == "Paused" ]; then
-        icon="$icon_paused"
+        local icon="$icon_paused"
     else
         return
     fi
 
-    artist=$(playerctl metadata artist)
-    title=$(playerctl metadata title)
+    # Avoid "No player could handle this command..." message
+    local metadata=$(playerctl metadata)
+    local artist=$(echo "$metadata" | grep "xesam:artist" | tr -s ' ' | cut -d ' ' -f 3-)
+    local title=$(echo "$metadata" | grep "xesam:title" | tr -s ' ' | cut -d ' ' -f 3-)
 
-    echo "$icon $artist — $title"
+    if [ -n "$artist" ] && [ -n "$title" ]; then
+        echo "$icon $artist — $title"
+    fi
 }
 
-while [[ $# -gt 0 ]]; do
+while [ "$#" -gt 0 ]; do
     case "$1" in
         --icon-playing)
             shift
