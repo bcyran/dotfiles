@@ -290,6 +290,9 @@ assign [class="URxvt" instance="workspace"] $ws2
 for_window [class="URxvt" instance="floating"] floating enable, \
     resize set 800 500, move position center
 
+# Floating megasync window
+for_window [class="MEGAsync"] floating enable, border pixel 0
+
 
 ###############################################################################
 # STARTUP SETUP
@@ -300,6 +303,7 @@ exec_always --no-startup-id xset -b
 
 # Setup xrandr
 exec_always --no-startup-id autorandr -cf
+exec --no-startup-id autorandr-launcher -d
 
 # Enable auto screen locker
 exec --no-startup-id ~/bin/autolock
@@ -307,8 +311,8 @@ exec --no-startup-id ~/bin/autolock
 # Run xbanish
 exec --no-startup-id xbanish
 
-# Compton
-exec --no-startup-id picom
+# Picom
+exec --no-startup-id picom -b
 
 # Deja-dup backup
 exec --no-startup-id /usr/lib/deja-dup/deja-dup-monitor
@@ -318,9 +322,6 @@ exec --no-startup-id redshift
 
 # KeepassXC
 exec keepassxc
-
-# Browser
-exec firefox
 
 # Launch urxvt on second workspace
 exec urxvt -name workspace
