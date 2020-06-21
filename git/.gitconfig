@@ -17,3 +17,5 @@
 	l = log --oneline -10
 	df = diff
 	dfc = diff --cached
+[pull]
+	ff = only
