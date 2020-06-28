@@ -62,11 +62,6 @@ if [ -f ~/.aliases ]; then
     source ~/.aliases
 fi
 
-# Load env
-if [ -f ~/.env ]; then
-    source ~/.env
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).

@@ -22,15 +22,11 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate # en
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' menu select # select completions with arrow keys
 
-# Load aliases
-if [ -f ~/.aliases ]; then
-    source ~/.aliases
-fi
+# Load profile
+[ -f ~/.profile ] && source ~/.profile
 
-# Load env
-if [ -f ~/.env ]; then
-    source ~/.env
-fi
+# Load aliases
+[ -f ~/.aliases ] && source ~/.aliases
 
 # Load antibody plugins and settings
 source <(antibody init)
