@@ -21,7 +21,6 @@ Start by cloning this repo to your home directory:
     ...
 
 ## Configs explanation
-* `bash` - just `.bashrc` file, can be out of date as I currently use zsh
 * `bin` - some scripts
 * `dunst` - config and script to set firefox window as urgent on notifications
 * `git` - mainly aliases, don't forget to change email and name!
@@ -35,5 +34,4 @@ Start by cloning this repo to your home directory:
 * `shell` - `.profile` and `.aliases` files, common for all shells
 * `systemd` - systemd `.service` files
 * `tmux` - tmux conf and terminfo file fixing some problem I dont even remember
-* `urxvt` - URxvt color scheme and other settings
 * `zsh` - `.zshrc`, antibody and plugins configs
