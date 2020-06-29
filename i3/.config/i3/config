@@ -6,7 +6,7 @@
 set $mod Mod4
 
 # Font stack
-font pango:Roboto, Font Awesome 5 Free, Font Awesome 5 Brands 11
+font pango:Roboto Condensed, Font Awesome 5 Free, Font Awesome 5 Brands 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -197,7 +197,7 @@ client.urgent				$urgent			$urgent			$urgent-text	$urgent			$urgent
 # Gaps
 for_window [class="^.*"] border pixel 2
 smart_gaps on
-gaps inner 5
+gaps inner 10
 gaps outer 0
 smart_borders no_gaps
 

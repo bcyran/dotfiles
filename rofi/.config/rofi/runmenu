@@ -1,7 +1,7 @@
 rofi.width: 30
 rofi.lines: 5
 rofi.columns: 1
-rofi.font: Roboto 12
+rofi.font: RobotoCondensed 12
 rofi.bw: 2
 rofi.location: 1
 rofi.padding: 5
