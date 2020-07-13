@@ -10,6 +10,7 @@ D='#61afefff'   # default
 T='#abb2bfff'   # text
 W='#e06c75ff'   # wrong
 V='#e5c07bff'   # verifying
+FONT='Roboto Condensed'
 
 i3lock \
     --insidevercolor=$C     \
@@ -30,6 +31,15 @@ i3lock \
     --keyhlcolor=$V         \
     --bshlcolor=$W          \
     --line-uses-inside      \
+    \
+    --time-font="$FONT"     \
+    --date-font="$FONT"     \
+    --verif-font="$FONT"    \
+    --wrong-font="$FONT"    \
+    --timesize=40           \
+    --datesize=20           \
+    --verifsize=35          \
+    --wrongsize=35          \
     \
     --screen 1              \
     --blur 5                \
