@@ -219,8 +219,12 @@ bindsym $mod+End exec --no-startup-id ~/.config/rofi/scripts/powermenu.sh
 bindsym $mod+space exec --no-startup-id \
     rofi -no-lazy-grab -show drun -config ~/.config/rofi/appmenu
 
-# Rofi run launcher
+# Rofi file search
 bindsym $mod+shift+space exec --no-startup-id \
+    ~/.config/rofi/scripts/filesearch.sh
+
+# Rofi run launcher
+bindsym $mod+ctrl+space exec --no-startup-id \
     rofi -no-lazy-grab -show run -config ~/.config/rofi/runmenu
 
 # Floating terminal
