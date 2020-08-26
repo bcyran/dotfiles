@@ -15,7 +15,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Colors and visual
 Plug 'joshdick/onedark.vim'
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'RRethy/vim-illuminate'
@@ -146,7 +146,7 @@ augroup AutoSaveView
     autocmd BufWinLeave,BufLeave,BufWritePost ?* nested
         \ if index(nosaveview, &ft) < 0 | silent! mkview!
     autocmd BufWinEnter ?*
-        \ if index(nosaveview, &ft) < 0 | silent! loadview
+        \ if index(nosaveview, &ft) < 0 | silent! loadview | call lightline#update()
 augroup end
 
 " Enable modelines
@@ -193,11 +193,11 @@ nnoremap <silent> <Leader>le :call ToggleNetrw()<CR>
 
 " Source my {vimrc,ftplugin} file
 nnoremap <silent> <Leader>sv :source $MYVIMRC<CR>
-nnoremap <silent> <Leader>ss :source <C-r>=Evaluate_ftplugin_path()<CR><CR>
+nnoremap <silent> <Leader>ss :source <C-r>=EvalueFtpluginPath()<CR><CR>
 
 " Edit my {vimrc,ftplugin} file
 nnoremap <silent> <Leader>ev :tabe $MYVIMRC<CR>
-nnoremap <silent> <Leader>es :tabe <C-r>=Evaluate_ftplugin_path()<CR><CR>
+nnoremap <silent> <Leader>es :tabe <C-r>=EvalueFtpluginPath()<CR><CR>
 
 " Navigate between ale errors
 nmap <silent> [e <Plug>(ale_previous_wrap)
@@ -247,7 +247,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gh :call <SID>show_documentation()<CR>
+nmap <silent> gh :call <SID>ShowHelp()<CR>
 nmap <Leader>cr <Plug>(coc-rename)
 
 " }}}
@@ -271,7 +271,22 @@ let g:netrw_list_hide= '.*\.git/.*,.*node_modules/.*,.*venv/.*,.*__pycache__/.*,
 set laststatus=2
 set ttimeout ttimeoutlen=30
 set noshowmode
-let g:airline_powerline_fonts=1
+let g:lightline={
+\   'colorscheme': 'onedark',
+\   'active': {
+\       'left': [
+\           ['mode', 'paste'], ['gitbranch'], ['filename', 'readonly', 'modified']
+\       ],
+\       'right': [
+\           ['percent', 'lineinfo'], ['linter_warnings', 'linter_errors'], ['filetype']
+\       ]
+\   },
+\   'component_function': {
+\       'gitbranch': 'FugitiveHead',
+\       'linter_warnings': 'LinterWarnings',
+\       'linter_errors': 'LinterErrors',
+\   },
+\}
 
 " Ale
 let g:ale_fixers={
@@ -320,33 +335,51 @@ let g:polyglot_disabled=['latex']
 " {{{
 
 " Get the path for the ftplugin of the current file.
-function! Evaluate_ftplugin_path()
+function! EvalueFtpluginPath()
     return '$HOME/.config/nvim/after/ftplugin/' . &filetype . '.vim'
 endfunction
 
 " Netrw toggling
 function! ToggleNetrw()
-        let i = bufnr('$')
-        let wasOpen = 0
-        while (i >= 1)
-            if (getbufvar(i, '&filetype') == 'netrw')
-                silent exe 'bwipeout ' . i
-                let wasOpen = 1
-            endif
-            let i-=1
-        endwhile
+    let i = bufnr('$')
+    let wasOpen = 0
+    while (i >= 1)
+        if (getbufvar(i, '&filetype') == 'netrw')
+            silent exe 'bwipeout ' . i
+            let wasOpen = 1
+        endif
+        let i-=1
+    endwhile
     if !wasOpen
         silent Lexplore
     endif
 endfunction
 
+" Sum coc and ALE warnings
+function! LinterWarnings()
+    let l:ale_counts = ale#statusline#Count(bufnr(''))
+    let l:ale_warnings = l:ale_counts.warning + l:ale_counts.style_warning
+    let l:coc_warnings = get(get(b:, 'coc_diagnostic_info', {}), 'warning', 0)
+    let l:warnings = l:ale_warnings + l:coc_warnings
+    return l:warnings == 0 ? '' : printf('W: %d', l:warnings)
+endfunction
+
+" Sum coc and ALE errors
+function! LinterErrors()
+    let l:ale_counts = ale#statusline#Count(bufnr(''))
+    let l:ale_errors = l:ale_counts.error + l:ale_counts.style_error
+    let l:coc_errors = get(get(b:, 'coc_diagnostic_info', {}), 'error', 0)
+    let l:errors = l:ale_errors + l:coc_errors
+    return l:errors == 0 ? '' : printf('E: %d', l:errors)
+endfunction
+
 " Show either coc or vim documentation
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+function! ShowHelp()
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
 endfunction
 
 " }}}
