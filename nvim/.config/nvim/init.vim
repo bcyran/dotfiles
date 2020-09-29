@@ -33,6 +33,7 @@ Plug 'w0rp/ale'
 if executable('node') | Plug 'neoclide/coc.nvim', {'branch': 'release'} | endif
 
 " Languages support
+let g:polyglot_disabled=['latex']
 Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim'
 if executable('latex') | Plug 'lervag/vimtex', {'for': 'tex'}| endif
@@ -248,7 +249,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gh :call <SID>ShowHelp()<CR>
-nmap <Leader>cr <Plug>(coc-rename)
+nmap <silent> cr <Plug>(coc-rename)
 
 " }}}
 
@@ -298,6 +299,7 @@ let g:ale_fixers={
 let g:ale_linters={
 \   'javascript': [],
 \   'javascriptreact': [],
+\   'rust': [],
 \}
 let g:ale_fix_on_save=1
 
@@ -322,9 +324,6 @@ let g:gutentags_ctags_auto_set_tags=1
 " Vimtex
 if executable('nvr') | let g:vimtex_compiler_progname='nvr' | endif
 if executable('zathura') | let g:vimtex_view_method='zathura' | endif
-
-" Polyglot
-let g:polyglot_disabled=['latex']
 
 " }}}
 

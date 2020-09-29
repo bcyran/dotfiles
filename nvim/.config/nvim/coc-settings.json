@@ -1,4 +1,5 @@
 {
     "python.jediEnabled": true,
-    "python.linting.enabled": false
+    "python.linting.enabled": false,
+    "python.autoComplete.addBrackets": true
 }
