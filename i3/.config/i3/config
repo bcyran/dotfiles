@@ -3,10 +3,10 @@
 ###############################################################################
 
 # Modifier key
-set $mod Mod4
+set $mod Mod1
 
 # Font stack
-font pango:Roboto Condensed, Font Awesome 5 Free, Font Awesome 5 Brands 12
+font pango:Roboto Condensed, Font Awesome 5 Free, Font Awesome 5 Brands 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -122,8 +122,8 @@ set $ws9 "9 "
 set $ws10 "10 "
 
 # Define display names
-set $dp "eDP-1"
-set $ds "DP-1"
+set $dp "HDMI1"
+set $ds "eDP1"
 
 # Assign workspaces to displays
 workspace $ws1 output $dp
@@ -213,7 +213,7 @@ set $locker xautolock -locknow
 set $refresh-status ""
 
 # System mode
-bindsym $mod+End exec --no-startup-id ~/.config/rofi/scripts/powermenu.sh
+bindsym $mod+shift+BackSpace exec --no-startup-id ~/.config/rofi/scripts/powermenu.sh
 
 # Rofi app launcher
 bindsym $mod+space exec --no-startup-id \
@@ -259,9 +259,9 @@ bindsym $mod+backslash exec --no-startup-id \
     playerctl play-pause && $refresh-status
 
 # Screenshot
-bindsym --release Print exec ~/bin/scr full
-bindsym --release $mod+Print exec ~/bin/scr window
-bindsym --release $mod+Shift+Print exec ~/bin/scr select
+bindsym --release $mod+equal exec ~/bin/scr full
+bindsym --release $mod+shift+equal exec ~/bin/scr window
+bindsym --release $mod+ctrl+equal exec ~/bin/scr select
 
 # Firefox
 bindsym $mod+y exec firefox
@@ -284,18 +284,15 @@ assign [class="Thunderbird"] $ws9
 # Floating windows
 for_window [class="KeePassXC"] floating enable, \
     resize set 1000 700, move position center
-for_window [class="Eog"] floating enable, move position center
 for_window [class="Gnome-calculator"] floating enable
-
-# Always have a terminal on secod workspace
-assign [class="Alacritty" instance="workspace"] $ws2
+for_window [class="MEGAsync"] floating enable, border pixel 0
 
 # Floating terminal
 for_window [class="Alacritty" instance="floating"] floating enable, \
     resize set 800 500, move position center
 
-# Floating megasync window
-for_window [class="MEGAsync"] floating enable, border pixel 0
+# Always have a terminal on secod workspace
+assign [class="Alacritty" instance="workspace"] $ws2
 
 
 ###############################################################################
@@ -307,7 +304,6 @@ exec_always --no-startup-id xset -b
 
 # Setup xrandr
 exec_always --no-startup-id autorandr -cf
-exec --no-startup-id autorandr-launcher -d
 
 # Enable auto screen locker
 exec --no-startup-id ~/bin/autolock
@@ -317,9 +313,6 @@ exec --no-startup-id xbanish
 
 # Picom
 exec --no-startup-id picom -b
-
-# Deja-dup backup
-exec --no-startup-id /usr/lib/deja-dup/deja-dup-monitor
 
 # Redshift
 exec --no-startup-id redshift

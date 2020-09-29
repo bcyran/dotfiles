@@ -29,7 +29,7 @@ urgent-text     = ${colors.bg}
 
 [bar/base]
 width = 100%
-height = 27
+height = 25
 fixed-center = true
 
 background = ${colors.bg}
@@ -45,10 +45,10 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = Roboto Condensed:size=12;3
-font-1 = Font Awesome 5 Free:size=11;2
-font-2 = Font Awesome 5 Free Solid:size=11;2
-font-3 = Font Awesome 5 Brands:size=11;2
+font-0 = Roboto Condensed:size=11;3
+font-1 = Font Awesome 5 Free:size=10;3
+font-2 = Font Awesome 5 Free Solid:size=10;3
+font-3 = Font Awesome 5 Brands:size=10;3
 
 cursor-click = pointer
 
