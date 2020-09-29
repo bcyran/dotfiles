@@ -25,6 +25,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'liuchengxu/vista.vim'
+Plug 'preservim/nerdtree'
 if executable('ctags') | Plug 'ludovicchabant/vim-gutentags' | endif
 if executable('fzf') | Plug 'junegunn/fzf.vim' | endif
 
@@ -37,6 +39,8 @@ let g:polyglot_disabled=['latex']
 Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim'
 if executable('latex') | Plug 'lervag/vimtex', {'for': 'tex'}| endif
+Plug 'jeetsukumaran/vim-pythonsense', {'for': 'python'}
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
 
 " Initialize plugin system
 call plug#end()
@@ -190,7 +194,7 @@ nnoremap <silent> <Leader>ms :mksession!<CR>
 nnoremap <silent> <Leader>ls :source Session.vim<CR>
 
 " Toggle netrw
-nnoremap <silent> <Leader>le :call ToggleNetrw()<CR>
+nnoremap <silent> <Leader>le :NERDTreeToggle<CR>
 
 " Source my {vimrc,ftplugin} file
 nnoremap <silent> <Leader>sv :source $MYVIMRC<CR>
@@ -251,6 +255,9 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gh :call <SID>ShowHelp()<CR>
 nmap <silent> cr <Plug>(coc-rename)
 
+" Vista
+nnoremap <silent> <Leader>ve :Vista!!<CR>
+
 " }}}
 
 
@@ -305,6 +312,7 @@ let g:ale_fix_on_save=1
 
 " Illuminate
 let g:Illuminate_delay=500
+let g:Illuminate_ftblacklist = ['nerdtree', 'vista', 'help', 'python']
 
 " Emmet
 let g:user_emmet_install_global=0
