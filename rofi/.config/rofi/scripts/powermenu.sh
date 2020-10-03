@@ -7,7 +7,7 @@ cmd="rofi -no-lazy-grab -dmenu -i -p System -config ~/.config/rofi/powermenu"
 choice=$(printf '%s\n' "${opts[@]}" | $cmd)
 case "$choice" in
     Lock) xautolock -locknow ;;
-    Logout) i3-msg exit ;;
+    Logout) bspc quit ;;
     Poweroff) systemctl -i poweroff ;;
     Suspend) xautolock -locknow && systemctl suspend ;;
     Reboot) systemctl reboot ;;

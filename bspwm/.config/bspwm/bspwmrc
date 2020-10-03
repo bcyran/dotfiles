@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+# Force reconfigure displays
+autorandr -cf
+
+# Variables
+primary_disp="HDMI1"
+secondary_disp="eDP1"
+
+# Gather connected monitors info
+monitors="$(polybar -m)"
+primary_conn="$(grep -w -c "$primary_disp" <<< $monitors)"
+secondary_conn="$(grep -w -c "$secondary_disp" <<< $monitors)"
+
+# Apply suitable settings
+if [[ $primary_conn == 1 && $secondary_conn == 0 ]]; then
+    bspc monitor $primary_disp -d 1 2 3 4 5 6 7 8 9 10
+elif [[ $primary_conn == 0 && $secondary_conn == 1 ]]; then
+    bspc monitor $secondary_disp -d 1 2 3 4 5 6 7 8 9 10
+else
+    bspc monitor $primary_disp -d 1 2 3 4 8 9 10
+    bspc monitor $secondary_disp -d 5 6 7
+fi
+
+# Settings
+bspc config border_width                2
+bspc config window_gap                  10
+
+bspc config automatic_scheme            longest_side
+bspc config initial_polarity            second_child
+bspc config split_ratio                 0.50
+bspc config borderless_monocle          true
+bspc config gapless_monocle             true
+bspc config single_monocle              true
+bspc config remove_disabled_monitors    true
+bspc config remove_unplugged_monitors   true
+
+bspc config focus_follows_pointer       true
+bspc config click_to_focus              button1
+bspc config pointer_modifier            mod1
+
+# Colors
+bspc config normal_border_color         '#3e4452'
+bspc config active_border_color         '#abb2bf'
+bspc config focused_border_color        '#61afef'
+bspc config presel_feedback_color       '#98c379'
+
+# App specific rules
+bspc rule -a Spotify desktop=10
+bspc rule -a Thunderbird desktop=9 locked=on
+bspc rule -a Alacritty:workspace desktop=2 locked=on
+bspc rule -a Alacritty:floating state=floating rectangle=600x400+1295+655
+bspc rule -a Gnome-calculator state=floating rectangle=360x400+1535+655
+bspc rule -a MEGAsync state=floating
+bspc rule -a KeePassXC state=floating center=on
+
+# These programs should always run
+pgrep -x sxhkd > /dev/null && pkill -USR1 -x sxhkd || sxhkd &
+pgrep -x picom > /dev/null && pkill -USR1 -x picom || picom -b &
+pgrep -x xbanish > /dev/null || xbanish &
+pgrep -x xautolock > /dev/null || ~/bin/autolock &
+pgrep -x redshift > /dev/null || redshift &
+
+# Autostart apps
+if [ $1 -eq 0 ]; then
+    xset -b
+    keepassxc &
+    alacritty --class "workspace" &
+    megasync &
+    thunderbird &
+fi

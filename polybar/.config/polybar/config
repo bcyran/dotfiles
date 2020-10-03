@@ -31,6 +31,7 @@ urgent-text     = ${colors.bg}
 width = 100%
 height = 25
 fixed-center = true
+wm-restack = bspwm
 
 background = ${colors.bg}
 foreground = ${colors.text}
@@ -60,7 +61,7 @@ monitor-strict = true
 inherit = bar/base
 monitor = ${env:MONITOR:}
 
-modules-left = i3 xwindow
+modules-left = bspwm xwindow
 modules-center = date
 modules-right = mpris updates redshift backlight pulseaudio bluetooth wlan eth battery
 
@@ -71,59 +72,62 @@ tray-padding = 2
 inherit = bar/base
 monitor = ${env:MONITOR:}
 
-modules-left = i3
+modules-left = bspwm
 modules-center =
 modules-right =
 
 tray-position = none
 
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-enable-scroll = false
+[module/bspwm]
+type = internal/bspwm
+format = <label-mode> <label-state>
 
-; Icons
-ws-icon-0 = 1 ;
-ws-icon-1 = 2 ;
-ws-icon-2 = 3 ;
-ws-icon-3 = 4 ;
-ws-icon-4 = 5 ;
-ws-icon-5 = 6 ;
-ws-icon-6 = 7 ;
-ws-icon-7 = 8 ;
-ws-icon-8 = 9 ;
-ws-icon-9 = 10 ;
+; Various settings
+pin-workspaces = true
+inline-mode = false
+enable-click = true
+enable-scroll = false
+reverse-scroll = false
+fuzzy-match = false
+
+; Workspace icons
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
 ws-icon-default = 
 
-; Only show workspaces on the same output as the bar
-pin-workspaces = true
+; Occupied, not focused workspace
+label-occupied = %name% %icon%
+label-occupied-background = ${colors.bg}
+label-occupied-foreground = ${colors.text}
+label-occupied-padding = 2
 
-label-mode-padding = 2
-label-mode-foreground = ${colors.urgent}
-label-mode-background = ${colors.urgent-text}
-
-; focused = Active workspace on focused monitor
-label-focused = %index% %icon%
+; Active workspace on focused monitor
+label-focused = %name% %icon%
 label-focused-background = ${colors.highlight}
 label-focused-foreground = ${colors.highlight-text}
 label-focused-padding = 2
 
-; unfocused = Inactive workspace on any monitor
-label-unfocused = %index% %icon%
-label-unfocused-padding = 2
+; Inactive workspace on any monitor
+label-dimmed-focused-background = ${colors.active-bg}
+label-dimmed-focused-foreground = ${colors.active-text}
 
-; visible = Active workspace on unfocused monitor
-label-visible = %index% %icon%
-label-visible-background = ${colors.active-bg}
-label-visible-foreground = ${colors.active-text}
-label-visible-padding = ${self.label-focused-padding}
-
-; urgent = Workspace with urgency hint set
-label-urgent = %index% %icon%
+; Urgent workspace
+label-urgent = %name% %icon%
 label-urgent-background = ${colors.urgent}
 label-urgent-foreground = ${colors.urgent-text}
 label-urgent-padding = 2
+
+; Do not show empty workspaces at all
+label-empty =
+
 
 [module/xwindow]
 type = internal/xwindow

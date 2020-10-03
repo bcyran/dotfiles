@@ -1,0 +1,152 @@
+#
+# General sxhkd related
+#
+
+# reload sxhkd config
+alt + shift + Escape
+	pkill -USR1 -x sxhkd
+
+
+#
+# General bspwm related
+#
+
+# restart bspwm
+alt + shift + r
+	bspc wm -r
+
+# close and kill
+alt + shift + {q, w}
+	bspc node -{c,k}
+
+# alternate between the tiled and monocle layout
+alt + m
+	bspc desktop -l next
+
+# swap the current node and the biggest window
+alt + g
+	bspc node -s biggest.window
+
+
+#
+# State/flags
+#
+
+# set the window state
+alt + {t,shift + t,s,f}
+	bspc node -t '~{tiled,pseudo_tiled,floating,fullscreen}'
+
+# set the node flags
+alt + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+
+#
+# Focus/swap/send
+#
+
+# focus/swap the node in the given direction
+alt + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the next/previous window in the current desktop
+alt + {_,shift + }c
+	bspc node -f {next,prev}.local.!hidden.window
+
+# focus the last desktop/node
+alt + {Tab,Escape}
+	bspc {desktop,node} -f last
+
+# focus left/right monitor
+alt + {u,i}
+	bspc monitor -f {west,east}
+
+# focus or send to the given desktop
+alt + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} {1-9,10}
+
+# send the newest marked node to the newest preselected node
+alt + ctrl + n
+	bspc node newest.marked.local -n newest.!automatic.local
+
+
+#
+# Preselection
+#
+
+# toggle the preselection in given direction
+alt + ctrl + {h,j,k,l}
+	bspc node -p '~{west,south,north,east}'
+
+# preselect the ratio
+alt + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+
+#
+# Windows moving and resizing
+#
+
+# natural resize in tiled mode
+super + {h,j,k,l}
+	~/bin/bspwm-resize {west,south,north,east} 50
+
+# expand a window by moving one of its side outward
+super + ctrl + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + ctrl + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+super + alt + {h,j,k,l}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+
+#
+# Actions
+#
+
+# player controls
+alt + {bracketleft,bracketright,backslash}
+	playerctl {previous,next,play-pause}
+
+# volume controls
+XF86Audio{LowerVolume,RaiseVolume,Mute}
+	amixer -q -D pulse sset Master {5%-,5%+,toggle}
+
+# brightness controls
+XF86MonBrightness{Down,Up}
+	light -{U,A} 10
+
+# screenshot
+alt + {_,shift,ctrl} + @equal
+	~/bin/scr {full,window,select}
+
+
+#
+# Programs
+#
+
+# launch tiled and floating terminal
+alt + {_, shift} + Return
+	alacritty {_, --class "floating"}
+
+# launch some useful programs
+alt + {y, b}
+	{firefox, thunar}
+
+
+#
+# Menus
+#
+
+# app launcher and file search
+alt + {_, shift} + space
+	{rofi -no-lazy-grab -show drun -config ~/.config/rofi/appmenu, \
+	 ~/.config/rofi/scripts/filesearch.sh}
+
+# powermenu
+alt + shift + BackSpace
+    ~/.config/rofi/scripts/powermenu.sh
