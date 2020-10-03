@@ -287,6 +287,10 @@ for_window [class="KeePassXC"] floating enable, \
 for_window [class="Gnome-calculator"] floating enable
 for_window [class="MEGAsync"] floating enable, border pixel 0
 
+# MS Teams notifications
+for_window [title="Microsoft Teams Notification"] floating enable
+no_focus [title="Microsoft Teams Notification"]
+
 # Floating terminal
 for_window [class="Alacritty" instance="floating"] floating enable, \
     resize set 800 500, move position center
