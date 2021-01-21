@@ -7,8 +7,8 @@ alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# Use t instead of todo.sh
-alias t='todo.sh'
+# Git in English, please
+alias git="LANG=en_US.UTF-8 git"
 
 # Enable aliases when using sudo
 alias sudo='sudo '
@@ -16,41 +16,32 @@ alias sudo='sudo '
 # Alias vim to nvim
 alias vim='nvim'
 
-# Clear screen
-alias c='clear'
-
-# Alias for deploying website to the remote server
-alias deploy='rsync -rlvzP '
-
 # Change directory and list it
 function cdl() {
-	cd "$@" && ls
+    cd "$@" && ls
 }
 
 # Create directory and open it
 function mkc() {
-	mkdir "$@" && cd "$@"
+    mkdir "$@" && cd "$@"
 }
-
-# Alert aliast for long running commands
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Function for quick switching between websites on the server
 function www() {
     if [ -z $1 ]; then
         cd /srv/www
     else
-    	cd /srv/www/$1/public_html
+        cd /srv/www/$1/public_html
     fi
 }
 
 # Extract various archives
 function extract(){
-	if [ -f $1 ] ; then
-		case $1 in
-			*.tar.bz2)   tar xvjf $1    ;;
-        	*.tar.gz)    tar xvzf $1    ;;
-			*.tar.xz)	 tar xvJf $1	;;
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xvjf $1    ;;
+            *.tar.gz)    tar xvzf $1    ;;
+            *.tar.xz)	 tar xvJf $1	;;
             *.bz2)       bunzip2 $1     ;;
             *.rar)       unrar x $1     ;;
             *.gz)        gunzip $1      ;;
@@ -60,7 +51,7 @@ function extract(){
             *.zip)       unzip $1       ;;
             *.Z)         uncompress $1  ;;
             *.7z)        7z x $1        ;;
-        	*)           echo "Unable to extract '$1'" ;;
+            *)           echo "Unable to extract '$1'" ;;
         esac
     else
         echo "'$1' is not a valid file"
@@ -70,23 +61,23 @@ function extract(){
 # Source: http://orangesplotch.com/bash-going-up/
 # Go up directory tree X number of directories
 function up() {
-	COUNTER="$@";
-	# default $COUNTER to 1 if it isn't already set
-	if [[ -z $COUNTER ]]; then
-		COUNTER=1
-	fi
-	# make sure $COUNTER is a number
-	if [ $COUNTER -eq $COUNTER 2> /dev/null ]; then
-		nwd=`pwd` # Set new working directory (nwd) to current directory
-		# Loop $nwd up directory tree one at a time
-		until [[ $COUNTER -lt 1 ]]; do
-			nwd=`dirname $nwd`
-			let COUNTER-=1
-		done
-		cd $nwd # change directories to the new working directory
-	else
-		# print usage and return error
-		echo "usage: up [NUMBER]"
-		return 1
-	fi
+    COUNTER="$@";
+    # default $COUNTER to 1 if it isn't already set
+    if [[ -z $COUNTER ]]; then
+        COUNTER=1
+    fi
+    # make sure $COUNTER is a number
+    if [ $COUNTER -eq $COUNTER 2> /dev/null ]; then
+        nwd=`pwd` # Set new working directory (nwd) to current directory
+        # Loop $nwd up directory tree one at a time
+        until [[ $COUNTER -lt 1 ]]; do
+        nwd=`dirname $nwd`
+        let COUNTER-=1
+        done
+        cd $nwd # change directories to the new working directory
+    else
+    # print usage and return error
+    echo "usage: up [NUMBER]"
+        return 1
+    fi
 }
