@@ -89,9 +89,16 @@ set breakindent
 set listchars=eol:¬,tab:>-,space:·,trail:~,extends:>,precedes:<
 
 " Syntax highlighting
-syntax on
-let g:onedark_termcolors=16
+if (empty($TMUX))
+  if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
 let g:onedark_terminal_italics=1
+syntax on
 colorscheme onedark
 
 " Searching
@@ -138,10 +145,6 @@ set undofile
 set foldmethod=indent
 set nofoldenable
 set foldignore=
-
-" Conceal
-set conceallevel=2
-set concealcursor=""
 
 " Views
 set viewoptions=cursor,folds,slash,unix
@@ -252,8 +255,19 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gh :call <SID>ShowHelp()<CR>
+nmap <silent> gh :call <SID>ShowDocumentation()<CR>
 nmap <silent> cr <Plug>(coc-rename)
+inoremap <silent><expr> <C-n> pumvisible() ? "\<C-n>" : coc#refresh()
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
 
 " Vista
 nnoremap <silent> <Leader>ve :Vista!!<CR>
@@ -299,7 +313,7 @@ let g:lightline={
 " Ale
 let g:ale_fixers={
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'python': ['isort'],
+\   'python': ['isort', 'black'],
 \   'javascript': ['eslint'],
 \   'javascriptreact': ['eslint'],
 \}
@@ -309,6 +323,7 @@ let g:ale_linters={
 \   'rust': [],
 \}
 let g:ale_fix_on_save=1
+let g:ale_python_black_options='-t py38'
 
 " Illuminate
 let g:Illuminate_delay=500
@@ -332,6 +347,8 @@ let g:gutentags_ctags_auto_set_tags=1
 " Vimtex
 if executable('nvr') | let g:vimtex_compiler_progname='nvr' | endif
 if executable('zathura') | let g:vimtex_view_method='zathura' | endif
+let g:tex_flavor = 'latex'
+
 
 " }}}
 
@@ -381,11 +398,13 @@ function! LinterErrors()
 endfunction
 
 " Show either coc or vim documentation
-function! ShowHelp()
+function! s:ShowDocumentation()
     if (index(['vim','help'], &filetype) >= 0)
         execute 'h '.expand('<cword>')
+    elseif (coc#rpc#ready())
+        call CocActionAsync('doHover')
     else
-        call CocAction('doHover')
+        execute '!' . &keywordprg . " " . expand('<cword>')
     endif
 endfunction
 

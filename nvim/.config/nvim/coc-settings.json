@@ -1,5 +1,7 @@
 {
-    "python.jediEnabled": true,
+    "python.jediEnabled": false,
     "python.linting.enabled": false,
-    "python.autoComplete.addBrackets": true
+    "python.analysis.diagnosticEnabled": false,
+    "python.autoComplete.addBrackets": true,
+    "javascript.suggestionActions.enabled": false
 }
