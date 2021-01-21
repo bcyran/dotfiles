@@ -153,7 +153,7 @@ click-left = ~/.config/polybar/modules/redshift.sh toggle
 type = internal/date
 interval = 15
 
-date = %e %b
+date = %a %e %b
 time = %H:%M
 label =  %date%, %time%
 
@@ -163,7 +163,7 @@ exec = ~/.config/polybar/modules/light.sh
 tail = true
 scroll-up = ~/.config/polybar/modules/light.sh inc
 scroll-down = ~/.config/polybar/modules/light.sh dec
-label =  %output%%
+label =  %output%%
 
 [module/pulseaudio]
 type = internal/pulseaudio
