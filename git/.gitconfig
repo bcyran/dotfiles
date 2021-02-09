@@ -18,5 +18,6 @@
 	l = log --oneline -10
 	df = diff
 	dfc = diff --cached
+	pf = push --force-with-lease
 [pull]
 	ff = only
