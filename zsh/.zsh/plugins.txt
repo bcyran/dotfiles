@@ -2,3 +2,4 @@ robbyrussell/oh-my-zsh path:plugins/autojump
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
 zsh-users/zsh-completions
+MichaelAquilina/zsh-autoswitch-virtualenv
