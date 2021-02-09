@@ -1,23 +1,23 @@
 [user]
-	email = bazyli.cyran@gmail.com
-	name = Bazyli Cyran
-	signingkey = 93DCA98548AD35EBDDEC44E85B94D1C37EEA263B
+    email = bazyli.cyran@gmail.com
+    name = Bazyli Cyran
+    signingkey = 93DCA98548AD35EBDDEC44E85B94D1C37EEA263B
 [core]
-	editor = nvim
-	excludesfile = ~/.gitignore
+    editor = nvim
+    excludesfile = ~/.gitignore
 [alias]
-	st = status
-	co = checkout
-	cob = checkout -b
-	br = branch
-	aa = add --all
-	r = reset HEAD
-	cm = commit
-	cmm = commit -m
-	cma = commit --amend
-	l = log --oneline -10
-	df = diff
-	dfc = diff --cached
-	pf = push --force-with-lease
+    st = status
+    co = checkout
+    cob = checkout -b
+    br = branch
+    aa = add --all
+    r = reset HEAD
+    cm = commit
+    cmm = commit -m
+    cma = commit --amend
+    l = log --oneline -10
+    df = diff
+    dfc = diff --cached
+    pf = push --force-with-lease
 [pull]
-	ff = only
+    ff = only
