@@ -120,8 +120,8 @@ set hidden
 
 " Fuzzy search
 set path=**
-set wildignore+=*/.git/*,*/node_modules/*,*/venv/*,*/__pycache__/*,*.o,*~
-set wildignore+=*.pyc,*/.idea/*
+set wildignore+=*/.git*,*/node_modules*,*/venv*,*/__pycache__*,*.o,*~
+set wildignore+=*.pyc,*/.idea*,*.egg-info*
 
 " Auto read modifications from outside
 set autoread
@@ -281,7 +281,7 @@ nnoremap <silent> <Leader>ve :Vista!!<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " {{{
 
-" File tree sidebar
+" File tree sidebar (netrw)
 let g:netrw_winsize=-24
 let g:netrw_banner=0
 let g:netrw_liststyle=3
@@ -289,6 +289,10 @@ let g:netrw_altv=1
 let g:netrw_browse_split=4
 let g:netrw_list_hide= '.*\.git/.*,.*node_modules/.*,.*venv/.*,.*__pycache__/.*,.*/\.o,
 \   .*~,.*\.pyc,.*\.vim,.*\.idea/.*'
+
+" File tree sidebar (NERDTree)
+let NERDTreeRespectWildIgnore=1
+let NERDTreeMinimalUI=1
 
 " Statusline
 set laststatus=2
