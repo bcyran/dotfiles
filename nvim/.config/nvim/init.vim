@@ -32,8 +32,8 @@ if executable('ctags') | Plug 'ludovicchabant/vim-gutentags' | endif
 if executable('fzf') | Plug 'junegunn/fzf.vim' | endif
 
 " Code completion and linting
-Plug 'w0rp/ale'
 if executable('node') | Plug 'neoclide/coc.nvim', {'branch': 'release'} | endif
+if executable('node') | Plug 'josa42/vim-lightline-coc' | endif
 
 " Languages support
 let g:polyglot_disabled=['latex']
@@ -208,10 +208,6 @@ nnoremap <silent> <Leader>ss :source <C-r>=EvalueFtpluginPath()<CR><CR>
 nnoremap <silent> <Leader>ev :tabe $MYVIMRC<CR>
 nnoremap <silent> <Leader>es :tabe <C-r>=EvalueFtpluginPath()<CR><CR>
 
-" Navigate between ale errors
-nmap <silent> [e <Plug>(ale_previous_wrap)
-nmap <silent> ]e <Plug>(ale_next_wrap)
-
 " Navigate between git hunks
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
@@ -256,18 +252,21 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gh :call <SID>ShowDocumentation()<CR>
 nmap <silent> cr <Plug>(coc-rename)
+nmap <silent> gh :call <SID>ShowDocumentation()<CR>
+nmap <silent> [e <Plug>(coc-diagnostic-prev)
+nmap <silent> ]e <Plug>(coc-diagnostic-next)
 inoremap <silent><expr> <C-n> pumvisible() ? "\<C-n>" : coc#refresh()
-
+command! -nargs=0 Format :call CocAction('format')
+command! -nargs=0 Or :call CocAction('runCommand', 'editor.action.organizeImport')
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+    nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+    inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+    inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+    vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
 " Vista
@@ -305,30 +304,28 @@ let g:lightline={
 \           ['mode', 'paste'], ['gitbranch'], ['filename', 'readonly', 'modified']
 \       ],
 \       'right': [
-\           ['percent', 'lineinfo'], ['linter_warnings', 'linter_errors'], ['filetype']
+\           ['lineinfo'], ['filetype', 'percent'], ['coc_info', 'coc_hints', 'coc_errors', 'coc_warnings', 'coc_ok', 'coc_status']
 \       ]
 \   },
 \   'component_function': {
 \       'gitbranch': 'FugitiveHead',
-\       'linter_warnings': 'LinterWarnings',
-\       'linter_errors': 'LinterErrors',
 \   },
 \}
-
-" Ale
-let g:ale_fixers={
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'python': ['isort', 'black'],
-\   'javascript': ['eslint'],
-\   'javascriptreact': ['eslint'],
+let g:lightline.component_expand = {
+\   'coc_warnings': 'lightline#coc#warnings',
+\   'coc_errors': 'lightline#coc#errors',
+\   'coc_info': 'lightline#coc#info',
+\   'coc_hints': 'lightline#coc#hints',
+\   'coc_ok': 'lightline#coc#ok',
+\   'coc_status': 'lightline#coc#status',
 \}
-let g:ale_linters={
-\   'javascript': [],
-\   'javascriptreact': [],
-\   'rust': [],
+let g:lightline.component_type = {
+\   'coc_warnings': 'warning',
+\   'coc_errors': 'error',
+\   'coc_info': 'info',
+\   'coc_hints': 'hints',
+\   'coc_ok': 'middle',
 \}
-let g:ale_fix_on_save=1
-let g:ale_python_black_options='-t py38'
 
 " Illuminate
 let g:Illuminate_delay=500
@@ -382,24 +379,6 @@ function! ToggleNetrw()
     if !wasOpen
         silent Lexplore
     endif
-endfunction
-
-" Sum coc and ALE warnings
-function! LinterWarnings()
-    let l:ale_counts = ale#statusline#Count(bufnr(''))
-    let l:ale_warnings = l:ale_counts.warning + l:ale_counts.style_warning
-    let l:coc_warnings = get(get(b:, 'coc_diagnostic_info', {}), 'warning', 0)
-    let l:warnings = l:ale_warnings + l:coc_warnings
-    return l:warnings == 0 ? '' : printf('W: %d', l:warnings)
-endfunction
-
-" Sum coc and ALE errors
-function! LinterErrors()
-    let l:ale_counts = ale#statusline#Count(bufnr(''))
-    let l:ale_errors = l:ale_counts.error + l:ale_counts.style_error
-    let l:coc_errors = get(get(b:, 'coc_diagnostic_info', {}), 'error', 0)
-    let l:errors = l:ale_errors + l:coc_errors
-    return l:errors == 0 ? '' : printf('E: %d', l:errors)
 endfunction
 
 " Show either coc or vim documentation

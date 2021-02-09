@@ -1,7 +1,10 @@
 {
-    "python.jediEnabled": false,
-    "python.linting.enabled": false,
-    "python.analysis.diagnosticEnabled": false,
-    "python.autoComplete.addBrackets": true,
+    "python.analysis.typeCheckingMode": "off",
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": false,
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["-l 100"],
+    "pyright.organizeImports.provider": "isort",
     "javascript.suggestionActions.enabled": false
 }
