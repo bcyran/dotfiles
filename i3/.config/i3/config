@@ -220,7 +220,7 @@ bindsym $mod+shift+n exec --no-startup-id ~/.config/rofi/scripts/wifimenu.sh
 
 # Rofi app launcher
 bindsym $mod+space exec --no-startup-id \
-    rofi -no-lazy-grab -show drun -config ~/.config/rofi/appmenu
+    rofi -no-lazy-grab -show drun -config ~/.config/rofi/appmenu.rasi
 
 # Rofi file search
 bindsym $mod+shift+space exec --no-startup-id \
@@ -228,7 +228,7 @@ bindsym $mod+shift+space exec --no-startup-id \
 
 # Rofi run launcher
 bindsym $mod+ctrl+space exec --no-startup-id \
-    rofi -no-lazy-grab -show run -config ~/.config/rofi/runmenu
+    rofi -no-lazy-grab -show run -config ~/.config/rofi/runmenu.rasi
 
 # Floating terminal
 bindsym $mod+shift+Return exec alacritty --class "floating"

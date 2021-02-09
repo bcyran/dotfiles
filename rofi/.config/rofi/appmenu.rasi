@@ -1,0 +1,24 @@
+configuration {
+    modi: "drun";
+    width: 30;
+    lines: 15;
+    columns: 2;
+    font: "RobotoCondensed 12";
+    bw: 2;
+    location: 1;
+    padding: 5;
+    yoffset: 43;
+    xoffset: 15;
+    show-icons: true;
+    icon-theme: "Paper";
+    drun-display-format: "{name}";
+    case-sensitive: false;
+    cycle: false;
+    auto-select: false;
+    line-padding: 8;
+    separator-style: "solid";
+    hide-scrollbar: true;
+    color-normal: "#282c34,#abb2bf,#282c34,#61afef,#282c34";
+    color-window: "#282c34,#3e4452,#3e4452";
+    display-drun: "Applications";
+}

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Based on: https://life-prog.com/tech/a-simple-wifi-menu-with-rofi-on-i3/
 
-rofi_cmd="rofi -no-lazy-grab -dmenu -i -p Wi-Fi -markup-rows -config ~/.config/rofi/wifimenu"
+rofi_cmd="rofi -no-lazy-grab -dmenu -i -p Wi-Fi -markup-rows -config ~/.config/rofi/wifimenu.rasi"
 active_indicator=" (<i>active</i>)"
 
 notify-send -t 2000 "Scanning Wi-Fi networks..."

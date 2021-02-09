@@ -3,7 +3,7 @@
 format='<b>{/}</b>\n{}\t'
 opts="$(fd -L -t f -c never -x printf "$format")"
 
-cmd="rofi -no-lazy-grab -dmenu -i -p Files -sep \t -markup-rows -config ~/.config/rofi/filesearch"
+cmd="rofi -no-lazy-grab -dmenu -i -p Files -sep \t -markup-rows -config ~/.config/rofi/filesearch.rasi"
 
 choice=$($cmd <<< "$opts")
 
