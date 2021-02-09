@@ -27,6 +27,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'liuchengxu/vista.vim'
 Plug 'preservim/nerdtree'
+Plug 'moll/vim-bbye'
 if executable('ctags') | Plug 'ludovicchabant/vim-gutentags' | endif
 if executable('fzf') | Plug 'junegunn/fzf.vim' | endif
 
