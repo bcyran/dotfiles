@@ -25,10 +25,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'liuchengxu/vista.vim'
 Plug 'preservim/nerdtree'
 Plug 'moll/vim-bbye'
-if executable('ctags') | Plug 'ludovicchabant/vim-gutentags' | endif
 if executable('fzf') | Plug 'junegunn/fzf.vim' | endif
 
 " Code completion and linting
@@ -269,9 +267,6 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
     vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
-" Vista
-nnoremap <silent> <Leader>ve :Vista!!<CR>
-
 " }}}
 
 
@@ -329,7 +324,7 @@ let g:lightline.component_type = {
 
 " Illuminate
 let g:Illuminate_delay=500
-let g:Illuminate_ftblacklist = ['nerdtree', 'vista', 'help', 'python']
+let g:Illuminate_ftblacklist = ['nerdtree', 'help', 'python']
 
 " Emmet
 let g:user_emmet_install_global=0
@@ -341,10 +336,6 @@ let g:indentLine_first_char='┊'
 let g:indentLine_char='┊'
 let g:indentLine_showFirstIndentLevel=1
 let g:indentLine_faster=1
-
-" Gutentags
-let g:gutentags_cache_dir='~/.local/share/nvim/tags/'
-let g:gutentags_ctags_auto_set_tags=1
 
 " Vimtex
 if executable('nvr') | let g:vimtex_compiler_progname='nvr' | endif
