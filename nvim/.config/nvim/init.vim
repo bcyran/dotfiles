@@ -89,12 +89,14 @@ set listchars=eol:¬,tab:>-,space:·,trail:~,extends:>,precedes:<
 
 " Syntax highlighting
 if (empty($TMUX))
-  if (has("nvim"))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  if (has("termguicolors"))
-    set termguicolors
-  endif
+    if (has("nvim"))
+        let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    endif
+    if (has("termguicolors"))
+        set termguicolors
+    endif
+else
+    let g:onedark_termcolors=16
 endif
 let g:onedark_terminal_italics=1
 syntax on
