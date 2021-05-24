@@ -215,12 +215,6 @@ nmap [h <Plug>(GitGutterPrevHunk)
 " Go to file under cursor
 nnoremap <silent> <Leader>gf :vertical wincmd f<CR>
 
-" Move vertically by visual line
-nnoremap j gj
-vnoremap j gj
-nnoremap k gk
-vnoremap k gk
-
 " Exit terminal mode with C-\
 tnoremap <C-\> <C-\><C-n>
 
