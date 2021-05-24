@@ -262,9 +262,8 @@ bindsym $mod+backslash exec --no-startup-id \
     playerctl play-pause && $refresh-status
 
 # Screenshot
-bindsym --release $mod+equal exec ~/bin/scr full
-bindsym --release $mod+shift+equal exec ~/bin/scr window
-bindsym --release $mod+ctrl+equal exec ~/bin/scr select
+bindsym $mod+equal exec flameshot screen -p "$HOME/Obrazy/Zrzuty ekranu"
+bindsym $mod+ctrl+equal exec flameshot gui -p "$HOME/Obrazy/Zrzuty ekranu"
 
 # Firefox
 bindsym $mod+y exec firefox
