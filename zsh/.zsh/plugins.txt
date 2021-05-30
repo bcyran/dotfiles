@@ -3,3 +3,4 @@ zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
 zsh-users/zsh-completions
 MichaelAquilina/zsh-autoswitch-virtualenv
+romkatv/powerlevel10k
