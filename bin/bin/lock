@@ -13,38 +13,38 @@ V='#e5c07bff'   # verifying
 FONT='Roboto Condensed'
 
 i3lock \
-    --insidevercolor=$C     \
-    --ringvercolor=$V       \
+    --insidever-color=$C     \
+    --ringver-color=$V       \
     \
-    --insidewrongcolor=$C   \
-    --ringwrongcolor=$W     \
+    --insidewrong-color=$C   \
+    --ringwrong-color=$W     \
     \
-    --insidecolor=$B        \
-    --ringcolor=$D          \
-    --linecolor=$B          \
-    --separatorcolor=$D     \
+    --inside-color=$B        \
+    --ring-color=$D          \
+    --line-color=$B          \
+    --separator-color=$D     \
     \
-    --verifcolor=$T         \
-    --wrongcolor=$T         \
-    --timecolor=$T          \
-    --datecolor=$T          \
-    --keyhlcolor=$V         \
-    --bshlcolor=$W          \
+    --verif-color=$T         \
+    --wrong-color=$T         \
+    --time-color=$T          \
+    --date-color=$T          \
+    --keyhl-color=$V         \
+    --bshl-color=$W          \
     --line-uses-inside      \
     \
     --time-font="$FONT"     \
     --date-font="$FONT"     \
     --verif-font="$FONT"    \
     --wrong-font="$FONT"    \
-    --timesize=40           \
-    --datesize=20           \
-    --verifsize=35          \
-    --wrongsize=35          \
+    --time-size=40           \
+    --date-size=20           \
+    --verif-size=35          \
+    --wrong-size=35          \
     \
     --screen 1              \
     --blur 5                \
     --clock                 \
     --indicator             \
-    --timestr="%H:%M"       \
-    --datestr="%-d %B"      \
+    --time-str="%H:%M"       \
+    --date-str="%-d %B"      \
     "$@" # Mainly for passing `--nofork` when needed
