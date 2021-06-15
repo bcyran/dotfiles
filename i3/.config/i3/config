@@ -331,4 +331,4 @@ exec alacritty --class "workspace"
 
 # Other apps
 exec thunderbird
-exec megasync
+exec sh -c "sleep 3 && megasync"
