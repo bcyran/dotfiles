@@ -323,6 +323,12 @@ exec --no-startup-id picom -b
 # Redshift
 exec --no-startup-id redshift
 
+# Dunst
+exec --no-startup-id dunst
+
+# Flameshot
+exec --no-startup-id flameshot
+
 # KeepassXC
 exec keepassxc
 
