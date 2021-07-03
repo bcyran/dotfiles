@@ -14,11 +14,10 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Colors and visual
-Plug 'joshdick/onedark.vim'
+Plug 'navarasu/onedark.nvim'
 Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
-Plug 'RRethy/vim-illuminate'
 
 " Productivity
 Plug 'jiangmiao/auto-pairs'
@@ -29,6 +28,11 @@ Plug 'preservim/nerdtree'
 Plug 'moll/vim-bbye'
 if executable('fzf') | Plug 'junegunn/fzf.vim' | endif
 
+" Syntax parsing
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+
 " Code completion and linting
 if executable('node') | Plug 'neoclide/coc.nvim', {'branch': 'release'} | endif
 if executable('node') | Plug 'josa42/vim-lightline-coc' | endif
@@ -38,8 +42,6 @@ let g:polyglot_disabled=['latex']
 Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim'
 if executable('latex') | Plug 'lervag/vimtex', {'for': 'tex'}| endif
-Plug 'jeetsukumaran/vim-pythonsense', {'for': 'python'}
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python'}
 
 " Initialize plugin system
 call plug#end()
@@ -88,18 +90,10 @@ set breakindent
 set listchars=eol:¬,tab:>-,space:·,trail:~,extends:>,precedes:<
 
 " Syntax highlighting
-if (empty($TMUX))
-    if (has("nvim"))
-        let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-    endif
-    if (has("termguicolors"))
-        set termguicolors
-    endif
-else
-    let g:onedark_termcolors=16
-endif
-let g:onedark_terminal_italics=1
 syntax on
+if has('termguicolors')
+    set termguicolors
+endif
 colorscheme onedark
 
 " Searching
@@ -143,7 +137,8 @@ call mkdir(&undodir, 'p')
 set undofile
 
 " Folding
-set foldmethod=indent
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable
 set foldignore=
 
@@ -155,7 +150,7 @@ augroup AutoSaveView
     autocmd BufWinLeave,BufLeave,BufWritePost ?* nested
         \ if index(nosaveview, &ft) < 0 | silent! mkview!
     autocmd BufWinEnter ?*
-        \ if index(nosaveview, &ft) < 0 | silent! loadview | call lightline#update()
+        \ if index(nosaveview, &ft) < 0 | silent! loadview
 augroup end
 
 " Enable modelines
@@ -289,7 +284,7 @@ set laststatus=2
 set ttimeout ttimeoutlen=30
 set noshowmode
 let g:lightline={
-\   'colorscheme': 'onedark',
+\   'colorscheme': 'one',
 \   'active': {
 \       'left': [
 \           ['mode', 'paste'], ['gitbranch'], ['filename', 'readonly', 'modified']
@@ -318,10 +313,6 @@ let g:lightline.component_type = {
 \   'coc_ok': 'middle',
 \}
 
-" Illuminate
-let g:Illuminate_delay=500
-let g:Illuminate_ftblacklist = ['nerdtree', 'help', 'python']
-
 " Emmet
 let g:user_emmet_install_global=0
 autocmd FileType html,css,javascript,javascriptreact EmmetInstall
@@ -337,6 +328,31 @@ let g:indentLine_faster=1
 if executable('nvr') | let g:vimtex_compiler_progname='nvr' | endif
 if executable('zathura') | let g:vimtex_view_method='zathura' | endif
 let g:tex_flavor = 'latex'
+
+" Treesitter
+lua <<EOF
+local ts = require 'nvim-treesitter.configs'
+ts.setup {
+    ensure_installed = 'maintained',
+    highlight = { enable = true },
+    indent = { enable = fales },
+    refactor = {
+        highlight_definitions = { enable = true },
+    },
+    textobjects = {
+        select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ac"] = "@class.outer",
+                ["ic"] = "@class.inner",
+            },
+        },
+    },
+}
+EOF
 
 
 " }}}
