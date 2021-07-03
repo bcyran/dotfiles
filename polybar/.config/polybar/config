@@ -56,6 +56,8 @@ locale = pl_PL.UTF-8
 monitor-exact = true
 monitor-strict = true
 
+wm-restack = i3
+
 [bar/primary]
 inherit = bar/base
 monitor = ${env:MONITOR:}
@@ -181,7 +183,7 @@ label =  %output%
 [module/wlan]
 type = internal/network
 interval = 3.0
-interface = wlp2s0
+interface = wlp0s20f3
 
 label-connected =  %signal%% %essid%
 format-disconnected =
@@ -189,7 +191,7 @@ format-disconnected =
 [module/eth]
 type = internal/network
 interval = 3.0
-interface = enp1s0
+interface = enp0s13f0u1u2
 
 label-connected =  eth
 format-disconnected =
