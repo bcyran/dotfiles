@@ -1,8 +1,8 @@
 configuration {
-    width: 9;
+    width: 7;
     lines: 6;
     columns: 1;
-    font: "RobotoCondensed 12";
+    font: "RobotoCondensed 14";
     bw: 2;
     location: 3;
     padding: 5;

@@ -6,7 +6,7 @@
 set $mod Mod1
 
 # Font stack
-font pango:Roboto Condensed, Font Awesome 5 Free, Font Awesome 5 Brands 11
+font pango:Roboto Condensed, Font Awesome 5 Free, Font Awesome 5 Brands 14
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

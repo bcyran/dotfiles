@@ -1,9 +1,9 @@
 configuration {
     modi: "drun";
-    width: 30;
+    width: 25;
     lines: 15;
     columns: 2;
-    font: "RobotoCondensed 12";
+    font: "RobotoCondensed 14";
     bw: 2;
     location: 1;
     padding: 5;
