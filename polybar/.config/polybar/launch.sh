@@ -11,20 +11,13 @@ killall -q polybar
 # Wait until the processes have been shut down
 while pgrep -x polybar > /dev/null; do sleep 1; done
 
-# Gather connections info
-monitors="$(polybar -m)"
-edp_conn="$(grep -w -c eDP1 <<< $monitors)"
-hdmi_conn="$(grep -w -c HDMI1 <<< $monitors)"
-
-# Launch proper combination of bars
-if [[ $edp_conn == 1 && $hdmi_conn == 0 ]]; then
-    MONITOR=eDP1 polybar primary &
-elif [[ $edp_conn == 1 && $hdmi_conn == 1 ]]; then
-    MONITOR=HDMI1 polybar primary &
-    MONITOR=eDP1 polybar secondary &
-else
-    MONITOR=HDMI1 polybar primary &
-fi
+# Launch bar for each monitor
+while IFS= read -r line; do
+    monitor="$(cut -d ':' -f 1 <<< $line)"
+    grep -q 'primary' <<< $line && bar_name='primary' || bar_name='secondary'
+    echo "Starting bar '$bar_name' on monitor '$monitor'"
+    MONITOR=$monitor polybar $bar_name &
+done < <(polybar -m)
 
 echo "Bars launched..."
 
