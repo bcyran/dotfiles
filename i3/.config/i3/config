@@ -122,20 +122,21 @@ set $ws9 "9 "
 set $ws10 "10 "
 
 # Define display names
-set $dp "HDMI1"
-set $ds "eDP1"
+set $d1 "DP1-2"
+set $d2 "DP1-3"
+set $d3 "eDP1"
 
 # Assign workspaces to displays
-workspace $ws1 output $dp
-workspace $ws2 output $dp
-workspace $ws3 output $dp
-workspace $ws4 output $dp
-workspace $ws5 output $ds
-workspace $ws6 output $ds
-workspace $ws7 output $ds
-workspace $ws8 output $dp
-workspace $ws9 output $dp
-workspace $ws10 output $dp
+workspace $ws1 output $d1
+workspace $ws2 output $d1
+workspace $ws3 output $d1
+workspace $ws4 output $d1
+workspace $ws5 output $d2
+workspace $ws6 output $d2
+workspace $ws7 output $d2
+workspace $ws8 output $d3
+workspace $ws9 output $d1
+workspace $ws10 output $d1
 
 # Switch to workspace
 bindsym $mod+1 workspace $ws1
