@@ -191,7 +191,7 @@ format-disconnected =
 [module/eth]
 type = internal/network
 interval = 3.0
-interface = enp0s13f0u1u2
+interface = enp4s0
 
 label-connected =  eth
 format-disconnected =
