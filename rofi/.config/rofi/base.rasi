@@ -1,0 +1,92 @@
+* {
+    background: #282c34;
+    foreground: #abb2bf;
+    light-background: #3e4452;
+    accent: #61afef;
+
+    pad: 8px;
+}
+
+window {
+    width: 20em;
+    location: north west;
+    anchor: north west;
+    margin: 52px 0 0 20px;
+    border: 2px solid;
+    border-color: @light-background;
+    background-color: @background;
+    font: "RobotoCondensed 14";
+}
+
+inputbar {
+    children:   [ prompt,textbox-prompt-colon,entry ];
+    padding: @pad;
+    border-color: @light-background;
+    text-color: @foreground;
+}
+
+listview {
+    columns: 2;
+    lines: 15;
+    fixed-columns: true;
+    border: 2px solid 0 0 0;
+    border-color: @light-background;
+    scrollbar: false;
+}
+
+entry {
+    background-color: @background;
+    text-color: @foreground;
+    placeholder: "search...";
+    placeholder-color: @light-background;
+}
+
+element {
+    padding: @pad;
+    background-color: @background;
+    text-color: @foreground;
+}
+
+/* NORMAL */
+element normal.normal {
+    background-color: @background;
+    text-color: @foreground;
+}
+element normal.urgent {
+    background-color: @background;
+    text-color: @foreground;
+}
+element normal.active {
+    background-color: @background;
+    text-color: @foreground;
+}
+
+/* SELECTED */
+element selected.normal {
+    background-color: @accent;
+    text-color: @background;
+}
+element selected.urgent {
+    background-color: @accent;
+    text-color: @background;
+}
+element selected.active {
+    background-color: @accent;
+    text-color: @background;
+}
+
+/* ALTERNATE */
+element alternate.normal {
+    background-color: @background;
+    text-color: @foreground;
+}
+element alternate.urgent {
+    background-color: @background;
+    text-color: @foreground;
+}
+element alternate.active {
+    background-color: @background;
+    text-color: @foreground;
+}
+
+// vim:ft=css
