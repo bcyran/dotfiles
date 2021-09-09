@@ -7,6 +7,9 @@ alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# Who has time to keep typing kubectl...
+alias k=kubectl
+
 # Git in English, please
 alias git="LANG=en_US.UTF-8 git"
 
