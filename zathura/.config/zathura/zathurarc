@@ -1,7 +1,7 @@
 # General settings
 set window-title-basename       "true"
 set selection-clipboard         "clipboard"
-set font                        "Fira Code Nerd Font normal 12"
+set font                        "Fira Code Nerd Font normal 14"
 set scroll-step 100
 
 # Bindings
