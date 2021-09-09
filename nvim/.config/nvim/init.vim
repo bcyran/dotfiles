@@ -15,7 +15,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Colors and visual
 Plug 'navarasu/onedark.nvim'
-Plug 'itchyny/lightline.vim'
+Plug 'hoob3rt/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 
@@ -35,7 +36,6 @@ Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
 " Code completion and linting
 if executable('node') | Plug 'neoclide/coc.nvim', {'branch': 'release'} | endif
-if executable('node') | Plug 'josa42/vim-lightline-coc' | endif
 
 " Languages support
 let g:polyglot_disabled=['latex']
@@ -279,39 +279,59 @@ let g:netrw_list_hide= '.*\.git/.*,.*node_modules/.*,.*venv/.*,.*__pycache__/.*,
 let NERDTreeRespectWildIgnore=1
 let NERDTreeMinimalUI=1
 
-" Statusline
-set laststatus=2
-set ttimeout ttimeoutlen=30
-set noshowmode
-let g:lightline={
-\   'colorscheme': 'one',
-\   'active': {
-\       'left': [
-\           ['mode', 'paste'], ['gitbranch'], ['filename', 'readonly', 'modified']
-\       ],
-\       'right': [
-\           ['lineinfo'], ['filetype', 'percent'], ['coc_info', 'coc_hints', 'coc_errors', 'coc_warnings', 'coc_ok', 'coc_status']
-\       ]
-\   },
-\   'component_function': {
-\       'gitbranch': 'FugitiveHead',
-\   },
-\}
-let g:lightline.component_expand = {
-\   'coc_warnings': 'lightline#coc#warnings',
-\   'coc_errors': 'lightline#coc#errors',
-\   'coc_info': 'lightline#coc#info',
-\   'coc_hints': 'lightline#coc#hints',
-\   'coc_ok': 'lightline#coc#ok',
-\   'coc_status': 'lightline#coc#status',
-\}
-let g:lightline.component_type = {
-\   'coc_warnings': 'warning',
-\   'coc_errors': 'error',
-\   'coc_info': 'info',
-\   'coc_hints': 'hints',
-\   'coc_ok': 'middle',
-\}
+" Lualine
+lua <<EOF
+require('lualine').setup({
+    options = {
+        theme = 'onedark',
+        disabled_filetypes = {},
+    },
+    sections = {
+        lualine_a = {
+            'mode',
+            'paste'
+        },
+        lualine_b = {
+            {'filename', file_status = true},
+        },
+        lualine_c = {
+            {'branch', icon = ''},
+            {
+                'diff',
+                color_added = '#98c379',
+                color_modified = '#e5c07b',
+                color_removed = '#e06c75'
+            },
+        },
+        lualine_x = {
+            {
+                'diagnostics',
+                sources = {'coc'},
+                color_error = '#e06c75',
+                color_warn = '#e5c07b',
+                color_info = '#61afef',
+                color_hint = '#98c379',
+            },
+        },
+        lualine_y = {
+            'filetype',
+        },
+        lualine_z = {
+            {'location', icon = ''},
+        },
+    },
+    inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {'filename'},
+        lualine_x = {'location'},
+        lualine_y = {},
+        lualine_z = {},
+    },
+    tabline = {},
+    extensions = {},
+})
+EOF
 
 " Emmet
 let g:user_emmet_install_global=0
