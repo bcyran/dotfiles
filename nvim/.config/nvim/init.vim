@@ -17,7 +17,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'navarasu/onedark.nvim'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'airblade/vim-gitgutter'
 
 " Productivity
@@ -338,11 +338,14 @@ let g:user_emmet_install_global=0
 autocmd FileType html,css,javascript,javascriptreact EmmetInstall
 let g:user_emmet_leader_key=','
 
-" Indentline
-let g:indentLine_first_char='┊'
-let g:indentLine_char='┊'
-let g:indentLine_showFirstIndentLevel=1
-let g:indentLine_faster=1
+" Indent blankline
+lua <<EOF
+require('indent_blankline').setup({
+    char = '¦',
+    show_trailing_blankline_indent = false,
+    buftype_exclude = {'terminal', 'help'},
+})
+EOF
 
 " Vimtex
 if executable('nvr') | let g:vimtex_compiler_progname='nvr' | endif
