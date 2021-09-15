@@ -64,7 +64,7 @@ monitor = ${env:MONITOR:}
 
 modules-left = i3 xwindow
 modules-center = date
-modules-right = mpris updates redshift backlight pulseaudio bluetooth wlan eth battery
+modules-right = mpris updates redshift backlight pulseaudio bluetooth wlan eth ethdock battery
 
 tray-position = right
 tray-padding = 2
@@ -194,6 +194,14 @@ interval = 3.0
 interface = enp4s0
 
 label-connected =  eth
+format-disconnected =
+
+[module/ethdock]
+type = internal/network
+interval = 3.0
+interface = enp10s0u2u1u2
+
+label-connected =  dock
 format-disconnected =
 
 [module/battery]
