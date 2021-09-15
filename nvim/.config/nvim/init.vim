@@ -27,7 +27,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdtree'
 Plug 'moll/vim-bbye'
-if executable('fzf') | Plug 'junegunn/fzf.vim' | endif
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Syntax parsing
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -219,22 +220,13 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Buffer listing and switching
-if executable('fzf')
-    nnoremap <Leader>b :Buffers<CR>
-else
-    nnoremap <Leader>b :buffers<CR>:buffer<space>
-endif
-
-" Quick file searching
-if executable('fzf')
-    nnoremap <expr> <Leader>f (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<cr>"
-else
-    nnoremap <Leader>f :find<space>
-endif
-
 " Goto tag
 nnoremap <Leader>t :ta<Space>
+
+" Telescope bindings
+nnoremap <Leader>b <cmd>Telescope buffers<cr>
+nnoremap <Leader>f <cmd>Telescope find_files<cr>
+nnoremap <Leader>g <cmd>Telescope live_grep<cr>
 
 " coc.nvim bindings
 nmap <silent> gd <Plug>(coc-definition)
