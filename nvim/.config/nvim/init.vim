@@ -13,21 +13,23 @@ endif
 " Plugins directory
 call plug#begin('~/.local/share/nvim/plugged')
 
+" Lua framework
+Plug 'nvim-lua/plenary.nvim'
+
 " Colors and visual
 Plug 'navarasu/onedark.nvim'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'airblade/vim-gitgutter'
 
 " Productivity
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdtree'
 Plug 'moll/vim-bbye'
-Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 " Syntax parsing
@@ -270,6 +272,11 @@ let g:netrw_list_hide= '.*\.git/.*,.*node_modules/.*,.*venv/.*,.*__pycache__/.*,
 " File tree sidebar (NERDTree)
 let NERDTreeRespectWildIgnore=1
 let NERDTreeMinimalUI=1
+
+" gitsigns
+lua <<EOF
+require('gitsigns').setup()
+EOF
 
 " Lualine
 lua <<EOF
