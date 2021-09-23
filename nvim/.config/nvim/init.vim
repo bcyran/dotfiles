@@ -210,8 +210,8 @@ nnoremap <silent> <Leader>es :tabe <C-r>=EvalueFtpluginPath()<CR><CR>
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 
-" Go to file under cursor
-nnoremap <silent> <Leader>gf :vertical wincmd f<CR>
+" Open file under cursor in split window
+nnoremap <silent> <Leader>gp :vertical wincmd f<CR>
 
 " Exit terminal mode with C-\
 tnoremap <C-\> <C-\><C-n>
@@ -251,6 +251,9 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
     vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
     vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
+
+" Autoformat
+nnoremap <silent> <Leader>af :Format<Cr>
 
 " }}}
 
