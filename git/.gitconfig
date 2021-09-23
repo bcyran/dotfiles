@@ -9,15 +9,23 @@
     st = status
     co = checkout
     cob = checkout -b
+    sw = switch
+    swc = switch -c
     br = branch
     aa = add --all
-    r = reset HEAD
+    rh = reset HEAD
+    rh1 = reset HEAD~1
     cm = commit
     cmm = commit -m
     cma = commit --amend
+    cmane = commit --amend --no-edit
     l = log --oneline -10
     df = diff
     dfc = diff --cached
     pf = push --force-with-lease
+    prom = pull --rebase origin master
+    ria = rebase -i --autosquash
+    r = restore
+    rs = restore --staged
 [pull]
     ff = only
