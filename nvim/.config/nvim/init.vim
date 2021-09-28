@@ -28,7 +28,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-surround'
-Plug 'preservim/nerdtree'
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'moll/vim-bbye'
 Plug 'nvim-telescope/telescope.nvim'
 
@@ -195,8 +195,10 @@ nnoremap <silent> <Leader>ms :mksession!<CR>
 " Load saved session
 nnoremap <silent> <Leader>ls :source Session.vim<CR>
 
-" Toggle netrw
-nnoremap <silent> <Leader>le :NERDTreeToggle<CR>
+" File tree
+nnoremap <silent> <Leader>le :NvimTreeToggle<CR>
+nnoremap <silent> <leader>lr :NvimTreeRefresh<CR>
+nnoremap <silent> <leader>lf :NvimTreeFindFile<CR>
 
 " Source my {vimrc,ftplugin} file
 nnoremap <silent> <Leader>sv :source $MYVIMRC<CR>
@@ -263,18 +265,23 @@ nnoremap <silent> <Leader>af :Format<Cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " {{{
 
-" File tree sidebar (netrw)
-let g:netrw_winsize=-24
-let g:netrw_banner=0
-let g:netrw_liststyle=3
-let g:netrw_altv=1
-let g:netrw_browse_split=4
-let g:netrw_list_hide= '.*\.git/.*,.*node_modules/.*,.*venv/.*,.*__pycache__/.*,.*/\.o,
-\   .*~,.*\.pyc,.*\.vim,.*\.idea/.*'
+" File tree sidebar (nvim-tree.lua)
+let g:nvim_tree_ignore = [ '.git', 'node_modules', 'venv', '__pycache__' ]
+let g:nvim_tree_gitignore = 1
+let g:nvim_tree_indent_markers = 1
+let g:nvim_tree_git_hl = 1
+let g:nvim_tree_highlight_opened_files = 1
+let g:nvim_tree_group_empty = 1
+let g:nvim_tree_show_icons = {
+    \ 'git': 0,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \ 'folder_arrows': 1,
+    \ }
 
-" File tree sidebar (NERDTree)
-let NERDTreeRespectWildIgnore=1
-let NERDTreeMinimalUI=1
+lua <<EOF
+require('nvim-tree').setup()
+EOF
 
 " gitsigns
 lua <<EOF
@@ -286,7 +293,7 @@ lua <<EOF
 require('lualine').setup({
     options = {
         theme = 'onedark',
-        disabled_filetypes = {},
+        disabled_filetypes = { 'NvimTree' },
     },
     sections = {
         lualine_a = {
