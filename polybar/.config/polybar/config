@@ -28,16 +28,17 @@ urgent          = #e5c07b
 urgent-text     = ${colors.bg}
 
 [bar/base]
-width = 100%
+width = 100%:-20
 height = 30
+offset-x = 10
+offset-y = 10
 fixed-center = true
+override-redirect = true
 
 background = ${colors.bg}
 foreground = ${colors.text}
-border-top = 1
-border-top-color = ${colors.bg}
-border-bottom = 1
-border-bottom-color = ${colors.bg}
+border-size = 4
+border-color = ${colors.bg}
 
 padding-left = 0
 padding-right = 2

@@ -11,7 +11,7 @@ window {
     width: 20em;
     location: north west;
     anchor: north west;
-    margin: 52px 0 0 20px;
+    margin: 70px 0 0 20px;
     border: 2px solid;
     border-color: @light-background;
     background-color: @background;

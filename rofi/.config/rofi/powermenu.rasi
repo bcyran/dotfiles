@@ -14,7 +14,7 @@ window {
     width: 8em;
     location: north east;
     anchor: north east;
-    margin: 52px 20px 0 0;
+    margin: 70px 20px 0 0;
 }
 
 listview {
