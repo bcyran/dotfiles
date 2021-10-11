@@ -48,9 +48,10 @@ module-margin-right = 2
 
 font-0 = Roboto Condensed:size=14;3
 font-1 = Font Awesome 5 Free:size=12;3
-font-2 = Font Awesome 5 Free Solid:size=12;3
-font-3 = Font Awesome 5 Brands:size=12;3
-font-4 = feather:style=Medium:size=12;3
+font-2 = Font Awesome 5 Free:size=12;3
+font-3 = Font Awesome 5 Free Solid:size=12;3
+font-4 = Font Awesome 5 Brands:size=12;3
+font-5 = icomoon\-feather:style=Medium:size=14;4
 
 cursor-click = pointer
 
@@ -88,17 +89,17 @@ index-sort = true
 enable-scroll = false
 
 ; Icons
-ws-icon-0 = 1 ;
-ws-icon-1 = 2 ;
-ws-icon-2 = 3 ;
-ws-icon-3 = 4 ;
-ws-icon-4 = 5 ;
-ws-icon-5 = 6 ;
-ws-icon-6 = 7 ;
-ws-icon-7 = 8 ;
-ws-icon-8 = 9 ;
-ws-icon-9 = 10 ;
-ws-icon-default = 
+ws-icon-0 = 1 ;
+ws-icon-1 = 2 ;
+ws-icon-2 = 3 ;
+ws-icon-3 = 4 ;
+ws-icon-4 = 5 ;
+ws-icon-5 = 6 ;
+ws-icon-6 = 7 ;
+ws-icon-7 = 8 ;
+ws-icon-8 = 9 ;
+ws-icon-9 = 10 ;
+ws-icon-default = 
 
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
@@ -135,7 +136,7 @@ label = %title:0:55:...%
 
 [module/mpris]
 type = custom/script
-exec = ~/.config/polybar/modules/mpris.sh --icon-playing  --icon-paused 
+exec = ~/.config/polybar/modules/mpris.sh --icon-playing  --icon-paused 
 interval = 5
 label = %output:0:35:...%
 click-left = playerctl play-pause
@@ -144,12 +145,12 @@ click-left = playerctl play-pause
 type = custom/script
 interval = 600
 exec = ~/.config/polybar/modules/updates.sh
-label =  %output%
+label =  %output%
 
 [module/redshift]
 type = custom/script
 interval = 15
-exec = ~/.config/polybar/modules/redshift.sh --hide-day --icon-on  --icon-off 
+exec = ~/.config/polybar/modules/redshift.sh --hide-day --icon-on  --icon-off 
 label = %output%
 click-left = ~/.config/polybar/modules/redshift.sh toggle
 
@@ -159,7 +160,7 @@ interval = 15
 
 date = %a %e %b
 time = %H:%M
-label =  %date%, %time%
+label =  %date%, %time%
 
 [module/backlight]
 type = custom/script
@@ -167,27 +168,30 @@ exec = ~/.config/polybar/modules/light.sh
 tail = true
 scroll-up = ~/.config/polybar/modules/light.sh inc
 scroll-down = ~/.config/polybar/modules/light.sh dec
-label =  %output%%
+label =  %output%%
 
 [module/pulseaudio]
 type = internal/pulseaudio
 use-ui-max = false
-format-volume = <label-volume>
-label-volume =  %percentage%%
-label-muted =  %percentage%%
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+label-muted =  %percentage%%
 
 [module/bluetooth]
 type = custom/script
 exec = ~/.config/polybar/modules/bluetooth.sh
 tail = true
-label =  %output%
+label =  %output%
 
 [module/wlan]
 type = internal/network
 interval = 3.0
 interface = wlp0s20f3
 
-label-connected =  %signal%% %essid%
+label-connected =  %signal%% %essid%
 format-disconnected =
 
 [module/eth]
@@ -195,7 +199,7 @@ type = internal/network
 interval = 3.0
 interface = enp4s0
 
-label-connected =  eth
+label-connected =  eth
 format-disconnected =
 
 [module/ethdock]
@@ -203,7 +207,7 @@ type = internal/network
 interval = 3.0
 interface = enp10s0u2u1u2
 
-label-connected =  dock
+label-connected =  dock
 format-disconnected =
 
 [module/battery]
@@ -215,18 +219,12 @@ full-at = 100
 
 time-format = %H:%M
 
-format-full = <ramp-capacity> <label-full>
-format-charging =  <label-charging>
-format-discharging = <ramp-capacity> <label-discharging>
+format-full =  <label-full>
+format-charging =  <label-charging>
+format-discharging =  <label-discharging>
 
 label-full = %percentage%%
 label-charging = %percentage%%
 label-discharging = %percentage%%
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
 
 ; vim:ft=dosini
