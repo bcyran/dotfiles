@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# A script for setting backlight on multiple devices at once
+# External monitors exposed via sysfs using https://aur.archlinux.org/packages/ddcci-driver-linux-dkms/
+# Uses `light` as a backend: https://github.com/haikarainen/light
+
+readonly progname="$(basename $0)"
+readonly devices=( $(light -L | grep 'auto\|ddcci') )
+
+light_all() {
+    for device in ${devices[@]}; do
+        light -s "$device" "$@"
+    done
+}
+
+print_help() {
+    echo "Usage: $progname [-h|--help] {up|down|set|get} [VALUE]"
+    echo "Set backlight intensity of all available displays."
+}
+
+invalid_argument() {
+    echo "$progname: invalid argument '$1'" >&2
+    print_help
+    exit 1
+}
+
+case "$1" in
+    up)
+        light_all -A $2 ;;
+    down)
+        light_all -U $2 ;;
+    set)
+        light_all -S $2 ;;
+    get)
+        light -G ;;
+    -h|?-help)
+        print_help ;;
+    *)
+        invalid_argument "$1" ;;
+esac
