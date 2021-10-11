@@ -1,29 +1,20 @@
 #!/usr/bin/env bash
 
+readonly backlight="$HOME/bin/backlight"
+
 light_print() {
     while true; do
-        echo $(light -G | cut -d "." -f 1)
+        echo $("$backlight" get | cut -d "." -f 1)
 
         inotifywait -e modify /sys/class/backlight/intel_backlight/brightness > /dev/null 2>&1
     done
 }
 
-light_dec() {
-    light -U 10
-}
-
-light_inc() {
-    light -A 10
-}
-
 case "$1" in
     dec)
-        light_dec
-        ;;
+        "$backlight" down 10 ;;
     inc)
-        light_inc
-        ;;
+        "$backlight" up 10 ;;
     *)
-        light_print
-        ;;
+        light_print ;;
 esac
