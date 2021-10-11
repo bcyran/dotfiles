@@ -280,7 +280,15 @@ let g:nvim_tree_show_icons = {
     \ }
 
 lua <<EOF
-require('nvim-tree').setup()
+require('nvim-tree').setup({
+    update_cwd = true,
+    update_focused_file = {
+        enable = true,
+    },
+    view = {
+        auto_resize = true,
+    }
+})
 EOF
 
 " gitsigns
