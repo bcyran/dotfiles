@@ -1,0 +1,134 @@
+#!/usr/bin/env bash
+#
+# A script to control audio volume of the default pulseaudio sink
+# using pacmd as a backend
+# Inspired by: https://pastebin.com/MkiW9LjT
+
+LC_ALL=C # To avoid decimal point problems
+
+MAX_PERCENT=100   # Do not allow setting volume larger than that
+FULL_VOLUME=65537 # Value in pacmd output which will be considered 100%
+readonly MAX_PERCENT FULL_VOLUME
+
+progname="$(basename "$0")"
+dump="$(pacmd dump)"
+sink="$(echo "${dump}" | grep -oP '(?<=set-default-sink )[\w\._-]+')"
+readonly progname dump sink
+
+int() {
+    printf '%.0f' "$1"
+}
+
+calc() {
+    echo "scale=5; $*" | bc
+}
+
+bound() {
+    if [[ "$3" -lt "$1" ]]; then
+        echo "$1"
+    elif [[ "$3" -gt "$2" ]]; then
+        echo "$2"
+    else
+        echo "$3"
+    fi
+}
+
+get_volume() {
+    int "$(echo "${dump}" | grep -oP "(?<=set-sink-volume ${sink} )[\dxa-f]+")"
+}
+
+get_volume_percent() {
+    int "$(calc "$(get_volume) / ${FULL_VOLUME} * 100")"
+}
+
+set_volume() {
+    pacmd set-sink-volume "${sink}" "$1"
+}
+
+set_volume_percent() {
+    local new_volume_percent new_volume
+    new_volume_percent="$(bound 0 ${MAX_PERCENT} "$1")"
+    new_volume="$(calc "${FULL_VOLUME} * ${new_volume_percent} / 100")"
+    set_volume "$(int "${new_volume}")"
+}
+
+print_volume() {
+    echo "$(get_volume_percent)%"
+}
+
+inc_volume() {
+    set_volume_percent $(($(get_volume_percent) + ${1}))
+}
+
+dec_volume() {
+    set_volume_percent $(($(get_volume_percent) - ${1}))
+}
+
+mute() {
+    pacmd set-sink-mute "${sink}" 1
+}
+
+unmute() {
+    pacmd set-sink-mute "${sink}" 0
+}
+
+is_muted() {
+    if echo "${dump}" | grep -q "set-sink-mute ${sink} yes"; then
+        true
+    else
+        false
+    fi
+}
+
+toggle_mute() {
+    if is_muted; then
+        unmute
+    else
+        mute
+    fi
+}
+
+print_help() {
+    echo "Usage: ${progname} [-h|--help] {set|get|up|down|mute|unmute|toggle} [VALUE]"
+    echo "Control volume of the default pulseaudio sink."
+}
+
+invalid_argument() {
+    echo "${progname}: invalid argument '$1'" >&2
+    print_help
+    exit 1
+}
+
+command="$1"
+value="${2%\%}" # Allow for '%' in value
+readonly command value
+
+case "${command}" in
+    set)
+        set_volume_percent "${value}"
+        ;;
+    get)
+        print_volume
+        ;;
+    up)
+        inc_volume "${value}"
+        ;;
+    down)
+        dec_volume "${value}"
+        ;;
+    mute)
+        mute
+        ;;
+    unmute)
+        unmute
+        ;;
+    toggle)
+        toggle_mute
+        ;;
+    -h | ?-help)
+        print_help
+        ;;
+    *)
+        invalid_argument "${command}"
+        ;;
+esac
