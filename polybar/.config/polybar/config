@@ -148,7 +148,7 @@ label =  %output%
 [module/redshift]
 type = custom/script
 interval = 15
-exec = ~/.config/polybar/modules/redshift.sh --icon-on  --icon-off 
+exec = ~/.config/polybar/modules/redshift.sh --hide-day --icon-on  --icon-off 
 label = %output%
 click-left = ~/.config/polybar/modules/redshift.sh toggle
 

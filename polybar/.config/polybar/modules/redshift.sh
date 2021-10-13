@@ -2,15 +2,25 @@
 
 pid=$(pgrep -x redshift)
 
+hide_day='false'
+
 redshift_print() {
+    local output status temp period
     if [ "$pid" ]; then
-        local temp=$(redshift -p 2>/dev/null | grep -i temp | cut -d ' ' -f 3)
-        local status="$icon_on $temp"
+        status="$(LC_ALL=C redshift -p 2> /dev/null)"
+        temp="$(echo "$status" | grep -oP '(?<=Color temperature: )\w+')"
+        period="$(echo "$status" | grep -oP '(?<=Period: )\w+')"
+
+        if [[ "$hide_day" == 'true' && "$period" == 'Daytime' ]]; then
+            output=''
+        else
+            output="$icon_on $temp"
+        fi
     else
-        local status="$icon_off off"
+        output="$icon_off off"
     fi
 
-    echo "$status"
+    echo "$output"
 }
 
 redshift_toggle() {
@@ -30,6 +40,9 @@ while [ "$#" -gt 0 ]; do
         --icon-off)
             shift
             icon_off="$1"
+            ;;
+        --hide-day)
+            hide_day='true'
             ;;
         *)
             break
