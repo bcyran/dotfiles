@@ -33,6 +33,14 @@ bound() {
     fi
 }
 
+is_number() {
+    if [[ $1 =~ ^[0-9]+$ ]]; then
+        true
+    else
+        false
+    fi
+}
+
 get_volume() {
     int "$(echo "${dump}" | grep -oP "(?<=set-sink-volume ${sink} )[\dxa-f]+")"
 }
@@ -93,8 +101,8 @@ print_help() {
     echo "Control volume of the default pulseaudio sink."
 }
 
-invalid_argument() {
-    echo "${progname}: invalid argument '$1'" >&2
+usage_err() {
+    echo "${progname}: $1" >&2
     print_help
     exit 1
 }
@@ -105,16 +113,20 @@ readonly command value
 
 case "${command}" in
     set)
+        [[ -n "${value}" ]] || usage_err 'missing VALUE'
+        is_number "${value}" || usage_err 'VALUE must be a number'
         set_volume_percent "${value}"
         ;;
     get)
         print_volume
         ;;
     up)
-        inc_volume "${value}"
+        is_number "${value:-5}" || usage_err 'VALUE must be a number'
+        inc_volume "${value:-5}"
         ;;
     down)
-        dec_volume "${value}"
+        is_number "${value:-5}" || usage_err 'VALUE must be a number'
+        dec_volume "${value:-5}"
         ;;
     mute)
         mute
@@ -129,6 +141,6 @@ case "${command}" in
         print_help
         ;;
     *)
-        invalid_argument "${command}"
+        usage_err "invalid argument '${command}'"
         ;;
 esac
