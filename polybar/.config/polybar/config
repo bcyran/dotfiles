@@ -18,14 +18,24 @@
 
 
 [colors]
-bg              = #282c34
-active-bg       = #3e4452
-text            = #abb2bf
-active-text     = ${colors.text}
-highlight       = #61afef
-highlight-text  = ${colors.bg}
-urgent          = #e5c07b
-urgent-text     = ${colors.bg}
+black           = #282c34
+gray            = #3e4452
+white           = #abb2bf
+red             = #e06c75
+green           = #98c379
+yellow          = e5c07b
+blue            = #61afef
+violet          = #c678dd
+sea             = #56b6c2
+
+bg              = ${colors.black}
+fg              = ${colors.white}
+highlight       = ${colors.blue}
+highlight-fg    = ${colors.black}
+active          = ${colors.gray}
+active-fg       = ${colors.white}
+urgent          = ${colors.yellow}
+urgent-fg       = ${colors.black}
 
 [bar/base]
 width = 100%:-20
@@ -36,7 +46,7 @@ fixed-center = true
 override-redirect = true
 
 background = ${colors.bg}
-foreground = ${colors.text}
+foreground = ${colors.fg}
 border-size = 4
 border-color = ${colors.bg}
 
@@ -106,12 +116,12 @@ pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = ${colors.urgent}
-label-mode-background = ${colors.urgent-text}
+label-mode-background = ${colors.urgent-fg}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index% %icon%
 label-focused-background = ${colors.highlight}
-label-focused-foreground = ${colors.highlight-text}
+label-focused-foreground = ${colors.highlight-fg}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
@@ -120,14 +130,14 @@ label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index% %icon%
-label-visible-background = ${colors.active-bg}
-label-visible-foreground = ${colors.active-text}
+label-visible-background = ${colors.active}
+label-visible-foreground = ${colors.active-fg}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index% %icon%
 label-urgent-background = ${colors.urgent}
-label-urgent-foreground = ${colors.urgent-text}
+label-urgent-foreground = ${colors.urgent-fg}
 label-urgent-padding = 2
 
 [module/xwindow]
