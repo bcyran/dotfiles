@@ -18,7 +18,7 @@ Plug 'nvim-lua/plenary.nvim'
 
 " Colors and visual
 Plug 'navarasu/onedark.nvim'
-Plug 'hoob3rt/lualine.nvim'
+Plug 'shadmansaleh/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'lukas-reineke/indent-blankline.nvim'
 
@@ -315,19 +315,23 @@ require('lualine').setup({
             {'branch', icon = ''},
             {
                 'diff',
-                color_added = '#98c379',
-                color_modified = '#e5c07b',
-                color_removed = '#e06c75'
+                diff_color = {
+                    added = {fg = '#98c379'},
+                    modified = {fg = '#e5c07b'},
+                    removed = {fg = '#e06c75'},
+                },
             },
         },
         lualine_x = {
             {
                 'diagnostics',
                 sources = {'coc'},
-                color_error = '#e06c75',
-                color_warn = '#e5c07b',
-                color_info = '#61afef',
-                color_hint = '#98c379',
+                diagnostics_color = {
+                    error = {fg = '#e06c75'},
+                    warn = {fg = '#e5c07b'},
+                    info = {fg = '#61afef'},
+                    hint = {fg = '#98c379'},
+                },
             },
         },
         lualine_y = {
