@@ -262,6 +262,10 @@ bindsym $mod+bracketright exec --no-startup-id \
 bindsym $mod+backslash exec --no-startup-id \
     playerctl play-pause && $refresh-status
 
+# Dunst controls
+bindsym ctrl+space exec dunstctl close
+bindsym ctrl+shift+space exec dunstctl history-pop
+
 # Screenshot
 bindsym $mod+equal exec flameshot screen -p "$HOME/Obrazy/Zrzuty ekranu"
 bindsym $mod+ctrl+equal exec flameshot gui -p "$HOME/Obrazy/Zrzuty ekranu"
