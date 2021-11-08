@@ -266,7 +266,6 @@ nnoremap <silent> <Leader>af :Format<Cr>
 " {{{
 
 " File tree sidebar (nvim-tree.lua)
-let g:nvim_tree_ignore = [ '.git', 'node_modules', 'venv', '__pycache__' ]
 let g:nvim_tree_gitignore = 1
 let g:nvim_tree_indent_markers = 1
 let g:nvim_tree_git_hl = 1
@@ -286,7 +285,12 @@ require('nvim-tree').setup({
         enable = true,
     },
     view = {
+        width = 40,
         auto_resize = true,
+    },
+    filters = {
+        dotfiles = false,
+        custom = { '.git', 'node_modules', 'venv', '__pycache__' }
     }
 })
 EOF
