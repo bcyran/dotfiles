@@ -18,7 +18,7 @@ Plug 'nvim-lua/plenary.nvim'
 
 " Colors and visual
 Plug 'navarasu/onedark.nvim'
-Plug 'shadmansaleh/lualine.nvim'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'lukas-reineke/indent-blankline.nvim'
 
