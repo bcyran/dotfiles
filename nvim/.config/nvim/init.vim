@@ -213,7 +213,7 @@ nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 
 " Open file under cursor in split window
-nnoremap <silent> <Leader>gp :vertical wincmd f<CR>
+nnoremap <silent> <Leader>pf :vertical wincmd f<CR>
 
 " Exit terminal mode with C-\
 tnoremap <C-\> <C-\><C-n>
