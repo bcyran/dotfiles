@@ -19,6 +19,7 @@ Plug 'nvim-lua/plenary.nvim'
 " Colors and visual
 Plug 'navarasu/onedark.nvim'
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'seblj/nvim-tabline'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'lukas-reineke/indent-blankline.nvim'
 
@@ -355,6 +356,22 @@ require('lualine').setup({
     },
     tabline = {},
     extensions = {},
+})
+EOF
+
+" nvim-tabline
+lua <<EOF
+require('tabline').setup({
+    no_name = '[No Name]',
+    modified_icon = '',
+    close_icon = '',
+    separator = '',
+    padding = 1,
+    color_all_icons = false,
+    always_show_tabs = false,
+    right_separator = false,
+    show_index = true,
+    show_icon = true,
 })
 EOF
 
