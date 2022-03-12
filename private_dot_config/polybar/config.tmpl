@@ -77,7 +77,11 @@ monitor = ${env:MONITOR:}
 
 modules-left = i3 xwindow
 modules-center = date
+{{ if eq .machine.id "work" }}
+modules-right = mpris vpn updates redshift backlight pulseaudio bluetooth wlan eth ethdock battery
+{{ else }}
 modules-right = mpris updates redshift backlight pulseaudio bluetooth wlan eth ethdock battery
+{{ end }}
 
 tray-position = right
 tray-padding = 2
@@ -99,6 +103,19 @@ index-sort = true
 enable-scroll = false
 
 ; Icons
+{{ if eq .machine.id "work" }}
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+ws-icon-default = 
+{{ else }}
 ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;
@@ -110,6 +127,7 @@ ws-icon-7 = 8;
 ws-icon-8 = 9;
 ws-icon-9 = 10;
 ws-icon-default = 
+{{ end }}
 
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
@@ -189,6 +207,12 @@ ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 label-muted =  %percentage%%
+
+[module/vpn]
+type = custom/script
+exec = ~/.config/polybar/modules/vpn.sh --icon-on  --icon-off 
+interval = 15
+label = %output%
 
 [module/bluetooth]
 type = custom/script
