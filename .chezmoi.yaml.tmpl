@@ -1,0 +1,22 @@
+{{- $machine := .machine.id -}}
+{{- if not $machine -}}
+{{-   $machine = promptString "machine ID" -}}
+{{- end -}}
+
+diff:
+  pager: delta
+
+data:
+  user:
+    email: {{ default "bazyli.cyran@gmail.com" .user.email }}
+  machine:
+    id: {{ $machine }}
+    network:
+      wlan: {{ default "" .machine.network.wlan }}
+      eth: {{ default "" .machine.network.eth }}
+      dock: {{ default "" .machine.network.dock }}
+    dirs:
+      screenshots: {{ default "~/Obrazy/Zrzuty ekranu" .machine.dirs.screenshots | quote }}
+  settings:
+    screenlock:
+      enable: {{ hasKey .settings.screenlock "enable" | ternary .settings.screenlock.enable true }}
