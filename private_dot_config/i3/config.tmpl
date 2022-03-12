@@ -321,10 +321,10 @@ exec_always --no-startup-id xset -b
 # Setup xrandr
 exec_always --no-startup-id autorandr -cf
 
-{{ if .settings.screenlock.enable }}
+{{- if .settings.screenlock.enable }}
 # Enable auto screen locker
-# exec --no-startup-id ~/bin/autolock
-{{ end }}
+exec --no-startup-id ~/bin/autolock
+{{- end }}
 
 # Run xbanish
 exec --no-startup-id xbanish
@@ -348,7 +348,7 @@ exec keepassxc
 exec alacritty --class "workspace"
 
 # Other apps
-{{ if eq .machine.id "home" }}
+{{- if eq .machine.id "home" }}
 exec thunderbird
-{{ end }}
+{{- end }}
 exec sh -c "sleep 3 && megasync"

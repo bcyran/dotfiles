@@ -77,11 +77,11 @@ monitor = ${env:MONITOR:}
 
 modules-left = i3 xwindow
 modules-center = date
-{{ if eq .machine.id "work" }}
+{{- if eq .machine.id "work" }}
 modules-right = mpris vpn updates redshift backlight pulseaudio bluetooth wlan eth ethdock battery
-{{ else }}
+{{- else }}
 modules-right = mpris updates redshift backlight pulseaudio bluetooth wlan eth ethdock battery
-{{ end }}
+{{- end }}
 
 tray-position = right
 tray-padding = 2
@@ -103,7 +103,7 @@ index-sort = true
 enable-scroll = false
 
 ; Icons
-{{ if eq .machine.id "work" }}
+{{- if eq .machine.id "work" }}
 ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;
@@ -115,7 +115,7 @@ ws-icon-7 = 8;
 ws-icon-8 = 9;
 ws-icon-9 = 10;
 ws-icon-default = 
-{{ else }}
+{{- else }}
 ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;
@@ -127,7 +127,7 @@ ws-icon-7 = 8;
 ws-icon-8 = 9;
 ws-icon-9 = 10;
 ws-icon-default = 
-{{ end }}
+{{- end }}
 
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
