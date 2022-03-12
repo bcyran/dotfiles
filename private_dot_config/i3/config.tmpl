@@ -348,5 +348,7 @@ exec keepassxc
 exec alacritty --class "workspace"
 
 # Other apps
+{{ if eq .machine.id "home" }}
 exec thunderbird
+{{ end }}
 exec sh -c "sleep 3 && megasync"
