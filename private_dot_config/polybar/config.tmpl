@@ -199,7 +199,7 @@ label =  %output%
 [module/wlan]
 type = internal/network
 interval = 3.0
-interface = wlp0s20f3
+interface = {{ .machine.network.wlan }}
 
 label-connected =  %signal%% %essid%
 format-disconnected =
@@ -207,7 +207,7 @@ format-disconnected =
 [module/eth]
 type = internal/network
 interval = 3.0
-interface = enp4s0
+interface = {{ .machine.network.eth }}
 
 label-connected =  eth
 format-disconnected =
@@ -215,7 +215,7 @@ format-disconnected =
 [module/ethdock]
 type = internal/network
 interval = 3.0
-interface = enp10s0u2u1u2
+interface = {{ .machine.network.dock }}
 
 label-connected =  dock
 format-disconnected =
