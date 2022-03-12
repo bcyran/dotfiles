@@ -1,0 +1,4 @@
+.local/lib/delta/themes.gitconfig:
+  type: file
+  url: https://raw.githubusercontent.com/dandavison/delta/master/themes.gitconfig
+  refreshPeriod: "168h"
