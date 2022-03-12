@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+wall_dir="$HOME/Obrazy/Tapety/"
+wall_ext="jpg"
+symlink_name="wallpaper"
+symlink_path="$wall_dir/$symlink_name.$wall_ext"
+set_command="feh --bg-fill $symlink_path"
+
+if [ ! -z "$1" ]; then
+	path="$wall_dir/$1.$wall_ext"
+	if [ -f $path ]; then
+		rm -f "$symlink_path"
+		ln -s "$path" "$symlink_path"
+		echo "Wallpaper '$1' set."
+	else
+		echo "Wallpaper '$1' does not exist."
+	fi
+fi
+
+eval "$set_command"

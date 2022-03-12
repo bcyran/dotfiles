@@ -1,0 +1,25 @@
+configuration {
+    case-sensitive: false;
+    cycle: false;
+}
+
+@import "base"
+
+* {
+    accent: #e5c07b;
+    pad: 2px;
+}
+
+window {
+    width: 8em;
+    location: north east;
+    anchor: north east;
+    margin: 70px 20px 0 0;
+}
+
+listview {
+    columns: 1;
+    lines: 6;
+}
+
+// vim:ft=css

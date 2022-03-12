@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+# Note that this requires i3lock-color for of i3lock:
+# https://github.com/PandorasFox/i3lock-color
+
+E='#00000000'   # just opacity
+B='#282c34dd'   # background
+C='#282c34dd'   # inside
+D='#61afefff'   # default
+T='#abb2bfff'   # text
+W='#e06c75ff'   # wrong
+V='#e5c07bff'   # verifying
+FONT='Roboto Condensed'
+
+i3lock \
+    --insidever-color=$C     \
+    --ringver-color=$V       \
+    \
+    --insidewrong-color=$C   \
+    --ringwrong-color=$W     \
+    \
+    --inside-color=$B        \
+    --ring-color=$D          \
+    --line-color=$B          \
+    --separator-color=$D     \
+    \
+    --verif-color=$T         \
+    --wrong-color=$T         \
+    --time-color=$T          \
+    --date-color=$T          \
+    --keyhl-color=$V         \
+    --bshl-color=$W          \
+    --line-uses-inside      \
+    \
+    --time-font="$FONT"     \
+    --date-font="$FONT"     \
+    --verif-font="$FONT"    \
+    --wrong-font="$FONT"    \
+    --time-size=40           \
+    --date-size=20           \
+    --verif-size=35          \
+    --wrong-size=35          \
+    \
+    --screen 1              \
+    --blur 5                \
+    --clock                 \
+    --indicator             \
+    --time-str="%H:%M"       \
+    --date-str="%-d %B"      \
+    "$@" # Mainly for passing `--nofork` when needed

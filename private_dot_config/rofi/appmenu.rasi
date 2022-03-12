@@ -1,0 +1,14 @@
+configuration {
+    modi: "drun";
+    show-icons: true;
+    icon-theme: "Paper";
+    drun-display-format: "{name}";
+    case-sensitive: false;
+    cycle: false;
+    auto-select: false;
+    display-drun: "Applications";
+}
+
+@import "base"
+
+// vim:ft=css

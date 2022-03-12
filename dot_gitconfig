@@ -1,0 +1,46 @@
+[user]
+    email = bazyli.cyran@gmail.com
+    name = Bazyli Cyran
+    signingkey = 93DCA98548AD35EBDDEC44E85B94D1C37EEA263B
+[core]
+    editor = nvim
+    excludesfile = ~/.gitignore
+    pager = delta
+[include]
+    path = ~/.local/lib/delta/themes.gitconfig
+[interactive]
+    diffFilter = delta --color-only
+[merge]
+    conflictstyle = diff3
+[delta]
+    features = zebra-dark
+    syntax-theme = "TwoDark"
+    navigate = true
+    line-numbers = false
+    side-by-side = false
+[diff]
+    colorMoved = default
+[alias]
+    st = status
+    co = checkout
+    cob = checkout -b
+    sw = switch
+    swc = switch -c
+    br = branch
+    aa = add --all
+    rh = reset HEAD
+    rh1 = reset HEAD~1
+    cm = commit
+    cmm = commit -m
+    cma = commit --amend
+    cmane = commit --amend --no-edit
+    l = log --oneline -10
+    df = diff
+    dfc = diff --cached
+    pf = push --force-with-lease
+    prom = pull --rebase origin master
+    ria = rebase -i --autosquash
+    r = restore
+    rs = restore --staged
+[pull]
+    ff = only

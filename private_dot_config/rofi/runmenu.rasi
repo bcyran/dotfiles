@@ -1,0 +1,18 @@
+configuration {
+    modi: "run";
+    show-icons: false;
+    drun-display-format: "{name}";
+    case-sensitive: false;
+    cycle: false;
+    auto-select: false;
+    display-run: "Run";
+}
+
+@import "base"
+
+listview {
+    columns: 1;
+    lines: 5;
+}
+
+// vim:ft=css
