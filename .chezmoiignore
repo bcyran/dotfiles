@@ -1,5 +1,18 @@
-{{ if eq .machine.id "work" }}
+{{- if eq .machine.id "work" }}
 .config/nvim/coc-settings.home.json
-{{ else }}
+{{- else }}
 .config/nvim/coc-settings.work.json
-{{ end }}
+{{- end }}
+
+{{- if not .settings.gui }}
+.config/alacritty
+.config/autorandr
+.config/dunst
+.config/i3
+.config/oomox
+.config/picom.conf
+.config/polybar
+.config/redshift
+.config/rofi
+.config/zathura
+{{- end}}

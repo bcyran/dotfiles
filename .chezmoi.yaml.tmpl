@@ -2,6 +2,10 @@
 {{- if not $machine -}}
 {{-   $machine = promptString "machine ID" -}}
 {{- end -}}
+{{- $gui := .settings.gui -}}
+{{- if not $gui -}}
+{{-   $gui = promptBool "using GUI" -}}
+{{- end -}}
 
 diff:
   pager: delta
@@ -15,8 +19,9 @@ data:
       wlan: {{ default "" .machine.network.wlan }}
       eth: {{ default "" .machine.network.eth }}
       dock: {{ default "" .machine.network.dock }}
-    dirs:
-      screenshots: {{ default "~/Obrazy/Zrzuty ekranu" .machine.dirs.screenshots | quote }}
   settings:
+    gui: {{ $gui }}
     screenlock:
       enable: {{ hasKey .settings.screenlock "enable" | ternary .settings.screenlock.enable true }}
+    dirs:
+      screenshots: {{ default "~/Obrazy/Zrzuty ekranu" .machine.dirs.screenshots | quote }}

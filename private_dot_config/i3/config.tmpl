@@ -267,8 +267,8 @@ bindsym ctrl+space exec dunstctl close
 bindsym ctrl+Escape exec dunstctl history-pop
 
 # Screenshot
-bindsym $mod+equal exec flameshot screen -p {{ .machine.dirs.screenshots | quote }}
-bindsym $mod+ctrl+equal exec flameshot gui -p {{ .machine.dirs.screenshots | quote }}
+bindsym $mod+equal exec flameshot screen -p {{ .settings.dirs.screenshots | quote }}
+bindsym $mod+ctrl+equal exec flameshot gui -p {{ .settings.dirs.screenshots | quote }}
 
 # Firefox
 bindsym $mod+y exec firefox
