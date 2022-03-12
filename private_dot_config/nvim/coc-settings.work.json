@@ -1,0 +1,19 @@
+{
+    "diagnostic.errorSign": "•",
+    "diagnostic.warningSign": "•",
+    "diagnostic.infoSign": "•",
+    "diagnostic.hintSign": "•",
+    "python.analysis.typeCheckingMode": "off",
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.mypyArgs": [
+        "--no-warn-unused-ignores"
+    ],
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "-l 100"
+    ],
+    "python.venvPath": "/home/bazyli/.virtualenvs",
+    "yaml.format.enable": true
+}

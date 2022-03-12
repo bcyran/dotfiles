@@ -1,0 +1,5 @@
+{{ if eq .machine.id "work" }}
+.config/nvim/coc-settings.home.json
+{{ else }}
+.config/nvim/coc-settings.work.json
+{{ end }}
