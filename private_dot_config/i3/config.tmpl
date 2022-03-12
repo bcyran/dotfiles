@@ -317,6 +317,8 @@ no_focus [title="Microsoft Teams Notification"]
 
 # Disable bell sound
 exec_always --no-startup-id xset -b
+# Key repeat rate
+exec_always --no-startup-id xset r rate 300 60
 
 # Setup xrandr
 exec_always --no-startup-id autorandr -cf
