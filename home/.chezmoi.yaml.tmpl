@@ -12,13 +12,13 @@ diff:
 
 data:
   user:
-    email: {{ default "bazyli.cyran@gmail.com" .user.email }}
+    email: {{ default "bazyli.cyran@gmail.com" .user.email | quote }}
   machine:
-    id: {{ $machine }}
+    id: {{ $machine | quote }}
     network:
-      wlan: {{ default "" .machine.network.wlan }}
-      eth: {{ default "" .machine.network.eth }}
-      dock: {{ default "" .machine.network.dock }}
+      wlan: {{ default "" .machine.network.wlan | quote }}
+      eth: {{ default "" .machine.network.eth | quote }}
+      dock: {{ default "" .machine.network.dock | quote }}
   settings:
     gui: {{ $gui }}
     screenlock:
