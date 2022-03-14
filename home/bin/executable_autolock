@@ -8,12 +8,12 @@ notifier="notify-send \
 
 xautolock \
     -detectsleep \
-    -time 20 \
-    -locker "$locker" \
+    -time "${PRIV_SCREENLOCK_TIME:-30}" \
+    -locker "${locker}" \
     -corners "+-00" \
     -cornerdelay 15 \
     -cornersize 10 \
     -notify 10 \
-    -notifier "$notifier" \
+    -notifier "${notifier}" \
     -killtime 30 \
     -killer "systemctl suspend"
