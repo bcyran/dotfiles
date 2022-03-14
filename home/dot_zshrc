@@ -36,8 +36,10 @@ zstyle ':completion:*' menu select # select completions with arrow keys
 [ -f ~/.aliases ] && source ~/.aliases
 
 # Load antibody plugins and settings
-source <(antibody init)
-antibody bundle < ~/.zsh/plugins.txt
+if [ ! -f ~/.zsh_plugins.sh ]; then
+    ~/.zsh/antibody-install.sh
+fi
+source ~/.zsh_plugins.sh
 source ~/.zsh/plugins-conf.zsh
 
 # Dynamic window title
