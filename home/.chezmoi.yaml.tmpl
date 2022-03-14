@@ -26,5 +26,8 @@ data:
     gui: {{ $gui }}
     screenlock:
       enable: {{ hasKey .settings.screenlock "enable" | ternary .settings.screenlock.enable true }}
+      time: {{ default 30 .settings.screenlock.time }}
     dirs:
-      screenshots: {{ default "~/Obrazy/Zrzuty ekranu" .machine.dirs.screenshots | quote }}
+      code: {{ default "~/Kod" .settings.dirs.code | quote }}
+      screenshots: {{ default "~/Obrazy/Zrzuty ekranu" .settings.dirs.screenshots | quote }}
+      wallpapers: {{ default "~/Obrazy/Tapety" .settings.dirs.wallpapers | quote }}
