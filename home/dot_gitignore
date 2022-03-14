@@ -1,0 +1,3 @@
+local  # for keeping some random stuff in project dirs without cluttering git
+.venv
+Session.vim
