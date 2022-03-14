@@ -5,6 +5,7 @@
 {{- end }}
 
 {{- if not .settings.gui }}
+.xinitrc
 .config/alacritty
 .config/autorandr
 .config/dunst
