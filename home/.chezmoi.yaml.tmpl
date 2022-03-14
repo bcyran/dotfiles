@@ -11,7 +11,7 @@ diff:
   pager: delta
 merge:
   command: nvim
-  args: ["-d", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
+  args: ["-d", "{{`{{ .Destination }}`}}", "{{`{{ .Source }}`}}", "{{`{{ .Target }}`}}"]
 
 data:
   user:
