@@ -41,3 +41,10 @@ export PRIV_SCREENLOCK_TIME="{{ .settings.screenlock.time }}"
 if [ -f ~/.profile_local ]; then
     source ~/.profile_local
 fi
+
+{{- if .settings.gui }}
+# Start X at login
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+    exec startx -- vt1 &> /dev/null
+fi
+{{- end}}
