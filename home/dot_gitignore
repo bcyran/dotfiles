@@ -1,3 +1,10 @@
-local  # for keeping some random stuff in project dirs without cluttering git
+# for keeping some random stuff in project dirs without cluttering git
+local
+
+# Python
 .venv
+*.egg-info
+
+# Vim
 Session.vim
+.vim
