@@ -282,7 +282,7 @@ bindsym $mod+n exec thunar
 
 # Assign Spotify to workspace 10
 assign [class="Spotify"] $ws10
-for_window [class="Spotify"] move to workspace $ws10
+for_window [class="Spotify"] move --no-auto-back-and-forth to workspace $ws10
 
 # Office like stuff in workspace 9, tabbed layout
 assign [class="Thunderbird"] $ws9
