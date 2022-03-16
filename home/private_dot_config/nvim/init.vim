@@ -32,6 +32,7 @@ Plug 'tpope/vim-surround'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'moll/vim-bbye'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'abecodes/tabout.nvim'
 
 " Syntax parsing
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -418,6 +419,10 @@ ts.setup {
 }
 EOF
 
+" tabout.nvim
+lua <<EOF
+require('tabout').setup()
+EOF
 
 " }}}
 
