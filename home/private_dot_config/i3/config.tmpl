@@ -317,6 +317,9 @@ no_focus [title="Microsoft Teams Notification"]
 # Setup xrandr
 exec_always --no-startup-id autorandr -cf
 
+# Autotiling
+exec_always --no-startup-id autotiling
+
 {{- if .settings.screenlock.enable }}
 # Enable auto screen locker
 exec --no-startup-id ~/bin/autolock
