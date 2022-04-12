@@ -268,7 +268,6 @@ nnoremap <silent> <Leader>af :Format<Cr>
 " {{{
 
 " File tree sidebar (nvim-tree.lua)
-let g:nvim_tree_indent_markers = 1
 let g:nvim_tree_git_hl = 1
 let g:nvim_tree_highlight_opened_files = 1
 let g:nvim_tree_group_empty = 1
@@ -292,6 +291,11 @@ require('nvim-tree').setup({
     filters = {
         dotfiles = false,
         custom = { '.git', 'node_modules', 'venv', '__pycache__' }
+    },
+    renderer = {
+        indent_markers = {
+            enable = true,
+        }
     }
 })
 EOF
@@ -398,7 +402,7 @@ let g:tex_flavor = 'latex'
 lua <<EOF
 local ts = require 'nvim-treesitter.configs'
 ts.setup {
-    ensure_installed = 'maintained',
+    ensure_installed = 'all',
     highlight = { enable = true },
     indent = { enable = fales },
     refactor = {
