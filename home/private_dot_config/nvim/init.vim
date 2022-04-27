@@ -286,7 +286,11 @@ require('nvim-tree').setup({
     },
     view = {
         width = 40,
-        auto_resize = true,
+    },
+    actions = {
+        open_file = {
+            resize_window = true,
+        },
     },
     filters = {
         dotfiles = false,
@@ -295,8 +299,8 @@ require('nvim-tree').setup({
     renderer = {
         indent_markers = {
             enable = true,
-        }
-    }
+        },
+    },
 })
 EOF
 
