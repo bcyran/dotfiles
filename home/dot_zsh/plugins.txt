@@ -1,4 +1,5 @@
 robbyrussell/oh-my-zsh path:plugins/autojump
+jeffreytse/zsh-vi-mode
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
 zsh-users/zsh-completions

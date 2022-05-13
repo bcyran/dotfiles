@@ -41,7 +41,10 @@ if [ ! -f ~/.zsh_plugins.sh ]; then
     ~/.zsh/antibody-install.sh
 fi
 source ~/.zsh_plugins.sh
-source ~/.zsh/plugins-conf.zsh
+# Load all plugins settings after zsh_vi_mode to override
+function zvm_after_init() {
+    source ~/.zsh/plugins-conf.zsh
+}
 
 # Dynamic window title
 case $TERM in
