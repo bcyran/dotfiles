@@ -268,16 +268,6 @@ nnoremap <silent> <Leader>af :Format<Cr>
 " {{{
 
 " File tree sidebar (nvim-tree.lua)
-let g:nvim_tree_git_hl = 1
-let g:nvim_tree_highlight_opened_files = 1
-let g:nvim_tree_group_empty = 1
-let g:nvim_tree_show_icons = {
-    \ 'git': 0,
-    \ 'folders': 1,
-    \ 'files': 1,
-    \ 'folder_arrows': 1,
-    \ }
-
 lua <<EOF
 require('nvim-tree').setup({
     update_cwd = true,
@@ -300,6 +290,16 @@ require('nvim-tree').setup({
         indent_markers = {
             enable = true,
         },
+        icons = {
+            git = false,
+            folders = true,
+            files = true,
+            folder_arrows = true,
+            git = false,
+        },
+        highlight_opened_files = 1,
+        highlight_git = true,
+        group_empty = true,
     },
 })
 EOF
