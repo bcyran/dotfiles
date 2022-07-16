@@ -1,12 +1,3 @@
-{{- $machine := .machine.id -}}
-{{- if not $machine -}}
-{{-   $machine = promptString "machine ID" -}}
-{{- end -}}
-{{- $gui := .settings.gui -}}
-{{- if not $gui -}}
-{{-   $gui = promptBool "using GUI" -}}
-{{- end -}}
-
 diff:
   pager: delta
 merge:
@@ -17,13 +8,13 @@ data:
   user:
     email: {{ default "bazyli.cyran@gmail.com" .user.email | quote }}
   machine:
-    id: {{ $machine | quote }}
+    id: {{ default "home" .machine.id | quote }}
     network:
       wlan: {{ default "" .machine.network.wlan | quote }}
       eth: {{ default "" .machine.network.eth | quote }}
       dock: {{ default "" .machine.network.dock | quote }}
   settings:
-    gui: {{ $gui }}
+    gui: {{ default false .settings.gui }}
     screenlock:
       enable: {{ hasKey .settings.screenlock "enable" | ternary .settings.screenlock.enable true }}
       time: {{ default 30 .settings.screenlock.time }}
