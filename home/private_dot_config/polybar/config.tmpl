@@ -79,6 +79,8 @@ modules-left = i3 xwindow
 modules-center = date
 {{- if eq .machine.id "work" }}
 modules-right = mpris vpn updates redshift backlight pulseaudio bluetooth wlan eth ethdock battery
+{{- else if eq .machine.id "vm" }}
+modules-right = mpris updates redshift pulseaudio bluetooth eth
 {{- else }}
 modules-right = mpris updates redshift backlight pulseaudio bluetooth wlan eth ethdock battery
 {{- end }}
