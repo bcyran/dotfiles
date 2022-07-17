@@ -128,6 +128,7 @@ opacity-rule = [
 # Blur background of opaque windows with transparent frames as well.
 # blur-background-frame = true;
 # Do not let blur radius adjust based on window opacity.
+{{- if ne .machine.id "vm" }}
 blur-background-fixed = false;
 blur-background-exclude = [
     "window_type = 'dock'",
@@ -144,6 +145,7 @@ blur: {
   background-frame = false;
   background-fixed = false;
 }
+{{- end }}
 
 
 #################################
@@ -203,7 +205,11 @@ detect-client-opacity = true;
 refresh-rate = 0;
 
 # Vertical synchronization: match the refresh rate of the monitor
+{{- if eq .machine.id "vm" }}
+vsync = false;
+{{- else }}
 vsync = true;
+{{- end }}
 
 # Enable DBE painting mode, intended to use with VSync to (hopefully) eliminate tearing.
 # Reported to have no effect, though.
