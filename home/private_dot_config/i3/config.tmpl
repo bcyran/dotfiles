@@ -122,9 +122,9 @@ set $ws9 "9"
 set $ws10 "10"
 
 # Define display names
-set $d1 "DP1-2"
-set $d2 "DP1-3"
-set $d3 "eDP1"
+set $d1 "DP-1-2"
+set $d2 "DP-1-3"
+set $d3 "eDP-1"
 
 # Assign workspaces to displays
 workspace $ws1 output $d1
@@ -315,7 +315,7 @@ no_focus [title="Microsoft Teams Notification"]
 ###############################################################################
 
 # Setup xrandr
-exec_always --no-startup-id autorandr -cf
+exec_always --no-startup-id "sleep 1 && autorandr -cf"
 
 # Autotiling
 exec_always --no-startup-id autotiling
