@@ -16,5 +16,6 @@
     ],
     "pyright.organizeimports.provider": "isort",
     "python.venvPath": "/home/bazyli/.virtualenvs",
-    "yaml.format.enable": true
+    "yaml.format.enable": true,
+    "suggest.noselect": true
 }

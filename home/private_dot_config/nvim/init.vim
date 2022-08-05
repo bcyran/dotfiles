@@ -235,6 +235,12 @@ nnoremap <Leader>f <cmd>Telescope find_files<cr>
 nnoremap <Leader>g <cmd>Telescope live_grep<cr>
 
 " coc.nvim bindings
+inoremap <silent><expr> <C-n> coc#pum#visible() ? coc#pum#next(1) : "\<C-n>"
+inoremap <silent><expr> <C-p> coc#pum#visible() ? coc#pum#prev(1) : "\<C-p>"
+inoremap <silent><expr> <down> coc#pum#visible() ? coc#pum#next(0) : "\<down>"
+inoremap <silent><expr> <up> coc#pum#visible() ? coc#pum#prev(0) : "\<up>"
+inoremap <silent><expr> <C-e> coc#pum#visible() ? coc#pum#cancel() : "\<C-e>"
+inoremap <silent><expr> <C-y> coc#pum#visible() ? coc#pum#confirm() : "\<C-y>"
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -243,7 +249,6 @@ nmap <silent> cr <Plug>(coc-rename)
 nmap <silent> gh :call <SID>ShowDocumentation()<CR>
 nmap <silent> [e <Plug>(coc-diagnostic-prev)
 nmap <silent> ]e <Plug>(coc-diagnostic-next)
-inoremap <silent><expr> <C-n> pumvisible() ? "\<C-n>" : coc#refresh()
 command! -nargs=0 Format :call CocAction('format')
 command! -nargs=0 Or :call CocAction('runCommand', 'editor.action.organizeImport')
 " Remap <C-f> and <C-b> for scroll float windows/popups.
