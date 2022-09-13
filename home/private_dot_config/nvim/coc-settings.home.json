@@ -50,7 +50,10 @@
                 "--format",
                 "json",
                 "--enable",
-                "avoid-nullary-conditions,require-variable-braces",
+                "avoid-nullary-conditions,require-variable-braces,require-double-brackets",
+                "--exclude",
+                "SC1091",
+                "--external-sources",
                 "-"
             ],
             "sourceName": "shellcheck",
