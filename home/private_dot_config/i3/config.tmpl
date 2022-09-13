@@ -285,13 +285,14 @@ assign [class="Spotify"] $ws10
 for_window [class="Spotify"] move --no-auto-back-and-forth to workspace $ws10
 
 # Office like stuff in workspace 9, tabbed layout
-assign [class="Thunderbird"] $ws9
+assign [class="thunderbird"] $ws9
 
 # Floating windows
 for_window [class="KeePassXC"] floating enable, \
     resize set 1000 700, move position center
 for_window [class="gnome-calculator"] floating enable
 for_window [class="MEGAsync"] floating enable, border pixel 0
+for_window [title="PhilipsTV GUI"] floating enable
 
 # MS Teams notifications
 for_window [title="Microsoft Teams Notification"] floating enable
