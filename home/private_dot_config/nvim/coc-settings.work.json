@@ -15,6 +15,7 @@
         "-l 100"
     ],
     "pyright.organizeimports.provider": "isort",
+    "pyright.inlayHints.enable": false,
     "python.venvPath": "/home/bazyli/.virtualenvs",
     "yaml.format.enable": true,
     "suggest.noselect": true
