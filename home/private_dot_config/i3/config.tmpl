@@ -120,6 +120,7 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+set $ws11 "11"
 
 # Define display names
 set $d1 "DP-1-2"
@@ -135,8 +136,9 @@ workspace $ws5 output $d2
 workspace $ws6 output $d2
 workspace $ws7 output $d2
 workspace $ws8 output $d3
-workspace $ws9 output $d1
-workspace $ws10 output $d1
+workspace $ws9 output $d3
+workspace $ws10 output $d3
+workspace $ws11 output $d1
 
 # Switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -149,6 +151,7 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
+bindsym $mod+minus workspace $ws11
 
 # Switch to display
 bindsym $mod+u focus output left
@@ -168,6 +171,7 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+minus move container to workspace $ws11
 
 # Enable workspace back-and-forth
 workspace_auto_back_and_forth yes
@@ -284,8 +288,8 @@ bindsym $mod+n exec thunar
 assign [class="Spotify"] $ws10
 for_window [class="Spotify"] move --no-auto-back-and-forth to workspace $ws10
 
-# Office like stuff in workspace 9, tabbed layout
-assign [class="thunderbird"] $ws9
+# Office like stuff in workspace 11, tabbed layout
+assign [class="thunderbird"] $ws11
 
 # Floating windows
 for_window [class="KeePassXC"] floating enable, \
@@ -351,4 +355,5 @@ exec alacritty --class terminal-workspace
 {{- if eq .machine.id "home" }}
 exec thunderbird
 {{- end }}
+exec spotify
 exec sh -c "sleep 3 && megasync"
