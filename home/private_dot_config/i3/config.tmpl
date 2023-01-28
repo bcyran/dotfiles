@@ -231,7 +231,7 @@ bindsym $mod+ctrl+space exec --no-startup-id \
     rofi -no-lazy-grab -show run -config ~/.config/rofi/runmenu.rasi
 
 # Floating terminal
-bindsym $mod+shift+Return exec alacritty --class "floating"
+bindsym $mod+shift+Return exec alacritty --class terminal-floating
 
 # Toggle window transparency
 bindsym $mod+shift+t exec --no-startup-id \
@@ -299,11 +299,11 @@ for_window [title="Microsoft Teams Notification"] floating enable
 no_focus [title="Microsoft Teams Notification"]
 
 # Floating terminal
-for_window [class="Alacritty" instance="floating"] floating enable, \
+for_window [instance="terminal-floating"] floating enable, \
     resize set 800 500, move position center
 
 # Always have a terminal on secod workspace
-assign [class="Alacritty" instance="workspace"] $ws2
+assign [instance="terminal-workspace"] $ws2
 
 # MS Teams notifications
 for_window [title="Microsoft Teams Notification" class="microsoft teams - preview"] floating enable
@@ -345,7 +345,7 @@ exec --no-startup-id flameshot
 exec keepassxc
 
 # Launch terminal on second workspace
-exec alacritty --class "workspace"
+exec alacritty --class terminal-workspace
 
 # Other apps
 {{- if eq .machine.id "home" }}
