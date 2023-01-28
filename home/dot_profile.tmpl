@@ -37,6 +37,11 @@ export PRIV_SCREENSHOTS_DIR="{{ .settings.dirs.screenshots }}"
 export PRIV_WALLPAPERS_DIR="{{ .settings.dirs.wallpapers }}"
 export PRIV_SCREENLOCK_TIME="{{ .settings.screenlock.time }}"
 
+# Go env
+export GOPATH=${PRIV_CODE_DIR}/go
+export PATH=${PATH}:/usr/local/go/bin
+export PATH=${PATH}:${GOPATH}/bin
+
 # Load local profile
 if [ -f ~/.profile_local ]; then
     source ~/.profile_local
