@@ -15,6 +15,7 @@ data:
       dock: {{ default "" .machine.network.dock | quote }}
   settings:
     gui: {{ default false .settings.gui }}
+    timewall: {{ default false .settings.timewall }}
     screenlock:
       enable: {{ hasKey .settings.screenlock "enable" | ternary .settings.screenlock.enable true }}
       time: {{ default 30 .settings.screenlock.time }}

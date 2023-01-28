@@ -342,6 +342,11 @@ exec --no-startup-id redshift
 # Dunst
 exec --no-startup-id dunst
 
+{{- if .settings.timewall }}
+# Start dynamic wallpaper daemon
+exec --no-startup-id timewall set --daemon
+{{ end }}
+
 # Flameshot
 exec --no-startup-id flameshot
 
