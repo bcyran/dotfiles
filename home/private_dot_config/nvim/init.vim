@@ -77,6 +77,7 @@ set completeopt-=preview
 set scrolloff=5
 set shortmess+=c
 set title
+set laststatus=3
 
 " Indentation
 set tabstop=4
@@ -100,6 +101,7 @@ if has('termguicolors')
     set termguicolors
 endif
 colorscheme onedark
+hi CocInlayHint guifg=#5c6370
 
 " Searching
 set incsearch
@@ -289,7 +291,7 @@ require('nvim-tree').setup({
     },
     filters = {
         dotfiles = false,
-        custom = { '.git', 'node_modules', 'venv', '__pycache__' }
+        custom = { '^\\.git$', 'node_modules', 'venv', '__pycache__' }
     },
     renderer = {
         indent_markers = {
@@ -320,7 +322,6 @@ lua <<EOF
 require('lualine').setup({
     options = {
         theme = 'onedark',
-        disabled_filetypes = { 'NvimTree' },
     },
     sections = {
         lualine_a = {
