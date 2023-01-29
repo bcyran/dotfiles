@@ -78,11 +78,11 @@ monitor = ${env:MONITOR:}
 modules-left = i3 xwindow
 modules-center = date
 {{- if eq .machine.id "work" }}
-modules-right = mpris vpn updates redshift backlight pulseaudio bluetooth wlan eth battery
+modules-right = mpris vpn updates redshift bluetooth backlight pulseaudio wlan eth battery
 {{- else if eq .machine.id "vm" }}
-modules-right = mpris updates redshift pulseaudio bluetooth eth
+modules-right = mpris updates redshift bluetooth pulseaudio eth
 {{- else }}
-modules-right = mpris philipstv updates redshift backlight pulseaudio bluetooth wlan eth battery
+modules-right = mpris philipstv updates redshift bluetooth backlight pulseaudio wlan eth battery
 {{- end }}
 
 tray-position = right
