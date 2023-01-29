@@ -82,7 +82,7 @@ modules-right = mpris vpn updates redshift backlight pulseaudio bluetooth wlan e
 {{- else if eq .machine.id "vm" }}
 modules-right = mpris updates redshift pulseaudio bluetooth eth
 {{- else }}
-modules-right = mpris updates redshift backlight pulseaudio bluetooth wlan eth ethdock battery
+modules-right = mpris philipstv updates redshift backlight pulseaudio bluetooth wlan eth ethdock battery
 {{- end }}
 
 tray-position = right
@@ -177,6 +177,18 @@ type = custom/script
 interval = 600
 exec = ~/.config/polybar/modules/updates.sh
 label =  %output%
+
+[module/philipstv]
+type = custom/script
+interval = 60
+exec = ~/.config/polybar/modules/philipstv.sh
+label =  %output%
+click-left = philipstv key pause
+click-right = philipstv key play
+click-middle = philipstv key mute
+scroll-up = philipstv key volup
+scroll-down = philipstv key voldown
+double-click-left = philipstv-gui
 
 [module/redshift]
 type = custom/script
