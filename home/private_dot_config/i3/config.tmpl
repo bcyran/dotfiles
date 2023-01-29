@@ -357,8 +357,10 @@ exec keepassxc
 exec alacritty --class terminal-workspace
 
 # Other apps
-{{- if eq .machine.id "home" }}
-exec thunderbird
-{{- end }}
 exec spotify
 exec sh -c "sleep 3 && megasync"
+
+{{- if eq .machine.id "home" }}
+exec thunderbird
+exec --no-startup-id ~/bin/interrupttv
+{{- end }}
