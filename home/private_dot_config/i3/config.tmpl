@@ -210,9 +210,6 @@ smart_borders no_gaps
 # CUSTOM BINDINGS
 ###############################################################################
 
-# Locking command
-set $locker xautolock -locknow
-
 # Refresh status bar command
 set $refresh-status ""
 
@@ -325,10 +322,10 @@ exec_always --no-startup-id "sleep 1 && autorandr -cf"
 # Autotiling
 exec_always --no-startup-id autotiling
 
-{{- if .settings.screenlock.enable }}
+{{- if .settings.autolock.enable }}
 # Enable auto screen locker
-exec --no-startup-id ~/bin/autolock
-{{- end }}
+exec --no-startup-id ~/bin/autolock {{ .settings.autolock.time }}
+{{ end }}
 
 # Run xbanish
 exec --no-startup-id xbanish

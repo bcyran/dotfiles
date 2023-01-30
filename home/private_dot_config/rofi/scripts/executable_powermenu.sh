@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
+locker='lock'
+
 opts=(Lock Logout Poweroff Suspend Hibernate Reboot)
 
 cmd="rofi -no-lazy-grab -dmenu -i -p System -config ~/.config/rofi/powermenu.rasi"
 
 choice=$(printf '%s\n' "${opts[@]}" | $cmd)
 case "$choice" in
-    Lock) xautolock -locknow ;;
+    Lock) ${locker} ;;
     Logout) i3-msg exit ;;
     Poweroff) systemctl -i poweroff ;;
-    Suspend) xautolock -locknow && systemctl suspend ;;
+    Suspend) ${locker} && systemctl suspend ;;
     Reboot) systemctl reboot ;;
-    Hibernate) xautolock -locknow && systemctl hibernate ;;
+    Hibernate) ${locker} && systemctl hibernate ;;
 esac

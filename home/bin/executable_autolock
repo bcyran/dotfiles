@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-locker="/home/bazyli/bin/lock --nofork"
+locker="lock"
 notifier="notify-send \
     -t 8000 \
     'Screen lock' \
@@ -8,12 +8,10 @@ notifier="notify-send \
 
 xautolock \
     -detectsleep \
-    -time "${PRIV_SCREENLOCK_TIME:-30}" \
+    -time "${1:-30}" \
     -locker "${locker}" \
     -corners "+-00" \
     -cornerdelay 15 \
     -cornersize 10 \
     -notify 10 \
-    -notifier "${notifier}" \
-    -killtime 30 \
-    -killer "systemctl suspend"
+    -notifier "${notifier}"

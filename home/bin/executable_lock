@@ -1,50 +1,58 @@
 #!/usr/bin/env bash
 
-# Note that this requires i3lock-color for of i3lock:
-# https://github.com/PandorasFox/i3lock-color
+# Don't try to lock if already locked
+if pgrep -x i3lock > /dev/null; then
+    exit 1
+fi
 
-E='#00000000' # just opacity
-B='#282c34dd' # background
-C='#282c34dd' # inside
-D='#61afefff' # default
-T='#abb2bfff' # text
-W='#e06c75ff' # wrong
-V='#e5c07bff' # verifying
-FONT='Roboto Condensed'
+font='Roboto'
+bg_color='#abb2bfff'
+ring_color='#abb2bfff'
+ring_hl_color='#282c34dd'
+text_color='#282c34dd'
 
 i3lock \
-    --insidever-color=${C} \
-    --ringver-color=${V} \
-    \
-    --insidewrong-color=${C} \
-    --ringwrong-color=${W} \
-    \
-    --inside-color=${B} \
-    --ring-color=${D} \
-    --line-color=${B} \
-    --separator-color=${D} \
-    \
-    --verif-color=${T} \
-    --wrong-color=${T} \
-    --time-color=${T} \
-    --date-color=${T} \
-    --keyhl-color=${V} \
-    --bshl-color=${W} \
-    --line-uses-inside \
-    \
-    --time-font="${FONT}" \
-    --date-font="${FONT}" \
-    --verif-font="${FONT}" \
-    --wrong-font="${FONT}" \
-    --time-size=40 \
-    --date-size=20 \
-    --verif-size=35 \
-    --wrong-size=35 \
-    \
+    --pass-media-keys \
+    --pass-screen-keys \
+    --pass-volume-keys \
     --screen 1 \
-    --blur 5 \
     --clock \
     --indicator \
-    --time-str='%H:%M' \
-    --date-str='%-d %B' \
-    "$@" # Mainly for passing `--nofork` when needed
+    --ignore-empty-password \
+    --blur 5 \
+    \
+    --time-str='%H:%M:%S' \
+    --time-pos='ix:iy+15' \
+    --time-font="${font}" \
+    --time-size=50 \
+    --time-color=${text_color} \
+    \
+    --date-str='' \
+    \
+    --inside-color="${bg_color}" \
+    --insidever-color="${bg_color}" \
+    --insidewrong-color="${bg_color}" \
+    --line-uses-inside \
+    --separator-color=${bg_color} \
+    --radius=120 \
+    \
+    --ring-color="${ring_color}" \
+    --ringver-color="${ring_color}" \
+    --ringwrong-color="${ring_color}" \
+    --keyhl-color="${ring_hl_color}" \
+    --bshl-color="${ring_hl_color}" \
+    \
+    --wrong-text="wrong" \
+    --wrong-pos='ix:iy+15' \
+    --wrong-font="${font}" \
+    --wrong-size=50 \
+    --wrong-color="${text_color}" \
+    \
+    --verif-text="..." \
+    --verif-pos='ix:iy+15' \
+    --verif-font="${font}" \
+    --verif-size=50 \
+    --verif-color="${text_color}" \
+    \
+    --noinput-text='no input' \
+    "$@"
