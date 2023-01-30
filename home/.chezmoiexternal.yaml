@@ -2,3 +2,14 @@
   type: file
   url: https://raw.githubusercontent.com/dandavison/delta/master/themes.gitconfig
   refreshPeriod: "168h"
+
+.config/spicetify/Themes/OneDark:
+  type: archive
+  url: https://api.github.com/repos/Frostplexx/spicetify-one-dark/tarball
+  stripComponents: 2
+  include:
+    - '*/OneDark/**'
+
+.config/spicetify/Extensions/onedark.js:
+  type: file
+  url: https://raw.githubusercontent.com/Frostplexx/spicetify-one-dark/main/js/onedark.js
