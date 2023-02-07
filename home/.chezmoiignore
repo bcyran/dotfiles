@@ -3,6 +3,7 @@
 {{- else }}
 .config/nvim/coc-settings.work.json
 {{- end }}
+.config/nvim/spell/*.spl
 
 {{- if not .settings.gui }}
 .xinitrc
