@@ -289,6 +289,12 @@ bindsym $mod+n exec thunar
 assign [class="Spotify"] $ws10
 for_window [class="Spotify"] move --no-auto-back-and-forth to workspace $ws10
 
+# Messaging on workspace 8
+assign [class="Signal"] $ws8
+no_focus [class="Signal"]
+assign [class="Caprine"] $ws8
+no_focus [class="Caprine"]
+
 # Office like stuff in workspace 11, tabbed layout
 assign [class="thunderbird"] $ws11
 
@@ -314,6 +320,9 @@ assign [instance="terminal-workspace"] $ws2
 for_window [title="Microsoft Teams Notification" class="microsoft teams - preview"] floating enable
 for_window [title="Microsoft Teams Notification" class="Microsoft Teams - Preview"] floating enable
 no_focus [title="Microsoft Teams Notification"]
+
+# Android emulator
+for_window [title="Android Emulator"] floating enable
 
 
 ###############################################################################
@@ -359,9 +368,11 @@ exec alacritty --class terminal-workspace
 
 # Other apps
 exec spotify
-exec sh -c "sleep 3 && megasync"
+exec sh -c "sleep 10 && megasync"
 
 {{- if eq .machine.id "home" }}
 exec thunderbird
 exec --no-startup-id ~/bin/interrupttv
+exec sh -c "sleep 2 && signal-desktop"
+exec sh -c "sleep 2 && caprine"
 {{- end }}
