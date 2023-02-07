@@ -8,9 +8,9 @@
 }
 
 window {
-    width: 20em;
-    location: north west;
-    anchor: north west;
+    width: 30em;
+    location: center;
+    anchor: center;
     margin: 70px 0 0 20px;
     border: 2px solid;
     border-color: @light-background;
@@ -27,7 +27,7 @@ inputbar {
 
 listview {
     columns: 2;
-    lines: 15;
+    lines: 8;
     fixed-columns: true;
     border: 2px solid 0 0 0;
     border-color: @light-background;
