@@ -33,6 +33,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'moll/vim-bbye'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'abecodes/tabout.nvim'
+Plug 'dhruvasagar/vim-table-mode'
 
 " Syntax parsing
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -47,6 +48,7 @@ let g:polyglot_disabled=['latex']
 Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim'
 if executable('latex') | Plug 'lervag/vimtex', {'for': 'tex'}| endif
+Plug 'dart-lang/dart-vim-plugin'
 
 " Initialize plugin system
 call plug#end()
@@ -247,10 +249,15 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
-nmap <silent> cr <Plug>(coc-rename)
+nmap <silent> er <Plug>(coc-rename)
+nmap <silent> cl <Plug>(coc-codelens-action)
 nmap <silent> gh :call <SID>ShowDocumentation()<CR>
 nmap <silent> [e <Plug>(coc-diagnostic-prev)
 nmap <silent> ]e <Plug>(coc-diagnostic-next)
+nmap <silent> aa <Plug>(coc-codeaction-cursor)
+nmap <silent> ar <Plug>(coc-codeaction-refactor)
+nnoremap <silent> <Leader>cd :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <Leader>cc :<C-u>CocList commands<cr>
 command! -nargs=0 Format :call CocAction('format')
 command! -nargs=0 Or :call CocAction('runCommand', 'editor.action.organizeImport')
 " Remap <C-f> and <C-b> for scroll float windows/popups.
@@ -398,7 +405,7 @@ let g:user_emmet_leader_key=','
 " Indent blankline
 lua <<EOF
 require('indent_blankline').setup({
-    char = '¦',
+    char = '┊',
     show_trailing_blankline_indent = false,
     buftype_exclude = {'terminal', 'help'},
 })

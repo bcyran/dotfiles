@@ -7,3 +7,11 @@ timestamp
 HEIF
 timewall
 HEIC
+PKGBUILD
+SRCINFO
+pkgver
+dir
+url
+updpkgsums
+pkgrel
+PWD
