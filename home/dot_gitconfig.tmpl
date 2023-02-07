@@ -44,3 +44,7 @@
     rs = restore --staged
 [pull]
     ff = only
+{{- if eq .machine.id "home" }}
+[safe]
+	directory = /opt/flutter
+{{- end }}
