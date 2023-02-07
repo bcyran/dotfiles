@@ -231,6 +231,10 @@ bindsym $mod+shift+space exec --no-startup-id \
 bindsym $mod+ctrl+space exec --no-startup-id \
     rofi -no-lazy-grab -show run -config ~/.config/rofi/runmenu.rasi
 
+# Rofi calculator
+bindsym $mod+c exec --no-startup-id \
+    rofi -no-lazy-grab -show calc -config ~/.config/rofi/calc.rasi
+
 # Floating terminal
 bindsym $mod+shift+Return exec alacritty --class terminal-floating
 
