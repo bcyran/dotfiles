@@ -6,16 +6,19 @@
     "python.analysis.typeCheckingMode": "off",
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--ignore=E501,W503,E203"
+    ],
     "python.linting.mypyEnabled": true,
     "python.linting.mypyArgs": [
-        "--no-warn-unused-ignores"
+        "--no-warn-unused-ignores",
+        "--ignore-missing-imports",
     ],
     "python.formatting.provider": "black",
     "python.formatting.blackArgs": [
         "-l 100"
     ],
     "pyright.organizeimports.provider": "isort",
-    "pyright.inlayHints.enable": false,
     "python.venvPath": "/home/bazyli/.virtualenvs",
     "yaml.format.enable": true,
     "suggest.noselect": true

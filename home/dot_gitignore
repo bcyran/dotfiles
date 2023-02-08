@@ -1,5 +1,6 @@
 # for keeping some random stuff in project dirs without cluttering git
 local
+pyrightconfig.json
 
 # Python
 .venv

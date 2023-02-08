@@ -1,8 +1,8 @@
 # Private bin dirs
-if test -d "~/bin"
+if test -d "/home/bayzli/bin"
     fish_add_path "/home/bazyli/bin"
 end
-if test -d "~/bin/local"
+if test -d "/home/bazyli/bin/local"
     fish_add_path "/home/bazyli/bin/local"
 end
 
