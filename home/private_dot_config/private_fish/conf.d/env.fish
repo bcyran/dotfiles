@@ -27,7 +27,9 @@ set -gx DIFFPROG 'nvim -d'
 
 # Go setup
 set -gx GOPATH "$PRIV_CODE_DIR/go"
-fish_add_path $GOPATH
+if test -d "$GOPATH"
+    fish_add_path $GOPATH
+end
 
 if test -f ~/.profile_local.fish
     source ~/.profile_local.fish
