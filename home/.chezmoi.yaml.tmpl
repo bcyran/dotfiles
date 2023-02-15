@@ -20,6 +20,6 @@ data:
       enable: {{ hasKey .settings.autolock "enable" | ternary .settings.autolock.enable true }}
       time: {{ default 30 .settings.autolock.time }}
     dirs:
-      code: {{ default "~/Kod" .settings.dirs.code | quote }}
-      screenshots: {{ default "~/Obrazy/Zrzuty ekranu" .settings.dirs.screenshots | quote }}
-      wallpapers: {{ default "~/Obrazy/Tapety" .settings.dirs.wallpapers | quote }}
+      code: {{ default "$HOME/Kod" .settings.dirs.code | quote }}
+      screenshots: {{ default "$HOME/Obrazy/Zrzuty ekranu" .settings.dirs.screenshots | quote }}
+      wallpapers: {{ default "$HOME/Obrazy/Tapety" .settings.dirs.wallpapers | quote }}
