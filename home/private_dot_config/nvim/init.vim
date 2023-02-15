@@ -103,7 +103,9 @@ if has('termguicolors')
     set termguicolors
 endif
 colorscheme onedark
-hi CocInlayHint guifg=#5c6370
+highlight! CocInlayHint guifg=#5c6370
+highlight! link IndentBlanklineChar Whitespace
+highlight! IndentBlanklineContextChar guifg=#d19a66 gui=nocombine
 
 " Searching
 set incsearch
@@ -184,7 +186,7 @@ nnoremap <silent> <Leader>hl :setlocal hls!<CR>
 nnoremap <silent> <Leader>cs :let @/=''<CR>
 
 " Select all text in buffer
-nnoremap <silent> <Leader>a ggVG
+nnoremap <silent> <Leader>va ggVG
 
 " Toggle spell check
 nnoremap <silent> <Leader>sc :setlocal spell!<CR>
@@ -249,13 +251,14 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
-nmap <silent> er <Plug>(coc-rename)
-nmap <silent> cl <Plug>(coc-codelens-action)
 nmap <silent> gh :call <SID>ShowDocumentation()<CR>
-nmap <silent> [e <Plug>(coc-diagnostic-prev)
-nmap <silent> ]e <Plug>(coc-diagnostic-next)
-nmap <silent> aa <Plug>(coc-codeaction-cursor)
-nmap <silent> ar <Plug>(coc-codeaction-refactor)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> <Leader>rn <Plug>(coc-rename)
+nmap <silent> <Leader>cl <Plug>(coc-codelens-action)
+nmap <silent> <Leader>ac <Plug>(coc-codeaction-cursor)
+nmap <silent> <Leader>re <Plug>(coc-codeaction-refactor)
+nmap <silent> <Leader>qf <Plug>(coc-fix-current)
 nnoremap <silent> <Leader>cd :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <Leader>cc :<C-u>CocList commands<cr>
 command! -nargs=0 Format :call CocAction('format')
@@ -406,6 +409,7 @@ let g:user_emmet_leader_key=','
 lua <<EOF
 require('indent_blankline').setup({
     char = '┊',
+    show_current_context = true,
     show_trailing_blankline_indent = false,
     buftype_exclude = {'terminal', 'help'},
 })
