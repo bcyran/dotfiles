@@ -17,6 +17,6 @@ set -gx tide_right_prompt_items status cmd_duration context jobs node virtual_en
 # Start X at login
 if status is-login
     if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-        exec startx -- -keeptty
+        exec startx -- -keeptty &> /dev/null
     end
 end
