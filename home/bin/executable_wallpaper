@@ -1,20 +1,80 @@
 #!/usr/bin/env bash
 
-wall_dir="${PRIV_WALLPAPERS_DIR:-~/Obrazy/Screenshots}"
-wall_ext="jpg"
-symlink_name="wallpaper"
-symlink_path="${wall_dir}/${symlink_name}.${wall_ext}"
-set_command="feh --bg-fill ${symlink_path}"
+WALL_DIR="${PRIV_WALLPAPERS_DIR:-${HOME}/Obrazy/Tapety}"
+SYMLINK_PATH="${WALL_DIR}/wallpaper"
+SET_COMMAND="feh --bg-fill ${SYMLINK_PATH}"
 
-if [[ -n "$1" ]]; then
-    path="${wall_dir}/${1}.${wall_ext}"
-    if [[ -f "${path}" ]]; then
-        rm -f "${symlink_path}"
-        ln -s "${path}" "${symlink_path}"
-        echo "Wallpaper '$1' set."
-    else
-        echo "Wallpaper '$1' does not exist."
+progname="$(basename "$0")"
+readonly progname
+
+save_wallpaper() {
+    if [[ $(readlink "${SYMLINK_PATH}") != "$1" ]]; then
+        rm -f "${SYMLINK_PATH}"
+        ln -s "$1" "${SYMLINK_PATH}"
+        echo "Wallpaper saved: $(basename "$1")"
     fi
-fi
+}
 
-eval "${set_command}"
+do_set_wallpaper() {
+    if [[ -f ${SYMLINK_PATH} ]]; then
+        eval "${SET_COMMAND}"
+        echo "Wallpaper set."
+    else
+        echo "No saved wallpaper. Please specify wallpaper to set."
+        exit 1
+    fi
+}
+
+set_new_wallpaper() {
+    local candidates
+    candidates=("${WALL_DIR}/$1"*)
+
+    if [[ ${#candidates[@]} != 1 ]]; then
+        echo "Multiple candidates:"
+        for candidate in "${candidates[@]}"; do
+            echo "- $(basename "${candidate}")"
+        done
+        exit 1
+    else
+        if [[ -f ${candidates[0]} ]]; then
+            save_wallpaper "${candidates[0]}"
+            do_set_wallpaper
+        else
+            echo "No wallpapers with given prefix."
+            exit 1
+        fi
+    fi
+}
+
+try_set_wallpaper() {
+    if [[ -n $1 ]]; then
+        set_new_wallpaper "$1"
+    else
+        do_set_wallpaper
+    fi
+}
+
+print_help() {
+    echo "Usage: ${progname} [-h|--help] [wallpaper name prefix]"
+    echo "Sets the wallpaper."
+    echo "Wallpaper is searched in wallpapers directory by uniquely identifying prefix."
+    echo "If no prefix is given, last set wallpaper is used."
+}
+
+usage_err() {
+    echo "${progname}: $1" >&2
+    print_help
+    exit 1
+}
+
+arg="$1"
+readonly arg
+
+case "${arg}" in
+    -h | ?-help)
+        print_help
+        ;;
+    *)
+        try_set_wallpaper "${arg}"
+        ;;
+esac
