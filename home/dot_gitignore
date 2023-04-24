@@ -5,7 +5,11 @@ pyrightconfig.json
 # Python
 .venv
 *.egg-info
+.mypy_cache/
 
 # Vim
 Session.vim
 .vim
+
+# ripgrep
+.rgignore

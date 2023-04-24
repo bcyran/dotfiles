@@ -36,3 +36,6 @@ url
 updpkgsums
 pkgrel
 PWD
+configs
+uploader
+mutex

@@ -301,7 +301,7 @@ require('nvim-tree').setup({
     },
     filters = {
         dotfiles = false,
-        custom = { '^\\.git$', 'node_modules', 'venv', '__pycache__' }
+        custom = { '^\\.git$', 'node_modules', 'venv', '__pycache__', '^\\.mypy_cache$' }
     },
     renderer = {
         indent_markers = {
