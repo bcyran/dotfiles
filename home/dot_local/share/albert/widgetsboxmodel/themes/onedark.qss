@@ -1,0 +1,95 @@
+/*
+ * This theme was made using Albert theme creator (https://albertlauncher.github.io//theming/themecreator/).
+ *
+ * Check http://doc.qt.io/qt-5/stylesheet-syntax.html especially the subtopics:
+ * The Style Sheet Syntax (http://doc.qt.io/qt-5/stylesheet-syntax.html)
+ * Qt Style Sheets Reference (http://doc.qt.io/qt-5/stylesheet-reference.html)
+ */
+* {
+  border: none;
+  color : #abb2bf;
+  background-color: #282c34;
+  font: 36px "Roboto";
+}
+
+#frame {
+  padding: 6px;
+  border-radius: 6px;
+  background-color: #282c34;
+  border: 1px solid #3d4a58;
+  min-width: 640px;
+  max-width: 640px;
+}
+
+#inputLine {
+  padding: 2px;
+  border-radius: 2px;
+  font-size: 36px;
+  selection-color: #abb2bf;
+  selection-background-color: #3d4a58;
+  background-color: #282c34;
+  color: #abb2bf
+}
+
+#settingsButton {
+  color: #abb2bf;
+  background-color: #282c34;
+  padding: 4px;
+  margin: 6px 6px 0px 0px;
+  border-top-right-radius: 6px;
+  border-bottom-left-radius: 10px;
+  min-width:13px;
+  min-height:13px;
+  max-width:13px;
+  max-height:13px;
+}
+
+/********** ListViews **********/
+QListView QScrollBar:vertical  {
+  width: 5px;
+  background: transparent;
+}
+
+QListView QScrollBar::handle:vertical  {
+  background: #abb2bf;
+  min-height: 24px;
+}
+
+QListView QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical,
+QListView QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical,
+QListView QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+  border: 0px;
+  width: 0px;
+  height: 0px;
+  background: transparent;
+}
+
+/********** actionList **********/
+QListView#actionList {
+  font-size: 18px;
+}
+
+QListView#actionList::item{
+  height: 28px;
+}
+
+QListView#actionList::item::selected{
+  background: qlineargradient(x1:0, x2:1, stop:0.0 #40abb2bf, stop:0.5 #20abb2bf, stop:1.0 #40abb2bf );
+}
+
+/********** resultsList **********/
+QListView#resultsList {
+  icon-size: 36px;
+  font-size: 18px;
+  color: #abb2bf;
+}
+
+QListView#resultsList::item{
+  height: 48px;
+  padding: 4px 0px;
+  border-radius: 6px;
+}
+
+QListView#resultsList::item::selected{
+  background: qlineargradient(x1:0, x2:1, stop:0.0 #40abb2bf, stop:0.5 #20abb2bf, stop:1.0 #40abb2bf );
+}
