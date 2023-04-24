@@ -48,7 +48,7 @@ let g:polyglot_disabled=['latex']
 Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim'
 if executable('latex') | Plug 'lervag/vimtex', {'for': 'tex'}| endif
-Plug 'dart-lang/dart-vim-plugin'
+if executable('dart') | Plug 'dart-lang/dart-vim-plugin' | endif
 
 " Initialize plugin system
 call plug#end()
@@ -252,8 +252,8 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gh :call <SID>ShowDocumentation()<CR>
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> [e <Plug>(coc-diagnostic-prev)
+nmap <silent> ]e <Plug>(coc-diagnostic-next)
 nmap <silent> <Leader>rn <Plug>(coc-rename)
 nmap <silent> <Leader>cl <Plug>(coc-codelens-action)
 nmap <silent> <Leader>ac <Plug>(coc-codeaction-cursor)

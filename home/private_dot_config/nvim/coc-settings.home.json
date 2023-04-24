@@ -25,6 +25,12 @@
     "rust-analyzer.inlayHints.typeHints.enable": true,
     "rust-analyzer.cargo.autoreload": true,
     "rust-analyzer.imports.granularity.enforce": true,
+    "dart.lineLength": 100,
+    "[dart]": {
+        "inlayHint.enable": false
+    },
+    "flutter.openDevLogSplitCommand": "tabnew",
+    "flutter.autoOpenDevLog": true,
     "suggest.noselect": true,
     "diagnostic-languageserver.filetypes": {
         // lint `sh` (includes `bash`) files
