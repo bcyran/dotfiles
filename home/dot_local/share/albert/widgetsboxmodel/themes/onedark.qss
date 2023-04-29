@@ -8,15 +8,15 @@
 * {
   border: none;
   color : #abb2bf;
-  background-color: #282c34;
+  background-color: #1e222a;
   font: 36px "Roboto";
 }
 
 #frame {
   padding: 6px;
   border-radius: 6px;
-  background-color: #282c34;
-  border: 1px solid #3d4a58;
+  background-color: #1e222a;
+  border: 1px solid #31353d;
   min-width: 640px;
   max-width: 640px;
 }
@@ -26,14 +26,14 @@
   border-radius: 2px;
   font-size: 36px;
   selection-color: #abb2bf;
-  selection-background-color: #3d4a58;
-  background-color: #282c34;
+  selection-background-color: #42464e;
+  background-color: #1e222a;
   color: #abb2bf
 }
 
 #settingsButton {
   color: #abb2bf;
-  background-color: #282c34;
+  background-color: #1e222a;
   padding: 4px;
   margin: 6px 6px 0px 0px;
   border-top-right-radius: 6px;
