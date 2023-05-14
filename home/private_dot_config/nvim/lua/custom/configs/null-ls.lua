@@ -26,12 +26,33 @@ local sources = {
   },
 
   -- python
-  b.diagnostics.flake8,
+  b.diagnostics.flake8.with {
+    extra_args = {
+      "--ignore",
+      "E501,W503,E203",
+    },
+  },
   b.diagnostics.mypy.with {
     temp_dir = "/tmp",
+    extra_args = {
+      "--ignore-missing-imports",
+    },
   },
-  b.formatting.black,
-  b.formatting.isort,
+  b.formatting.black.with {
+    "--line-length",
+    "100",
+  },
+  b.formatting.isort.with {
+    extra_args = {
+      "--profile",
+      "black",
+      "--line-length",
+      "100",
+      "--lines-after-imports",
+      "2",
+      "--combine-as",
+    },
+  },
 
   -- rust
   b.formatting.rustfmt,

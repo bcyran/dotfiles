@@ -9,7 +9,6 @@ local servers = {
   "cssls",
   "tsserver",
   "clangd",
-  "pyright",
 }
 
 for _, lsp in ipairs(servers) do
@@ -18,3 +17,15 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+lspconfig.pyright.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    python = {
+      analysis = {
+        typeCheckingMode = "off",
+      },
+    },
+  },
+}
