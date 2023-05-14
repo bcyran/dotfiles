@@ -14,38 +14,6 @@ M.blankline = {
   show_current_context_start = false,
 }
 
-M.treesitter = {
-  ensure_installed = {
-    -- nvim
-    "vim",
-    "lua",
-    -- web
-    "html",
-    "css",
-    "javascript",
-    "typescript",
-    "tsx",
-    -- core dev
-    "python",
-    "rust",
-    "go",
-    "dart",
-    "bash",
-    -- markup
-    "json",
-    "yaml",
-    -- text
-    "markdown",
-    "markdown_inline",
-  },
-  indent = {
-    enable = true,
-    -- disable = {
-    --   "python"
-    -- },
-  },
-}
-
 M.mason = {
   ensure_installed = {
     -- lua stuff
