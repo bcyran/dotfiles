@@ -1,0 +1,88 @@
+{
+  "layer": "top",
+  "spacing": 15,
+  "wlr/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": false,
+    "format": "{name}: <span rise='-1500'>{icon}</span>",
+    "sort-by-number": true,
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "6": "",
+      "7": "",
+      "8": "",
+      "9": "",
+      "10": "",
+      "11": "",
+    },
+    "on-click": "activate",
+  },
+  "clock": {
+    "format": "{:%H:%M, %a %e %B}",
+    "tooltip-format": "<big>{:%Y %b}</big>\n<tt><small>{calendar}</small></tt>",
+  },
+  "custom/mpris": {
+    "exec": "~/.config/waybar/modules/mpris.sh --icon-playing  --icon-paused ",
+    "interval": 10,
+    "on-click": "playerctl play-pause",
+  },
+  "custom/philipstv": {
+    "exec": "~/.config/waybar/modules/philipstv.sh",
+    "interval": 60,
+    "format": "<span rise='-1500'></span> {}",
+    "on-click": "philipstv key pause",
+    "on-click-right": "philipstv key play",
+    "on-click-middle": "philipstv key mute",
+    "on-scroll-up": "philipstv key volup",
+    "on-scroll-down": "philipstv key voldown",
+    "on-double-click": "philipstv-gui",
+    "tooltip": false,
+  },
+  "custom/vpn": {
+    "exec": "~/.config/waybar/modules/vpn.sh --icon-on  --icon-off ",
+    "interval": 60,
+  },
+  "custom/updates": {
+    "exec": "~/.config/waybar/modules/updates.sh",
+    "format": "<span rise='-1500'></span> {}",
+    "interval": "600",
+    "tooltip": false,
+  },
+  "custom/backlight": {
+    "exec": "~/.config/waybar/modules/light.sh",
+    "format": "<span rise='-1500'></span> {}",
+    "on-scroll-up": "~/.config/waybar/modules/light.sh inc",
+    "on-scroll-down": "~/.config/waybar/modules/light.sh dec",
+    "tooltip": false,
+  },
+  "pulseaudio": {
+    "format": "<span rise='-1500'>{icon}</span> {volume}%",
+    "format-muted": "<span rise='-1500'></span> {volume}%",
+    "format-icons": {
+      "default": ["", "", ""]
+    },
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+  },
+  "network": {
+    "interface": "enp9s0u2u1u2",
+    "format-ethernet": "<span rise='-1500'></span> eth",
+    "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+    "format-disconnected": "",
+  },
+  "battery": {
+    "format": "<span rise='-1500'></span> {capacity}%",
+    "format-charging": "<span rise='-1500'></span> {capacity}%",
+    "format-plugged": "<span rise='-1500'></span> {capacity}%",
+    "full-at": 95,
+  },
+  "tray": {
+    "spacing": 10
+  },
+}
+
+// vim:ft=json

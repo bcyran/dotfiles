@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+SCR_DIR="$(xdg-user-dir PICTURES)/Screenshots"
+
+do_shot() {
+    grimblast --notify save "$1" "${SCR_DIR}/$(date '+%Y-%m-%d_%H:%M:%S').png"
+}
+
+if ! [[ -d "${SCR_DIR}" ]]; then
+    mkdir -p "${SCR_DIR}"
+fi
+
+case "$1" in
+    active|screen|output|area)
+        do_shot "$1"
+        ;;
+    --help|-h|*)
+        echo "usage: $0 {active|screen|output|area}";;
+esac

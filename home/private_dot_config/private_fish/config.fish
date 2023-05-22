@@ -18,5 +18,7 @@ set -gx tide_right_prompt_items status cmd_duration context jobs node virtual_en
 if status is-login
     if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
         exec startx -- -keeptty &> /dev/null
+    else if test -z "$DISPLAY" -a "$XDG_VTNR" = 2
+        exec Hyprland &> /dev/null
     end
 end

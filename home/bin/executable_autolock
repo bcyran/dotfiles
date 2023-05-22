@@ -6,12 +6,18 @@ notifier="notify-send \
     'Screen lock' \
     'The screen will be locked in 10 seconds'"
 
-xautolock \
-    -detectsleep \
-    -time "${1:-30}" \
-    -locker "${locker}" \
-    -corners "+-00" \
-    -cornerdelay 15 \
-    -cornersize 10 \
-    -notify 10 \
-    -notifier "${notifier}"
+if [[ ${XDG_CURRENT_DESKTOP} = "Hyprland" ]]; then
+    swayidle -w \
+      timeout $(( ${1:-30} * 60)) 'lock' \
+      # timeout 10 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
+else
+    xautolock \
+        -detectsleep \
+        -time "${1:-30}" \
+        -locker "${locker}" \
+        -corners "+-00" \
+        -cornerdelay 15 \
+        -cornersize 10 \
+        -notify 10 \
+        -notifier "${notifier}"
+fi

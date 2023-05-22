@@ -1,0 +1,20 @@
+[
+  {
+    "output": ["DP-4"],
+    "modules-left": ["wlr/workspaces", "hyprland/submap", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["custom/mpris", "custom/philipstv", "custom/vpn", "custom/updates", "custom/backlight", "pulseaudio", "network", "keyboard-state", "battery", "tray"],
+    "include": [
+      "~/.config/waybar/common.json"
+    ],
+  },
+  {
+    "output": ["eDP-1", "DP-5"],
+    "modules-left": ["wlr/workspaces"],
+    "modules-center": [],
+    "modules-right": [],
+    "include": [
+      "~/.config/waybar/common.json"
+    ],
+  },
+]
