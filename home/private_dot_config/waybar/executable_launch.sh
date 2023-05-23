@@ -15,9 +15,9 @@ if [[ ${num_monitors} -gt 1 ]]; then
 fi
 
 killall waybar
-waybar --config "${effective_config}" &
 
 while true; do
-  inotifywait -e modify "${CONFIG_DEFAULT}" "${CONFIG_MULTI}" "${CONFIG_COMMON}" "${STYLE}"
-  killall -USR2 waybar
+    waybar --config "${effective_config}" &
+    inotifywait -e modify "${CONFIG_DEFAULT}" "${CONFIG_MULTI}" "${CONFIG_COMMON}" "${STYLE}"
+    killall waybar
 done

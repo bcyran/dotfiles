@@ -21,6 +21,9 @@
     },
     "on-click": "activate",
   },
+  "hyprland/window": {
+    "max-length": 60,
+  },
   "clock": {
     "format": "{:%H:%M, %a %e %B}",
     "tooltip-format": "<big>{:%Y %b}</big>\n<tt><small>{calendar}</small></tt>",
@@ -29,6 +32,7 @@
     "exec": "~/.config/waybar/modules/mpris.sh --icon-playing  --icon-paused ",
     "interval": 10,
     "on-click": "playerctl play-pause",
+    "max-length": 50,
   },
   "custom/philipstv": {
     "exec": "~/.config/waybar/modules/philipstv.sh",
@@ -58,6 +62,14 @@
     "on-scroll-up": "~/.config/waybar/modules/light.sh inc",
     "on-scroll-down": "~/.config/waybar/modules/light.sh dec",
     "tooltip": false,
+  },
+  "bluetooth": {
+    "format": "",
+    "tooltip-format": "",
+    "format-connected": " {num_connections}",
+    "tooltip-format-connected": "{num_connections} connected:\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "• {device_alias}",
+    "tooltip-format-enumerate-connected-battery": "• {device_alias} ({device_battery_percentage}%)"
   },
   "pulseaudio": {
     "format": "<span rise='-1500'>{icon}</span> {volume}%",

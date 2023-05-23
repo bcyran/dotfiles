@@ -1,7 +1,7 @@
 {
   "modules-left": ["wlr/workspaces", "hyprland/submap", "hyprland/window"],
   "modules-center": ["clock"],
-  "modules-right": ["custom/mpris", "custom/philipstv", "custom/vpn", "custom/updates", "custom/backlight", "pulseaudio", "network", "keyboard-state", "battery", "tray"],
+  "modules-right": ["custom/mpris", "custom/philipstv", "custom/vpn", "custom/updates", "custom/backlight", "bluetooth",  "pulseaudio", "network", "keyboard-state", "battery", "tray"],
   "include": [
     "~/.config/waybar/common.json"
   ],
