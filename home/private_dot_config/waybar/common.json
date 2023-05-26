@@ -36,7 +36,6 @@
       "playing": "",
       "paused": "",
     },
-    "interval": 10,
     "on-click": "playerctl play-pause",
     "max-length": 50,
   },

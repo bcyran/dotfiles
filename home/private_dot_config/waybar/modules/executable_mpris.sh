@@ -19,4 +19,6 @@ mpris_print() {
     fi
 }
 
-mpris_print
+playerctl --follow status | while read -r _; do
+    mpris_print
+done
