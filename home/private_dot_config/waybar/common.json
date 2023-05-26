@@ -53,7 +53,20 @@
   "custom/updates": {
     "exec": "~/.config/waybar/modules/updates.sh",
     "format": "<span rise='-1500'></span> {}",
-    "interval": "600",
+    "interval": 600,
+    "tooltip": false,
+  },
+  "custom/sunset": {
+    "return-type": "json",
+    "exec": "~/.config/waybar/modules/sunset.sh",
+    "interval": 15,
+    "format": "<span rise='-1500'>{icon}</span> {}",
+    "format-icons": {
+      "on": "",
+      "off": "",
+    },
+    "interval": 15,
+    "on-click": "~/.config/waybar/modules/sunset.sh toggle",
     "tooltip": false,
   },
   "custom/backlight": {
