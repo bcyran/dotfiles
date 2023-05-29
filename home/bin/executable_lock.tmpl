@@ -6,10 +6,10 @@ if pgrep -x i3lock > /dev/null; then
 fi
 
 font='Roboto'
-bg_color='#abb2bfff'
-ring_color='#abb2bfff'
-ring_hl_color='#282c34dd'
-text_color='#282c34dd'
+bg_color='{{ .settings.theme.fg }}ff'
+ring_color='{{ .settings.theme.fg }}ff'
+ring_hl_color='{{ .settings.theme.bg }}dd'
+text_color='{{ .settings.theme.bg }}dd'
 
 if [[ ${XDG_CURRENT_DESKTOP} = "Hyprland" ]]; then
     swaylock \

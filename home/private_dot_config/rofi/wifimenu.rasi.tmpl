@@ -6,20 +6,20 @@ configuration {
 @import "base"
 
 * {
-    accent: #e5c07b;
+    accent: {{ .settings.theme.accent2 }};
     pad: 2px;
 }
 
 window {
-    width: 8em;
+    width: 12em;
     location: north east;
     anchor: north east;
-    margin: 20px 20px 0 0;
+    margin: 70px 20px 0 0;
 }
 
 listview {
     columns: 1;
-    lines: 6;
+    lines: 8;
 }
 
 // vim:ft=css

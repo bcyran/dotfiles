@@ -7,16 +7,16 @@
  */
 * {
   border: none;
-  color : #abb2bf;
-  background-color: #1e222a;
+  color : {{ .settings.theme.fg }};
+  background-color: {{ .settings.theme.bg }};
   font: 36px "Roboto";
 }
 
 #frame {
   padding: 6px;
   border-radius: 6px;
-  background-color: #1e222a;
-  border: 1px solid #31353d;
+  background-color: {{ .settings.theme.bg }};
+  border: 1px solid {{ .settings.theme.lightbg }};
   min-width: 640px;
   max-width: 640px;
 }
@@ -25,15 +25,15 @@
   padding: 2px;
   border-radius: 2px;
   font-size: 36px;
-  selection-color: #abb2bf;
-  selection-background-color: #42464e;
-  background-color: #1e222a;
-  color: #abb2bf
+  selection-color: {{ .settings.theme.fg }};
+  selection-background-color: {{ .settings.theme.lightbg }};
+  background-color: {{ .settings.theme.bg }};
+  color: {{ .settings.theme.fg }}
 }
 
 #settingsButton {
-  color: #abb2bf;
-  background-color: #1e222a;
+  color: {{ .settings.theme.fg }};
+  background-color: {{ .settings.theme.bg }};
   padding: 4px;
   margin: 6px 6px 0px 0px;
   border-top-right-radius: 6px;
@@ -51,7 +51,7 @@ QListView QScrollBar:vertical  {
 }
 
 QListView QScrollBar::handle:vertical  {
-  background: #abb2bf;
+  background: {{ .settings.theme.fg }};
   min-height: 24px;
 }
 
@@ -74,14 +74,14 @@ QListView#actionList::item{
 }
 
 QListView#actionList::item::selected{
-  background: qlineargradient(x1:0, x2:1, stop:0.0 #40abb2bf, stop:0.5 #20abb2bf, stop:1.0 #40abb2bf );
+  background: qlineargradient(x1:0, x2:1, stop:0.0 #40{{ substr 1 7 .settings.theme.fg }}, stop:0.5 #20{{ substr 1 7 .settings.theme.fg }}, stop:1.0 #40{{ substr 1 7 .settings.theme.fg }} );
 }
 
 /********** resultsList **********/
 QListView#resultsList {
   icon-size: 36px;
   font-size: 18px;
-  color: #abb2bf;
+  color: {{ .settings.theme.fg }};
 }
 
 QListView#resultsList::item{
@@ -91,5 +91,5 @@ QListView#resultsList::item{
 }
 
 QListView#resultsList::item::selected{
-  background: qlineargradient(x1:0, x2:1, stop:0.0 #40abb2bf, stop:0.5 #20abb2bf, stop:1.0 #40abb2bf );
+  background: qlineargradient(x1:0, x2:1, stop:0.0 #40{{ substr 1 7 .settings.theme.fg }}, stop:0.5 #20{{ substr 1 7 .settings.theme.fg }}, stop:1.0 #40{{ substr 1 7 .settings.theme.fg }} );
 }

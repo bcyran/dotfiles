@@ -18,24 +18,14 @@
 
 
 [colors]
-black           = #1e222a
-gray            = #3e4451
-white           = #abb2bf
-red             = #e06c75
-green           = #98c379
-yellow          = #e5c07b
-blue            = #61afef
-violet          = #c678dd
-sea             = #56b6c2
-
-bg              = ${colors.black}
-fg              = ${colors.white}
-highlight       = ${colors.blue}
-highlight-fg    = ${colors.black}
-active          = ${colors.gray}
-active-fg       = ${colors.white}
-urgent          = ${colors.yellow}
-urgent-fg       = ${colors.black}
+bg              = {{ .settings.theme.bg }}
+fg              = {{ .settings.theme.fg }}
+highlight       = {{ .settings.theme.accent1 }}
+highlight-fg    = {{ .settings.theme.bg }}
+active          = {{ .settings.theme.lightbg }}
+active-fg       = {{ .settings.theme.fg }}
+urgent          = {{ .settings.theme.accent3 }}
+urgent-fg       = {{ .settings.theme.bg }}
 
 [bar/base]
 width = 100%:-20

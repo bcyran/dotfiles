@@ -12,31 +12,31 @@
 
 window#waybar {
   background: transparent;
-  color: #abb2bf;
+  color: {{ .settings.theme.fg }};
 }
 
 window > box {
   margin: 10px 10px 0 10px;
-  background: #1e222a;
+  background: {{ .settings.theme.bg }};
   border: 1px solid transparent;
   border-radius: 5px;
   padding: 4px 10px 4px 4px;
 }
 
 tooltip {
-  background: #1e222a;
-  border: 1px solid #abb2bf;
+  background: {{ .settings.theme.bg }};
+  border: 1px solid {{ .settings.theme.fg }};
   border-radius: 5px;
 }
 
 tooltip label {
-  color: #abb2bf;
+  color: {{ .settings.theme.fg }};
 }
 
 /* WORKSPACES */
 #workspaces button{
-  background: #1e222a;
-  color: #abb2bf;
+  background: {{ .settings.theme.bg }};
+  color: {{ .settings.theme.fg }};
   padding: 2px 6px;
   margin: 0 4px 0 0;
   border-radius: 3px;
@@ -47,16 +47,16 @@ tooltip label {
 }
 
 #workspaces button.active {
-  background: #98c379;
-  color: #1e222a;
+  background: {{ .settings.theme.accent1 }};
+  color: {{ .settings.theme.bg }};
 }
 
 #workspaces button.urgent {
-  background: #e5c07b;
-  color: #1e222a;
+  background: {{ .settings.theme.accent3 }};
+  color: {{ .settings.theme.bg }};
 }
 
 /* HYPRLAND SUBMAP */
 #submap {
-  color: #e5c07b;
+  color: {{ .settings.theme.accent3 }};
 }

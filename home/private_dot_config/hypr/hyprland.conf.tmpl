@@ -35,10 +35,10 @@ general {
     gaps_out = 10
     border_size = 2
 
-    col.active_border = rgba(98c379ee)
-    col.inactive_border = rgba(373b43ee)
-    col.group_border_active = rgba(98c379ee)
-    col.group_border = rgba(373b43ee)
+    col.active_border = rgb({{ substr 1 7 .settings.theme.accent1 }})
+    col.inactive_border = rgb({{ substr 1 7 .settings.theme.lightbg }})
+    col.group_border_active = rgb({{ substr 1 7 .settings.theme.accent1 }})
+    col.group_border = rgb({{ substr 1 7 .settings.theme.lightbg }})
 
     layout = dwindle
 }
@@ -56,7 +56,7 @@ decoration {
     drop_shadow = yes
     shadow_range = 4
     shadow_render_power = 3
-    col.shadow = rgba(1a1a1aee)
+    col.shadow = rgb(1a1a1a)
 }
 
 animations {

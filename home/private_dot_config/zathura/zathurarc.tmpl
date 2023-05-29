@@ -1,0 +1,31 @@
+# General settings
+set window-title-basename       "true"
+set selection-clipboard         "clipboard"
+set font                        "Fira Code Nerd Font normal 14"
+set scroll-step 100
+
+# Bindings
+map <C-i>                       zoom in
+map <C-o>                       zoom out
+
+# Colors
+set default-bg                  "{{ .settings.theme.bg }}"
+set default-fg                  "{{ .settings.theme.fg }}"
+set statusbar-bg                "{{ .settings.theme.lightbg }}"
+set statusbar-fg                "{{ .settings.theme.fg }}"
+set inputbar-bg                 "{{ .settings.theme.bg }}"
+set inputbar-fg                 "{{ .settings.theme.fg }}"
+set notification-bg             "{{ .settings.theme.bg }}"
+set notification-fg             "{{ .settings.theme.fg }}"
+set notification-error-bg       "{{ .settings.theme.bg }}"
+set notification-error-fg       "{{ .settings.theme.accent4 }}"
+set notification-warning-bg     "{{ .settings.theme.bg }}"
+set notification-warning-fg     "{{ .settings.theme.accent4 }}"
+set highlight-color             "{{ .settings.theme.accent2 }}"
+set highlight-active-color      "{{ .settings.theme.accent3 }}"
+set recolor-lightcolor          "{{ .settings.theme.bg }}"
+set recolor-darkcolor           "{{ .settings.theme.fg }}"
+set index-bg                    "{{ .settings.theme.bg }}"
+set index-fg                    "{{ .settings.theme.fg }}"
+set index-active-bg             "{{ .settings.theme.accent1 }}"
+set index-active-fg             "{{ .settings.theme.bg }}"
