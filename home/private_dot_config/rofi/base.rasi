@@ -2,7 +2,7 @@
     background: #282c34;
     foreground: #abb2bf;
     light-background: #3e4452;
-    accent: #61afef;
+    accent: #98c379;
 
     pad: 8px;
 }
@@ -16,6 +16,7 @@ window {
     border-color: @light-background;
     background-color: @background;
     font: "RobotoCondensed 14";
+    border-radius: 3px;
 }
 
 inputbar {
@@ -45,6 +46,7 @@ element {
     padding: @pad;
     background-color: @background;
     text-color: @foreground;
+    border-radius: 3px;
 }
 
 /* NORMAL */
