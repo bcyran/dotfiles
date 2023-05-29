@@ -2,7 +2,7 @@
     ### Display ###
 
     # Which monitor should the notifications be displayed on.
-    monitor = 0
+    monitor = 1
 
     # Display notification on focused monitor.  Possible modes are:
     #   mouse: follow mouse pointer
@@ -31,7 +31,7 @@
     origin = top-right
 
     # Offset from the origin
-    offset = 20x70
+    offset = 20x20
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -221,7 +221,7 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#282c34"
+    background = "#1e222a"
     foreground = "#abb2bf"
     frame_color = "#61afef"
     timeout = 10
@@ -229,7 +229,7 @@
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#282c34"
+    background = "#1e222a"
     foreground = "#abb2bf"
     frame_color = "#61afef"
     timeout = 10
@@ -237,7 +237,7 @@
     #icon = /path/to/icon
 
 [urgency_critical]
-    background = "#282c34"
+    background = "#1e222a"
     foreground = "#abb2bf"
     frame_color = "#61afef"
     timeout = 0
