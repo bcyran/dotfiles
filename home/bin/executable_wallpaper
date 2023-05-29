@@ -30,7 +30,12 @@ do_set_wallpaper() {
 
 set_new_wallpaper() {
     local candidates
-    candidates=("${WALL_DIR}/$1"*)
+
+    if [[ -f $1 ]]; then
+        candidates=("$(realpath "$1")")
+    else
+        candidates=("${WALL_DIR}/$1"*)
+    fi
 
     if [[ ${#candidates[@]} != 1 ]]; then
         echo "Multiple candidates:"
