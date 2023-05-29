@@ -25,7 +25,7 @@
     "max-length": 60,
   },
   "clock": {
-    "format": "{:%H:%M, %a %e %B}",
+    "format": "<span rise='-1750'></span> {:%H:%M, %a %e %B}",
     "tooltip-format": "<big>{:%Y %b}</big>\n<tt><small>{calendar}</small></tt>",
   },
   "custom/mpris": {
