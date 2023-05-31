@@ -9,8 +9,8 @@ env = XCURSOR_SIZE,24
 env = QT_QPA_PLATFORM,wayland
 
 # Monitors
-monitor = desc:BOE 0x074F, 1920x1080@60, 0x425, 1
-monitor = desc:Dell Inc. DELL P2421D FJWHGC3, 2560x1440@60, 1920x425, 1
+monitor = desc:BOE 0x074F, 1920x1080@60, 0x325, 1
+monitor = desc:Dell Inc. DELL P2421D FJWHGC3, 2560x1440@60, 1920x325, 1
 monitor = desc:Dell Inc. DELL P2421D CGSHL93, 2560x1440@60, 4480x0, 1, transform, 3
 monitor = ,preferred, auto, auto
 
@@ -94,17 +94,17 @@ misc {
 }
 
 # Workspaces
-wsbind = 1, $monitorC
-wsbind = 2, $monitorC
-wsbind = 3, $monitorC
-wsbind = 4, $monitorC
-wsbind = 5, $monitorR
-wsbind = 6, $monitorR
-wsbind = 7, $monitorR
-wsbind = 8, $monitorL
-wsbind = 9, $monitorL
-wsbind = 10, $monitorL
-wsbind = 11, $monitorC
+workspace = 1, monitor:$monitorC, default:true
+workspace = 2, monitor:$monitorC
+workspace = 3, monitor:$monitorC
+workspace = 4, monitor:$monitorC
+workspace = 5, monitor:$monitorR, default:true
+workspace = 6, monitor:$monitorR
+workspace = 7, monitor:$monitorR
+workspace = 8, monitor:$monitorL, default:true
+workspace = 9, monitor:$monitorL
+workspace = 10, monitor:$monitorL
+workspace = 11, monitor:$monitorC
 
 # Binds
 bind = $mod SHIFT, q, killactive, 
@@ -246,7 +246,6 @@ exec-once = sunset
 exec-once = dunst
 exec-once = copyq --start-server
 exec-once = /usr/lib/kdeconnectd
-exec-once = albert
 exec-once = spotify
 exec-once = thunderbird
 exec-once = alacritty --class terminal-workspace
