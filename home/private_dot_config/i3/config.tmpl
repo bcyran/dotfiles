@@ -219,6 +219,28 @@ smart_borders no_gaps
 # Refresh status bar command
 set $refresh-status ""
 
+# System mode
+bindsym $mod+shift+BackSpace exec --no-startup-id ~/.config/rofi/scripts/powermenu.sh
+
+# Wi-Fi menu
+bindsym $mod+shift+n exec --no-startup-id ~/.config/rofi/scripts/wifimenu.sh
+
+# Rofi app launcher
+bindsym $mod+space exec --no-startup-id \
+    rofi -no-lazy-grab -show drun -config ~/.config/rofi/appmenu.rasi
+
+# Rofi file search
+bindsym $mod+shift+space exec --no-startup-id \
+    ~/.config/rofi/scripts/filesearch.sh
+
+# Rofi run launcher
+bindsym $mod+ctrl+space exec --no-startup-id \
+    rofi -no-lazy-grab -show run -config ~/.config/rofi/runmenu.rasi
+
+# Rofi calculator
+bindsym $mod+c exec --no-startup-id \
+    rofi -no-lazy-grab -show calc -config ~/.config/rofi/calc.rasi
+
 # Floating terminal
 bindsym $mod+shift+Return exec alacritty --class terminal-floating
 
@@ -309,9 +331,6 @@ no_focus [title="Microsoft Teams Notification"]
 for_window [title="splash"] floating enable
 for_window [title="Android Emulator"] floating enable
 
-# Albert
-for_window [class="albert"] border pixel 0
-
 
 ###############################################################################
 # STARTUP SETUP
@@ -339,9 +358,6 @@ exec --no-startup-id redshift
 
 # Dunst
 exec --no-startup-id dunst
-
-# Albert
-exec --no-startup-id albert
 
 {{- if .settings.timewall }}
 # Start dynamic wallpaper daemon

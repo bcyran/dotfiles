@@ -13,18 +13,3 @@
 .config/spicetify/Extensions/onedark.js:
   type: file
   url: https://raw.githubusercontent.com/Frostplexx/spicetify-one-dark/main/js/onedark.js
-
-.local/share/albert/python/plugins/fd/__init__.py:
-  type: file
-  url: https://raw.githubusercontent.com/hankhjliao/albert-fd/main/__init__.py
-
-.local/share/albert/python/plugins/currency_converter_steven/__init__.py:
-  type: file
-  url: https://raw.githubusercontent.com/stevenxxiu/albert_currency_converter_steven/master/__init__.py
-
-.local/share/albert/python/plugins/firefox_bookmark:
-  type: archive
-  url: https://api.github.com/repos/czsy4096/albert-firefoxbookmark-py/tarball
-  stripComponents: 2
-  include:
-    - '*/firefox_bookmark/**'

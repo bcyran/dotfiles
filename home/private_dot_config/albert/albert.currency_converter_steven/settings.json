@@ -1,9 +1,0 @@
-{
-  "aliases": {
-    "PLN": ["pl", "zl", "zł"],
-    "EUR": ["eu"],
-    "USD": ["us"],
-    "GBP": ["uk", "pound"]
-  },
-  "defaults": ["PLN", "USD", "EUR", "GBP"]
-}
