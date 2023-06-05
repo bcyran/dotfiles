@@ -19,6 +19,9 @@ data:
     autolock:
       enable: {{ hasKey .settings.autolock "enable" | ternary .settings.autolock.enable true }}
       time: {{ default 30 .settings.autolock.time }}
+    autoblank:
+      enable: {{ hasKey .settings.autoblank "enable" | ternary .settings.autoblank.enable true }}
+      time: {{ default 10 .settings.autoblank.time }}
     dirs:
       code: {{ default "$HOME/Kod" .settings.dirs.code | quote }}
       screenshots: {{ default "$HOME/Obrazy/Zrzuty ekranu" .settings.dirs.screenshots | quote }}

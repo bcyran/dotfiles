@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+swayidle -w \
+  timeout $(( ${1:-10} * 60)) 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'

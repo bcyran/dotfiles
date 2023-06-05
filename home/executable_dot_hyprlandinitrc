@@ -1,0 +1,5 @@
+#!/bin/sh
+
+export WLR_DRM_NO_MODIFIERS=1
+
+exec Hyprland

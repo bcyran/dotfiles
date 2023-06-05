@@ -8,8 +8,7 @@ notifier="notify-send \
 
 if [[ ${XDG_CURRENT_DESKTOP} = "Hyprland" ]]; then
     swayidle -w \
-      timeout $(( ${1:-30} * 60)) 'lock' \
-      # timeout 10 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
+      timeout $(( ${1:-30} * 60)) 'lock'
 else
     xautolock \
         -detectsleep \

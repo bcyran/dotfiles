@@ -239,13 +239,19 @@ windowrulev2 = move 100%-520 70, class:com.github.hluk.copyq
 # Startup
 exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec-once = /usr/lib/polkit-kde-authentication-agent-1
-exec-once = autolock
 exec-once = swww init
 exec-once = ~/.config/waybar/launch.sh
 exec-once = sunset
 exec-once = dunst
 exec-once = copyq --start-server
 exec-once = /usr/lib/kdeconnectd
+{{- if .settings.autoblank.enable }}
+exec-once = autoblank {{ .settings.autoblank.time }}
+{{- end }}
+{{- if .settings.autolock.enable }}
+exec-once = autolock {{ .settings.autolock.time }}
+{{- end }}
+
 exec-once = spotify
 exec-once = thunderbird
 exec-once = alacritty --class terminal-workspace
