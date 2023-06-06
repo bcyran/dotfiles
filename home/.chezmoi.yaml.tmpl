@@ -27,10 +27,10 @@ data:
       screenshots: {{ default "$HOME/Obrazy/Zrzuty ekranu" .settings.dirs.screenshots | quote }}
       wallpapers: {{ default "$HOME/Obrazy/Tapety" .settings.dirs.wallpapers | quote }}
     theme:
-      bg: "#1e222a"
-      fg: "#abb2bf"
-      lightbg: "#373b43"
-      accent1: "#98c379"
-      accent2: "#61afef"
-      accent3: "#e5c07b"
-      accent4: "#e06c75"
+      bg: {{ default "#1e222a" .settings.theme.bg | quote }}
+      fg: {{ default "#abb2bf" .settings.theme.fg | quote }}
+      lightbg: {{ default "#373b43" .settings.theme.lightbg | quote }}
+      accent1: {{ default "#98c379" .settings.theme.accent1 | quote }}
+      accent2: {{ default "#61afef" .settings.theme.accent2 | quote }}
+      accent3: {{ default "#e5c07b" .settings.theme.accent3 | quote }}
+      accent4: {{ default "#e06c75" .settings.theme.accent4 | quote }}
