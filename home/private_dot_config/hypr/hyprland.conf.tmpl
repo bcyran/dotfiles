@@ -232,9 +232,6 @@ windowrulev2 = move 100%-270 70, title:PhilipsTV GUI
 windowrulev2 = float, title:Microsoft Teams Notification
 windowrulev2 = float, title:splash
 windowrulev2 = float, title:Android Emulator
-windowrulev2 = float, class:com.github.hluk.copyq
-windowrulev2 = size 500 700, class:com.github.hluk.copyq
-windowrulev2 = move 100%-520 70, class:com.github.hluk.copyq
 
 # Startup
 exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -243,7 +240,6 @@ exec-once = swww init
 exec-once = ~/.config/waybar/launch.sh
 exec-once = sunset
 exec-once = dunst
-exec-once = copyq --start-server
 exec-once = /usr/lib/kdeconnectd
 {{- if .settings.autoblank.enable }}
 exec-once = autoblank {{ .settings.autoblank.time }}
