@@ -115,11 +115,16 @@ bind = $mod SHIFT, f, togglefloating,
 bind = $mod SHIFT, p, pseudo,
 bind = $mod SHIFT, x, pin,
 bind = $mod, v, togglesplit,
-bind = $mod, w, togglegroup
 bind = $mod, d, exec, hyprctl keyword general:layout "dwindle"
 bind = $mod SHIFT, d, exec, hyprctl keyword general:layout "master"
 bind = $mod, o, changegroupactive, b
 bind = $mod, p, changegroupactive, f
+bind = $mod, w, togglegroup
+bind = $mod CONTROL, w, moveoutofgroup
+bind = $mod CONTROL, h, moveintogroup, l
+bind = $mod CONTROL, l, moveintogroup, r
+bind = $mod CONTROL, k, moveintogroup, u
+bind = $mod CONTROL, j, moveintogroup, d
 
 bind = $mod, 1, workspace, 1
 bind = $mod, 2, workspace, 2
@@ -131,7 +136,7 @@ bind = $mod, 7, workspace, 7
 bind = $mod, 8, workspace, 8
 bind = $mod, 9, workspace, 9
 bind = $mod, 0, workspace, 10
-bind = $mod, -, workspace, 11
+bind = $mod, minus, workspace, 11
 
 bind = $mod SHIFT, 1, movetoworkspace, 1
 bind = $mod SHIFT, 2, movetoworkspace, 2
@@ -143,7 +148,7 @@ bind = $mod SHIFT, 7, movetoworkspace, 7
 bind = $mod SHIFT, 8, movetoworkspace, 8
 bind = $mod SHIFT, 9, movetoworkspace, 9
 bind = $mod SHIFT, 0, movetoworkspace, 10
-bind = $mod SHIFT, -, movetoworkspace, 11
+bind = $mod SHIFT, minus, movetoworkspace, 11
 
 bind = $mod, h, movefocus, l
 bind = $mod, l, movefocus, r
@@ -220,6 +225,7 @@ bind = $mod, N, exec, thunar
 
 # Per application rules
 windowrulev2 = float, class:terminal-floating
+windowrulev2 = float, title:Postęp działań na plikach
 windowrulev2 = size 800 500, class:terminal-floating
 windowrulev2 = workspace 2, class:terminal-workspace
 windowrulev2 = workspace 10, class:Spotify
