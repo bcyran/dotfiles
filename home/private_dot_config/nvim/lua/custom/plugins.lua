@@ -2,14 +2,6 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
-  {
-    "ggandor/leap.nvim",
-    lazy = false,
-    config = function()
-      require("leap").add_default_mappings()
-    end,
-  },
-
   -- LSP setup
   {
     "neovim/nvim-lspconfig",
