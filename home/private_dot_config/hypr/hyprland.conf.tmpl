@@ -251,7 +251,7 @@ windowrulev2 = float, title:Android Emulator
 exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec-once = /usr/lib/polkit-kde-authentication-agent-1
 exec-once = swww init
-exec-once = sleep 1 && wallpaper
+exec-once = sleep 5 && wallpaper
 exec-once = ~/.config/waybar/launch.sh
 exec-once = sunset
 exec-once = dunst
@@ -267,3 +267,4 @@ exec-once = thunderbird
 exec-once = alacritty --class terminal-workspace
 exec-once = sleep 3 && QT_QPA_PLATFORM=xcb keepassxc
 exec-once = sleep 3 && QT_QPA_PLATFORM=xcb megasync
+exec-once = sleep 5 && hyprctl dispatch workspace 1
