@@ -2,3 +2,8 @@
   type: file
   url: https://raw.githubusercontent.com/dandavison/delta/master/themes.gitconfig
   refreshPeriod: "168h"
+
+.local/share/themes/Adwaita-One-Dark:
+  type: archive
+  url: https://github.com/lonr/adwaita-one-dark/releases/download/v0.44.1/Adwaita-One-Dark.tar.xz
+  refreshPeriod: "168h"
