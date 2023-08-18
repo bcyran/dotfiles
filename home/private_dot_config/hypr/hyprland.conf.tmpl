@@ -1,17 +1,17 @@
 # Variables
 $mod = ALT
 $monitorL = eDP-1
-$monitorC = DP-4
-$monitorR = DP-5
+$monitorC = DP-6
+$monitorR = DP-7
 
 # Environment
 env = XCURSOR_SIZE,24
 env = QT_QPA_PLATFORM,wayland
 
 # Monitors
-monitor = desc:BOE 0x074F, 1920x1080@60, 0x325, 1
-monitor = desc:Dell Inc. DELL P2421D FJWHGC3, 2560x1440@60, 1920x325, 1
-monitor = desc:Dell Inc. DELL P2421D CGSHL93, 2560x1440@60, 4480x0, 1, transform, 3
+{{- range $display := .machine.displays }}
+monitor = desc:{{ $display.description }}, {{ $display.resolution }}@60, {{ $display.position }}, {{ $display.scale }}, transform, {{ $display.transform }}
+{{- end }}
 monitor = ,preferred, auto, auto
 
 # Settings
@@ -48,15 +48,18 @@ decoration {
     active_opacity = 0.93
     inactive_opacity = 0.93
     fullscreen_opacity = 1.0
-    blur = yes
-    blur_size = 5
-    blur_passes = 2
-    blur_new_optimizations = on
 
     drop_shadow = yes
     shadow_range = 4
     shadow_render_power = 3
     col.shadow = rgb(1a1a1a)
+
+    blur {
+      enabled = yes
+      size = 5
+      passes = 2
+      new_optimizations = on
+    }
 }
 
 animations {
@@ -248,10 +251,10 @@ windowrulev2 = float, title:Android Emulator
 exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec-once = /usr/lib/polkit-kde-authentication-agent-1
 exec-once = swww init
+exec-once = sleep 1 && wallpaper
 exec-once = ~/.config/waybar/launch.sh
 exec-once = sunset
 exec-once = dunst
-exec-once = /usr/lib/kdeconnectd
 {{- if .settings.autoblank.enable }}
 exec-once = autoblank {{ .settings.autoblank.time }}
 {{- end }}

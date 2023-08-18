@@ -1,7 +1,7 @@
 [
   {
     "output": [
-      "DP-4",
+      "{{ (index .machine.displays 1).output }}",
     ],
     "modules-left": [
       "wlr/workspaces",
@@ -31,8 +31,8 @@
   },
   {
     "output": [
-      "eDP-1",
-      "DP-5",
+      "{{ (index .machine.displays 0).output }}",
+      "{{ (index .machine.displays 2).output }}",
     ],
     "modules-left": [
       "wlr/workspaces",
