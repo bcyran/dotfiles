@@ -1,7 +1,7 @@
 configuration {
     modi: "drun";
     show-icons: true;
-    icon-theme: "Paper";
+    icon-theme: "We10X-blue-dark";
     drun-display-format: "{name}";
     case-sensitive: false;
     cycle: false;
