@@ -262,9 +262,13 @@ exec-once = autoblank {{ .settings.autoblank.time }}
 exec-once = autolock {{ .settings.autolock.time }}
 {{- end }}
 
-exec-once = spotify
-exec-once = thunderbird
 exec-once = alacritty --class terminal-workspace
-exec-once = sleep 3 && QT_QPA_PLATFORM=xcb keepassxc
+exec-once = spotify
 exec-once = sleep 3 && QT_QPA_PLATFORM=xcb megasync
 exec-once = sleep 5 && hyprctl dispatch workspace 1
+exec-once = sleep 6 && QT_QPA_PLATFORM=xcb keepassxc
+
+{{- if eq .machine.id "home" }}
+exec-once = thunderbird
+exec-once = signal-desktop
+{{- end }}
