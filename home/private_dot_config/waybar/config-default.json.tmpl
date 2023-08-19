@@ -10,14 +10,13 @@
   "modules-right": [
     "custom/mpris",
     "custom/philipstv",
-    "custom/vpn",
+    {{ if eq .machine.id "work" -}}"custom/vpn",{{- end -}}
     "custom/updates",
     "custom/sunset",
     "custom/backlight",
     "bluetooth",
     "pulseaudio",
     "network",
-    "keyboard-state",
     "battery",
     "tray",
   ],

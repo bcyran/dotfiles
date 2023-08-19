@@ -105,9 +105,9 @@
     "on-click": "pavucontrol",
   },
   "network": {
-    "interface": "enp9s0u2u1u2",
-    "format-ethernet": "<span rise='-1750'></span> eth",
-    "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+    "interface": "{{ .machine.network.wlan }}",
+    "format-wifi": "<span rise='-1750'></span> {essid}",
+    "tooltip-format": "{ifname}: {ipaddr}/{cidr} ({signalStrength}%)",
     "format-disconnected": "",
   },
   "battery": {
