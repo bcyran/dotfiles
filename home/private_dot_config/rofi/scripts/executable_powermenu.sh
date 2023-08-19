@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-locker='lock'
+locker='lock -f'
 
 opts=(Lock Logout Poweroff Suspend Hibernate Reboot)
 
