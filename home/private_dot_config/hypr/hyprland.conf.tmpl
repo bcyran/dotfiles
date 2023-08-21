@@ -1,8 +1,8 @@
 # Variables
 $mod = ALT
-$monitorL = eDP-1
-$monitorC = DP-6
-$monitorR = DP-7
+$monitorL = {{ (index .machine.displays 0).output }}
+$monitorC = {{ (index .machine.displays 1).output }}
+$monitorR = {{ (index .machine.displays 2).output }}
 
 # Environment
 env = XCURSOR_SIZE,24
