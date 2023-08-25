@@ -1,10 +1,11 @@
 # dotfiles
-Personal setup for [i3wm](https://i3wm.org/), [neovim](https://neovim.io/), [zsh](https://zsh.sourceforge.io/), [tmux](https://github.com/tmux/tmux/wiki) and more.
+Personal setup for [Hyprland](https://hyprland.org/), [neovim](https://neovim.io/), [fish](https://fishshell.com/), [tmux](https://github.com/tmux/tmux/wiki) and more.
 Main OS used is [Arch Linux](https://archlinux.org/).
 
 ## Screenshots
-![Screenshot of workspace with an app launcher open](./screenshots/scrot1.png)
-![Screenshot of workspace with three terminal emulator windows open](./screenshots/scrot2.png)
+![Screenshot of workspace with an app launcher open](./screenshots/tropical1.png)
+![Screenshot of workspace with three terminal emulator windows open](./screenshots/tropical2.png)
+![Screenshot of workspace with graphical file manager and PDF reader open](./screenshots/tropical3.png)
 
 ## Usage
 Those dotfiles are managed using using [chezmoi](https://www.chezmoi.io/).
