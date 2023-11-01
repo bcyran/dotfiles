@@ -269,8 +269,6 @@ exec-once = sleep 5 && hyprctl dispatch workspace 1
 exec-once = sleep 6 && QT_QPA_PLATFORM=xcb keepassxc
 
 {{- if eq .machine.id "home" }}
-exec-once = python3 /usr/share/slimbookintelcontroller/src/slimbookintelcontrollerindicator.py
-exec-once = python3 /usr/share/slimbookbattery/src/slimbookbatteryindicator.py
 exec-once = thunderbird
 exec-once = signal-desktop
 {{- end }}
