@@ -57,6 +57,14 @@ local sources = {
   -- rust
   b.formatting.rustfmt,
 
+  -- dart
+  b.formatting.dart_format.with {
+    extra_args = {
+      "--line-length",
+      "100",
+    },
+  },
+
   -- go
   b.diagnostics.golangci_lint,
   b.formatting.golines.with {
