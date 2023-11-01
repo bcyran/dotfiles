@@ -12,7 +12,7 @@ set -gx fish_cursor_replace_one underscore
 set -gx fish_cursor_visual block
 
 # Tide setup
-set -gx tide_right_prompt_items status cmd_duration context jobs node virtual_env rustc java go
+set -gx tide_right_prompt_items status cmd_duration context jobs node python rustc java go
 
 # Start X at login
 if status is-login
