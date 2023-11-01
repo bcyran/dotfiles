@@ -26,3 +26,25 @@ opt.spelllang = "en,pl"
 vim.diagnostic.config({
   virtual_text = false,
 })
+
+-- Language-specific options
+autocmd("FileType", {
+  pattern = { "python" },
+  callback = function()
+    opt.colorcolumn = "100"
+  end
+})
+
+autocmd("FileType", {
+  pattern = { "rust" },
+  callback = function()
+    opt.colorcolumn = "100"
+  end
+})
+
+autocmd("FileType", {
+  pattern = { "dart" },
+  callback = function()
+    opt.colorcolumn = "100"
+  end
+})
