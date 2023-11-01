@@ -2,6 +2,10 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
+  {
+    "sheerun/vim-polyglot",
+    lazy = false,
+  },
   -- LSP setup
   {
     "neovim/nvim-lspconfig",
