@@ -97,6 +97,13 @@ local plugins = {
     "lukas-reineke/indent-blankline.nvim",
     opts = overrides.blankline,
   },
+
+  {
+    "abecodes/tabout.nvim",
+    opts = require "custom.configs.tabout",
+    lazy = false,
+    priority = 10,
+  },
 }
 
 return plugins
