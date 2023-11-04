@@ -37,10 +37,24 @@ general {
 
     col.active_border = rgb({{ substr 1 7 .settings.theme.accent1 }})
     col.inactive_border = rgb({{ substr 1 7 .settings.theme.lightbg }})
-    col.group_border_active = rgb({{ substr 1 7 .settings.theme.accent1 }})
-    col.group_border = rgb({{ substr 1 7 .settings.theme.lightbg }})
 
     layout = dwindle
+}
+
+group {
+    focus_removed_window = true
+    insert_after_current = true
+
+    col.border_active = rgb({{ substr 1 7 .settings.theme.accent1 }})
+    col.border_inactive = rgb({{ substr 1 7 .settings.theme.lightbg }})
+
+    groupbar {
+        render_titles = false
+
+        col.active = rgb({{ substr 1 7 .settings.theme.accent1 }})
+        col.inactive = rgb({{ substr 1 7 .settings.theme.lightbg }})
+        text_color = rgb({{ substr 1 7 .settings.theme.fg }})
+    }
 }
 
 decoration {
@@ -94,7 +108,8 @@ binds {
 misc {
     mouse_move_enables_dpms = false
     key_press_enables_dpms = false
-    render_titles_in_groupbar = false
+    force_default_wallpaper = 0
+    animate_manual_resizes = true
 }
 
 # Workspaces
