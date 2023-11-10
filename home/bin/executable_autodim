@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+swayidle -w \
+  timeout $(( ${1:-3} * 60)) 'backlight set 10' resume 'backlight set 100'

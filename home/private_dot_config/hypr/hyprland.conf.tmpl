@@ -266,10 +266,11 @@ windowrulev2 = float, title:Android Emulator
 exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec-once = /usr/lib/polkit-kde-authentication-agent-1
 exec-once = swww init
-exec-once = sleep 5 && wallpaper
+exec-once = sleep 5 && timewall set --daemon
 exec-once = ~/.config/waybar/launch.sh
 exec-once = sunset
 exec-once = dunst
+exec-once = autodim 3
 {{- if .settings.autoblank.enable }}
 exec-once = autoblank {{ .settings.autoblank.time }}
 {{- end }}
