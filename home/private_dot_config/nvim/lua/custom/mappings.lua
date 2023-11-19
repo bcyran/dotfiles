@@ -13,6 +13,11 @@ M.general = {
 
     ["<leader>h"] = { ":split<CR>", "horizontal split" },
     ["<leader>v"] = { ":vsplit<CR>", "vertical split" },
+
+    ["<C-h>"] = { ":<C-U>TmuxNavigateLeft<CR>", "navigate left to the split or tmux pane" },
+    ["<C-j>"] = { ":<C-U>TmuxNavigateDown<CR>", "navigate down to the split or tmux pane" },
+    ["<C-k>"] = { ":<C-U>TmuxNavigateUp<CR>", "navigate up to the split or tmux pane" },
+    ["<C-l>"] = { ":<C-U>TmuxNavigateRight<CR>", "navigate right to the split or tmux pane" },
   },
 }
 

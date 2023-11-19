@@ -104,6 +104,11 @@ local plugins = {
     lazy = false,
     priority = 10,
   },
+
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  }
 }
 
 return plugins
