@@ -220,9 +220,9 @@ bind = $mod, backslash, exec, playerctl play-pause
 bind = $mod, bracketleft, exec, playerctl previous
 bind = $mod, bracketright, exec, playerctl next
 
-bind = ,XF86AudioRaiseVolume, exec, volume up 5
-bind = ,XF86AudioLowerVolume, exec, volume down 5
-bind = ,XF86AudioMute, exec, volume toggle
+bind = ,XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+
+bind = ,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bind = ,XF86AudioMute, exec, wpctl set-mute toggle
 
 bind = ,XF86MonBrightnessUp, exec, backlight up 10
 bind = ,XF86MonBrightnessDown, exec, backlight down 10
@@ -272,6 +272,7 @@ exec-once = sleep 5 && timewall set --daemon
 exec-once = ~/.config/waybar/launch.sh
 exec-once = sunset
 exec-once = dunst
+exec-once = /usr/lib/kdeconnectd
 {{- if .settings.autodim.enable }}
 exec-once = autodim {{ .settings.autodim.time }}
 {{- end }}
