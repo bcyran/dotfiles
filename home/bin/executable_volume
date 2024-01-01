@@ -1,19 +1,16 @@
 #!/usr/bin/env bash
 #
-# A script to control audio volume of the default pulseaudio sink
-# using pacmd as a backend
-# Inspired by: https://pastebin.com/MkiW9LjT
+# A script to control the audio volume of the default WirePlumber sink
+# using wpctl as a backend.
 
 LC_ALL=C # To avoid decimal point problems
 
-MAX_PERCENT=100   # Do not allow setting volume larger than that
-FULL_VOLUME=65537 # Value in pacmd output which will be considered 100%
-readonly MAX_PERCENT FULL_VOLUME
+SINK='@DEFAULT_AUDIO_SINK@'
+MAX_VOLUME='1.0' # Do not allow setting volume larger than that
+readonly SINK MAX_VOLUME
 
 progname="$(basename "$0")"
-dump="$(pacmd dump)"
-sink="$(echo "${dump}" | grep -oP '(?<=set-default-sink )[\w\._-]+')"
-readonly progname dump sink
+readonly progname
 
 int() {
     printf '%.0f' "$1"
@@ -42,22 +39,21 @@ is_number() {
 }
 
 get_volume() {
-    int "$(echo "${dump}" | grep -oP "(?<=set-sink-volume ${sink} )[\dxa-f]+")"
+    wpctl get-volume ${SINK} | cut -d ' ' -f 2
 }
 
 get_volume_percent() {
-    int "$(calc "$(get_volume) / ${FULL_VOLUME} * 100")"
+    int "$(calc "$(get_volume) * 100")"
 }
 
 set_volume() {
-    pacmd set-sink-volume "${sink}" "$1"
+    wpctl set-volume --limit ${MAX_VOLUME} ${SINK} "$1"
 }
 
 set_volume_percent() {
-    local new_volume_percent new_volume
-    new_volume_percent="$(bound 0 ${MAX_PERCENT} "$1")"
-    new_volume="$(calc "${FULL_VOLUME} * ${new_volume_percent} / 100")"
-    set_volume "$(int "${new_volume}")"
+    local new_volume_decimal
+    new_volume_decimal="$(calc "$1 / 100")"
+    set_volume "${new_volume_decimal}"
 }
 
 print_volume() {
@@ -65,35 +61,23 @@ print_volume() {
 }
 
 inc_volume() {
-    set_volume_percent $(($(get_volume_percent) + ${1}))
+    set_volume "${1}%+"
 }
 
 dec_volume() {
-    set_volume_percent $(($(get_volume_percent) - ${1}))
+    set_volume "${1}%-"
 }
 
 mute() {
-    pacmd set-sink-mute "${sink}" 1
+    wpctl set-mute ${SINK} 1
 }
 
 unmute() {
-    pacmd set-sink-mute "${sink}" 0
-}
-
-is_muted() {
-    if echo "${dump}" | grep -q "set-sink-mute ${sink} yes"; then
-        true
-    else
-        false
-    fi
+    wpctl set-mute ${SINK} 0
 }
 
 toggle_mute() {
-    if is_muted; then
-        unmute
-    else
-        mute
-    fi
+    wpctl set-mute ${SINK} toggle
 }
 
 print_help() {
