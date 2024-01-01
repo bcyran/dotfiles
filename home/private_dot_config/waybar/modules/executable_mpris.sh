@@ -19,6 +19,17 @@ mpris_print() {
     fi
 }
 
-playerctl --follow status | while read -r _; do
-    mpris_print
-done
+follow_status() {
+    playerctl --follow status --format "{{status}}" | while read -r _; do
+        mpris_print
+    done
+}
+
+follow_metadata() {
+    playerctl --follow metadata --format "{{title}}" | while read -r _; do
+        mpris_print
+    done
+}
+
+follow_status &
+follow_metadata
