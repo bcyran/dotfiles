@@ -56,6 +56,16 @@ local plugins = {
     event = { "CmdlineEnter" },
   },
 
+  -- AI
+  {
+    "Exafunction/codeium.vim",
+    config = function()
+      vim.g.codeium_enabled = false
+      vim.g.codeium_disable_bindings = true
+    end,
+    event = "BufEnter",
+  },
+
   -- override plugin configs
   {
     "williamboman/mason.nvim",
@@ -108,7 +118,7 @@ local plugins = {
   {
     "christoomey/vim-tmux-navigator",
     lazy = false,
-  }
+  },
 }
 
 return plugins

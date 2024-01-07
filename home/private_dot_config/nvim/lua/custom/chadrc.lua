@@ -22,6 +22,15 @@ M.ui = {
 
   statusline = {
     theme = "vscode_colored",
+    overriden_modules = function(modules)
+      table.insert(
+        modules,
+        13,
+        (function()
+          return " " .. vim.api.nvim_call_function("codeium#GetStatusString", {}) .. "  "
+        end)()
+      )
+    end,
   },
 }
 

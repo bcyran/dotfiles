@@ -67,4 +67,40 @@ M.telescope = {
   },
 }
 
+M.codeium = {
+  i = {
+    ["<C-y>"] = {
+      function()
+        vim.fn.feedkeys(vim.fn["codeium#Accept"](), "")
+      end,
+      "accept Codeium suggestion",
+      { replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true },
+    },
+    ["<C-a>"] = {
+      function()
+        vim.fn["codeium#Complete"]()
+      end,
+      "manually trigger Codeium suggestion",
+      { replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true },
+    },
+    ["<C-n>"] = {
+      function()
+        vim.fn["codeium#CycleCompletions"](1)
+      end,
+      "next Codeium suggestion",
+      { replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true },
+    },
+    ["<C-p>"] = {
+      function()
+        vim.fn["codeium#CycleCompletions"](-1)
+      end,
+      "previous Codeium suggestion",
+      { replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true },
+    },
+  },
+  n = {
+    ["<leader>at"] = { ":CodeiumToggle<CR>", "toggle Codeium" },
+  },
+}
+
 return M
