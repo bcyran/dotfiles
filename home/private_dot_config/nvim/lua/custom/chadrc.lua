@@ -9,7 +9,7 @@ M.ui = {
   theme_toggle = { "onedark", "one_light" },
 
   cmp = {
-    style = "default",
+    style = "atom",
   },
 
   hl_override = highlights.override,
