@@ -230,11 +230,7 @@ bind = ,XF86MonBrightnessDown, exec, backlight down 10
 bind = CONTROL, space, exec, dunstctl close
 bind = CONTROL, escape, exec, dunstctl history-pop
 
-bind = $mod, space, exec, ~/.config/rofi/scripts/appmenu.sh
-bind = $mod SHIFT, space, exec, ~/.config/rofi/scripts/filesearch.sh
-bind = $mod CONTROL, space, exec, ~/.config/rofi/scripts/runmenu.sh
-bind = $mod SHIFT, backspace, exec, ~/.config/rofi/scripts/powermenu.sh
-bind = $mod, c, exec, ~/.config/rofi/scripts/calc.sh
+bind = $mod, space, exec, onagre
 bind = $mod, return, exec, alacritty
 bind = $mod SHIFT, return, exec, alacritty --class terminal-floating
 bind = $mod, Y, exec, firefox
@@ -261,6 +257,10 @@ windowrulev2 = move 100%-270 70, title:PhilipsTV GUI
 windowrulev2 = float, title:Microsoft Teams Notification
 windowrulev2 = float, title:splash
 windowrulev2 = float, title:Android Emulator
+windowrulev2 = noborder, class:onagre
+windowrulev2 = noanim, class:onagre
+windowrulev2 = rounding 5, class:onagre
+windowrulev2 = opacity 0.9, class:onagre
 
 # Startup
 exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP

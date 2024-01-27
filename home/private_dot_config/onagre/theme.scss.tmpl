@@ -1,0 +1,57 @@
+.onagre {
+  height: 400px;
+  width: 700px;
+  background: {{ .settings.theme.bg }};
+  color: {{ .settings.theme.fg }};
+  --font-family: "Roboto Condensed";
+  font-size: 24px;
+  --icon-theme: "We10X-blue-dark";
+  --icon-size: 40px;
+
+  .container {
+    .search {
+      color: {{ .settings.theme.fg }};
+      background: {{ .settings.theme.lightbg }};
+      border-radius: 5;
+
+      .input {
+        --placeholder-color: {{ .settings.theme.darkfg }};
+        border-radius: 5;
+      }
+    }
+
+    .rows {
+      .row {
+        color: {{ .settings.theme.darkfg }};
+        border-radius: 5;
+
+        .title {
+          font-size: 18px;
+        }
+
+        .description {
+          font-size: 14px;
+        }
+      }
+
+      .row-selected {
+        color: {{ .settings.theme.fg }};
+        border-radius: 5;
+
+        .title {
+          font-size: 18px;
+        }
+
+        .description {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .scrollable {
+      .scroller {
+        color: {{ .settings.theme.lightbg }};
+      }
+    }
+  }
+}
