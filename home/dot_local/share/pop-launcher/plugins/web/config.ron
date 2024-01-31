@@ -1,0 +1,101 @@
+(
+    rules: [
+        (
+            matches: ["amazon"],
+            queries: [(name: "Amazon", query: "smile.amazon.com/s?k=" )]
+        ),
+        (
+            matches: ["allegro"],
+            queries: [(name: "Allegro", query: "allegro.pl/listing?string=" )]
+        ),
+        (
+            matches: ["arch"],
+            queries: [(name: "Arch Wiki", query: "wiki.archlinux.org/index.php?title=Special%3ASearch&search=" )]
+        ),
+        (
+            matches: ["bing"],
+            queries: [(name: "Bing", query: "bing.com/search?q=")]
+        ),
+        (
+            matches: ["crates"],
+            queries: [(name: "Crates.io", query: "crates.io/search?q=")]
+        ),
+        (
+            matches: ["lib"],
+            queries: [(name: "Lib.rs", query: "lib.rs/search?q=")]
+        ),
+        (
+            matches: ["s", "ddg"],
+            queries: [(name: "DuckDuckGo", query: "duckduckgo.com/?q=")]
+        ),
+        (
+            matches: ["docs"],
+            queries: [(name: "Docs.rs", query: "docs.rs/")]
+        ),
+        (
+            matches: ["gh", "github"],
+            queries: [(name: "GitHub", query: "github.com/search?q=")]
+        ),
+        (
+            matches: ["gist"],
+            queries: [(name: "GitHub Gist", query: "gist.github.com/search?q=")]
+        ),
+        (
+            matches: ["gs", "google"],
+            queries: [(name: "Search", query: "google.com/search?q=")]
+        ),
+        (
+            matches: ["gi"],
+            queries: [(name: "Images", query: "google.com/images?q=")]
+        ),
+        (
+            matches: ["gm"],
+            queries: [(name: "Maps", query: "google.com/maps?q=")]
+        ),
+        (
+            matches: ["gn"],
+            queries: [(name: "News", query: "google.com/news?q=")]
+        ),
+        (
+            matches: ["gsc", "scholar"],
+            queries: [(name: "Google Scholar", query: "google.com/scholar?q=")]
+        ),
+        (
+            matches: ["mdn"],
+            queries: [(name: "Mozilla Developer Network", query: "developer.mozilla.org/search?q=")]
+        ),
+        (
+            matches: ["npm"],
+            queries: [(name: "npm", query: "npmjs.com/search?q=")]
+        ),
+        (
+            matches: ["stack"],
+            queries: [(name: "Stack Overflow", query: "stackoverflow.com/search?q=")]
+        ),
+        (
+            matches: ["sp", "startpage"],
+            queries: [(name: "Startpage", query: "startpage.com/sp/search?query=")]
+        ),
+        (
+            matches: ["twitch"],
+            queries: [(name: "Twitch", query: "twitch.tv/search?term=")]
+        ),
+        (
+            matches: ["wiki"],
+            queries: [(name: "Wikipedia", query: "wikipedia.org/w/index.php?search=")]
+        ),
+        (
+            matches: ["www"],
+            queries: [(
+                name: "Open Website",
+                query: "https://",
+                icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Crystal128-browser.svg/179px-Crystal128-browser.svg.png",
+            )]
+        ),
+        (
+            matches: ["yt", "youtube"],
+            queries: [(name: "YouTube", query: "youtube.com/results?search_query=")]
+        ),
+    ]
+)
+
