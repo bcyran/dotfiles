@@ -35,20 +35,24 @@ data:
   settings:
     gui: {{ default false .settings.gui }}
     timewall: {{ default false .settings.timewall }}
-    autolock:
-      enable: {{ hasKey .settings.autolock "enable" | ternary .settings.autolock.enable true }}
-      time: {{ default 30 .settings.autolock.time }}
+    autodim:
+      enable: {{ hasKey .settings.autodim "enable" | ternary .settings.autodim.enable true }}
+      time: {{ default 5 .settings.autodim.time }}
     autoblank:
       enable: {{ hasKey .settings.autoblank "enable" | ternary .settings.autoblank.enable true }}
-      time: {{ default 10 .settings.autoblank.time }}
+      time: {{ default 15 .settings.autoblank.time }}
+    autolock:
+      enable: {{ hasKey .settings.autolock "enable" | ternary .settings.autolock.enable false }}
+      time: {{ default 30 .settings.autolock.time }}
     dirs:
       code: {{ default "$HOME/Kod" .settings.dirs.code | quote }}
       screenshots: {{ default "$HOME/Obrazy/Zrzuty ekranu" .settings.dirs.screenshots | quote }}
       wallpapers: {{ default "$HOME/Obrazy/Tapety" .settings.dirs.wallpapers | quote }}
     theme:
       bg: {{ default "#1e222a" .settings.theme.bg | quote }}
-      fg: {{ default "#abb2bf" .settings.theme.fg | quote }}
       lightbg: {{ default "#373b43" .settings.theme.lightbg | quote }}
+      fg: {{ default "#abb2bf" .settings.theme.fg | quote }}
+      darkfg: {{ default "#5a616e" .settings.theme.darkfg | quote }}
       accent1: {{ default "#98c379" .settings.theme.accent1 | quote }}
       accent2: {{ default "#61afef" .settings.theme.accent2 | quote }}
       accent3: {{ default "#e5c07b" .settings.theme.accent3 | quote }}
