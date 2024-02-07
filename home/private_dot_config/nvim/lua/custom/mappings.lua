@@ -67,7 +67,30 @@ M.telescope = {
   },
 }
 
+M.copilot = {
+  plugin = true,
+
+  n = {
+    ["<leader>cp"] = { ":Copilot panel<CR>", "copilot panel" },
+  },
+}
+
+M.conform = {
+  plugin = true,
+
+  n = {
+    ["<leader>fm"] = {
+      function()
+        require("conform").format()
+      end,
+      "format buffer",
+    },
+  },
+}
+
 M.codeium = {
+  plugin = true,
+
   i = {
     ["<C-y>"] = {
       function()
