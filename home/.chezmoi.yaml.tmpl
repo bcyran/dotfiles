@@ -20,18 +20,21 @@ data:
         position: {{ default "0x325" (index .machine.displays 0).position | quote }}
         scale: {{ default "1.5" (index .machine.displays 0).scale }}
         transform: {{ default 0 (index .machine.displays 0).transform }}
+        id_by_output: {{ default false (index .machine.displays 0).id_by_output }}
       - description: {{ default "Dell Inc. DELL P2421D FJWHGC3" (index .machine.displays 1).description }}
         output: {{ default "DP-6" (index .machine.displays 1).output }}
         resolution: {{ default "2560x1440" (index .machine.displays 1).resolution }}
         position: {{ default "1920x325" (index .machine.displays 1).position }}
         scale: {{ default "1.0" (index .machine.displays 1).scale }}
         transform: {{ default 0 (index .machine.displays 1).transform }}
+        id_by_output: {{ default false (index .machine.displays 1).id_by_output }}
       - description: {{ default "Dell Inc. DELL P2421D CGSHL93" (index .machine.displays 2).description }}
         output: {{ default "DP-7" (index .machine.displays 2).output }}
         resolution: {{ default "2560x1440" (index .machine.displays 2).resolution }}
         position: {{ default "4480x0" (index .machine.displays 2).position }}
         scale: {{ default "1.0" (index .machine.displays 2).scale }}
         transform: {{ default 3 (index .machine.displays 2).transform }}
+        id_by_output: {{ default false (index .machine.displays 2).id_by_output }}
   settings:
     gui: {{ default false .settings.gui }}
     timewall: {{ default false .settings.timewall }}

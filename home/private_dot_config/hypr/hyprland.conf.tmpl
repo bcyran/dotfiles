@@ -10,7 +10,7 @@ env = QT_QPA_PLATFORM,wayland
 
 # Monitors
 {{- range $display := .machine.displays }}
-monitor = desc:{{ $display.description }}, {{ $display.resolution }}@60, {{ $display.position }}, {{ $display.scale }}, transform, {{ $display.transform }}
+monitor = {{ if not $display.id_by_output -}}desc:{{ $display.description }}{{- else -}}{{ $display.output }}{{- end -}}, {{ $display.resolution }}@60, {{ $display.position }}, {{ $display.scale }}, transform, {{ $display.transform }}
 {{- end }}
 monitor = ,preferred, auto, auto
 
