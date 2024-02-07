@@ -1,6 +1,7 @@
 local M = {}
-
+-- local cmp_ui = require("core.utils").load_config().ui.cmp
 local cmp = require "cmp"
+
 M.cmp = {
   mapping = {
     ["<C-y>"] = cmp.mapping.confirm {
@@ -43,6 +44,18 @@ M.cmp = {
   completion = {
     completeopt = "menu,menuone,preview",
   },
+  -- formatting = {
+  --   format = function(_, item)
+  --     local icons = require "nvchad.icons.lspkind"
+  --     local icon = (cmp_ui.icons and icons[item.kind]) or ""
+  --
+  --     icon = cmp_ui.lspkind_text and (" " .. icon .. " ") or icon
+  --     item.kind = string.format("%s %s", icon, cmp_ui.lspkind_text and item.kind or "")
+  --     item.menu = nil
+  --
+  --     return item
+  --   end,
+  -- },
 }
 
 M.blankline = {

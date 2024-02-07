@@ -1,4 +1,5 @@
 local overrides = require "custom.configs.overrides"
+local settings = require "custom.settings"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -6,31 +7,50 @@ local plugins = {
     "sheerun/vim-polyglot",
     lazy = false,
   },
-  -- LSP setup
+
+  {
+    "olimorris/persisted.nvim",
+    lazy = false,
+    opts = require "custom.configs.persisted",
+  },
+
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
-      },
-    },
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
     end,
   },
 
+  {
+    "stevearc/conform.nvim",
+    custom_keys = {
+      { "<leader>fm", desc = "format buffer" },
+    },
+    init = function()
+      require("core.utils").load_mappings "conform"
+    end,
+    opts = require "custom.configs.conform",
+  },
+
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require "custom.configs.lint"
+    end,
+  },
+
   -- language specific
   {
-    "simrat39/rust-tools.nvim",
+    "mrcjkb/rustaceanvim",
     dependencies = {
       "neovim/nvim-lspconfig",
     },
     ft = "rust",
-    opts = require "custom.configs.rust-tools",
+    config = function()
+      require "custom.configs.rustaceanvim"
+    end,
   },
 
   {
@@ -58,12 +78,34 @@ local plugins = {
 
   -- AI
   {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    init = function()
+      require("core.utils").load_mappings "conform"
+    end,
+    opts = require "custom.configs.copilot",
+    enabled = settings.copilot_enabled,
+  },
+
+  {
+    "gptlang/CopilotChat.nvim",
+    cmd = "CopilotChat",
+    build = ":UpdateRemotePlugins",
+    enabled = settings.copilot_enabled,
+  },
+
+  {
     "Exafunction/codeium.vim",
+    event = "BufEnter",
+    init = function()
+      require("core.utils").load_mappings "codeium"
+    end,
     config = function()
       vim.g.codeium_enabled = false
       vim.g.codeium_disable_bindings = true
     end,
-    event = "BufEnter",
+    enabled = settings.codeium_enabled,
   },
 
   -- override plugin configs

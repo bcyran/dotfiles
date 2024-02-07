@@ -22,6 +22,7 @@ opt.listchars = {
 }
 opt.incsearch = true
 opt.spelllang = "en,pl"
+opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 vim.diagnostic.config({
   virtual_text = false,
