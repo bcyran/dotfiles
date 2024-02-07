@@ -42,6 +42,11 @@
     ria = rebase -i --autosquash --autostash
     r = restore
     rs = restore --staged
+    cf = chain first
+    cn = chain next
+    cp = chain prev
+    cl = chain last
+    cr = chain rebase
 [pull]
     ff = only
 {{- if eq .machine.id "home" }}
