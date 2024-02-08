@@ -41,7 +41,7 @@ local options = {
         "4",
         "--binary-next-line",
         "--case-indent",
-        "--space-redirect",
+        "--space-redirects",
       },
     },
     shellcheck = {
@@ -53,7 +53,8 @@ local options = {
     },
     dart_format = {
       inherit = true,
-      prepend_args = {
+      args = {
+        "format",
         "--line-length",
         "100",
       },
