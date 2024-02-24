@@ -1,90 +1,37 @@
 #!/usr/bin/env bash
 
-# Don't try to lock if already locked
-if pgrep -x i3lock > /dev/null; then
-    exit 1
-fi
-
 font='Roboto'
 bg_color='{{ .settings.theme.fg }}ff'
 ring_color='{{ .settings.theme.fg }}ff'
 ring_hl_color='{{ .settings.theme.bg }}dd'
 text_color='{{ .settings.theme.bg }}dd'
 
-if [[ ${XDG_CURRENT_DESKTOP} = "Hyprland" ]]; then
-    swaylock \
-        --screenshots \
-        --effect-blur 5x2 \
-        --font="${font}" \
-        --font-size=50 \
-        --clock \
-        --timestr='%H:%M:%S' \
-        --datestr='' \
-        --indicator \
-        --indicator-idle-visible \
-        \
-        --text-color="${text_color}" \
-        --inside-color="${bg_color}" \
-        --inside-ver-color="${bg_color}" \
-        --inside-wrong-color="${bg_color}" \
-        --line-uses-inside \
-        --separator-color=${bg_color} \
-        --indicator-radius=120 \
-        \
-        --ring-color="${ring_color}" \
-        --ring-ver-color="${ring_color}" \
-        --ring-wrong-color="${ring_color}" \
-        --key-hl-color="${ring_hl_color}" \
-        \
-        --text-wrong-color="${text_color}" \
-        \
-        --text-ver-color="${text_color}" \
-        \
-        "$@"
-else
-    i3lock \
-        --pass-media-keys \
-        --pass-screen-keys \
-        --pass-volume-keys \
-        --screen 1 \
-        --clock \
-        --indicator \
-        --ignore-empty-password \
-        --blur 5 \
-        \
-        --time-str='%H:%M:%S' \
-        --time-pos='ix:iy+15' \
-        --time-font="${font}" \
-        --time-size=50 \
-        --time-color=${text_color} \
-        \
-        --date-str='' \
-        \
-        --inside-color="${bg_color}" \
-        --insidever-color="${bg_color}" \
-        --insidewrong-color="${bg_color}" \
-        --line-uses-inside \
-        --separator-color=${bg_color} \
-        --radius=120 \
-        \
-        --ring-color="${ring_color}" \
-        --ringver-color="${ring_color}" \
-        --ringwrong-color="${ring_color}" \
-        --keyhl-color="${ring_hl_color}" \
-        --bshl-color="${ring_hl_color}" \
-        \
-        --wrong-text="wrong" \
-        --wrong-pos='ix:iy+15' \
-        --wrong-font="${font}" \
-        --wrong-size=50 \
-        --wrong-color="${text_color}" \
-        \
-        --verif-text="..." \
-        --verif-pos='ix:iy+15' \
-        --verif-font="${font}" \
-        --verif-size=50 \
-        --verif-color="${text_color}" \
-        \
-        --noinput-text='no input' \
-        "$@"
-fi
+swaylock \
+    --screenshots \
+    --effect-blur 5x2 \
+    --font="${font}" \
+    --font-size=50 \
+    --clock \
+    --timestr='%H:%M:%S' \
+    --datestr='' \
+    --indicator \
+    --indicator-idle-visible \
+    \
+    --text-color="${text_color}" \
+    --inside-color="${bg_color}" \
+    --inside-ver-color="${bg_color}" \
+    --inside-wrong-color="${bg_color}" \
+    --line-uses-inside \
+    --separator-color=${bg_color} \
+    --indicator-radius=120 \
+    \
+    --ring-color="${ring_color}" \
+    --ring-ver-color="${ring_color}" \
+    --ring-wrong-color="${ring_color}" \
+    --key-hl-color="${ring_hl_color}" \
+    \
+    --text-wrong-color="${text_color}" \
+    \
+    --text-ver-color="${text_color}" \
+    \
+    "$@"

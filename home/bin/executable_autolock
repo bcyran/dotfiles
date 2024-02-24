@@ -1,22 +1,4 @@
 #!/usr/bin/env bash
 
-locker="lock"
-notifier="notify-send \
-    -t 8000 \
-    'Screen lock' \
-    'The screen will be locked in 10 seconds'"
-
-if [[ ${XDG_CURRENT_DESKTOP} = "Hyprland" ]]; then
-    swayidle -w \
-      timeout $(( ${1:-30} * 60)) 'lock'
-else
-    xautolock \
-        -detectsleep \
-        -time "${1:-30}" \
-        -locker "${locker}" \
-        -corners "+-00" \
-        -cornerdelay 15 \
-        -cornersize 10 \
-        -notify 10 \
-        -notifier "${notifier}"
-fi
+swayidle -w \
+    timeout $((${1:-30} * 60)) 'lock'
