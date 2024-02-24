@@ -18,6 +18,7 @@ notify_if_saved() {
 
 annotate_fullscreen() {
     hyprctl keyword windowrulev2 'fullscreen,title:^(satty)$' > /dev/null
+    hyprctl keyword windowrulev2 'float,title:^(satty)$' > /dev/null
     hyprctl keyword windowrulev2 'noanim,title:^(satty)$' > /dev/null
     satty --filename - --fullscreen --save-after-copy --early-exit --output-filename "$1"
     hyprctl keyword windowrulev2 'unset,title:^(satty)$' > /dev/null
