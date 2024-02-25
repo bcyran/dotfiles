@@ -31,6 +31,8 @@ M.general = {
     ["<C-l>"] = { ":<C-U>TmuxNavigateRight<CR>", "navigate right to the split or tmux pane" },
 
     ["<C-q>"] = { toggle_quickfix, "toggle quickfix list" },
+    ["dn"] = { vim.diagnostic.goto_next, "go to next diagnostics item" },
+    ["dp"] = { vim.diagnostic.goto_prev, "go to previous diagnostics item" },
   },
 }
 
