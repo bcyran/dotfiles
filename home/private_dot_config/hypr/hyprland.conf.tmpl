@@ -138,8 +138,8 @@ bind = $mod, d, exec, hyprctl keyword general:layout "dwindle"
 bind = $mod SHIFT, d, exec, hyprctl keyword general:layout "master"
 bind = $mod, o, changegroupactive, b
 bind = $mod, p, changegroupactive, f
-bind = $mod, w, togglegroup
-bind = $mod CONTROL, w, moveoutofgroup
+bind = $mod, t, togglegroup
+bind = $mod SHIFT, t, moveoutofgroup
 bind = $mod CONTROL, h, moveintogroup, l
 bind = $mod CONTROL, l, moveintogroup, r
 bind = $mod CONTROL, k, moveintogroup, u
@@ -217,9 +217,9 @@ bind = $mod, equal, exec, scr output
 bind = $mod CONTROL, equal, exec, scr area
 bind = $mod SHIFT, equal, exec, scr active
 
-bind = $mod, backslash, exec, playerctl play-pause
-bind = $mod, bracketleft, exec, playerctl previous
-bind = $mod, bracketright, exec, playerctl next
+bind = $mod, slash, exec, playerctl play-pause
+bind = $mod, comma, exec, playerctl previous
+bind = $mod, period, exec, playerctl next
 
 bind = ,XF86AudioRaiseVolume, exec, volume up
 bind = ,XF86AudioLowerVolume, exec, volume down
