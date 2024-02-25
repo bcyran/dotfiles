@@ -1,5 +1,5 @@
 local M = {}
--- local cmp_ui = require("core.utils").load_config().ui.cmp
+local cmp_ui = require("core.utils").load_config().ui.cmp
 local cmp = require "cmp"
 
 M.cmp = {
@@ -44,18 +44,23 @@ M.cmp = {
   completion = {
     completeopt = "menu,menuone,preview",
   },
-  -- formatting = {
-  --   format = function(_, item)
-  --     local icons = require "nvchad.icons.lspkind"
-  --     local icon = (cmp_ui.icons and icons[item.kind]) or ""
-  --
-  --     icon = cmp_ui.lspkind_text and (" " .. icon .. " ") or icon
-  --     item.kind = string.format("%s %s", icon, cmp_ui.lspkind_text and item.kind or "")
-  --     item.menu = nil
-  --
-  --     return item
-  --   end,
-  -- },
+  formatting = {
+    fields = { "kind", "abbr", "menu" },
+    format = function(_, item)
+      local icons = require "nvchad.icons.lspkind"
+      local icon = (cmp_ui.icons and icons[item.kind]) or ""
+
+      item.kind = " " .. icon .. " "
+      if item.menu then
+        local original_menu = string.match(item.menu, "^%s*(.*)")
+        local truncated_menu = string.sub(original_menu, 1, 30)
+        local postfix = string.len(original_menu) == string.len(truncated_menu) and "" or "…"
+        item.menu = truncated_menu .. postfix
+      end
+
+      return item
+    end,
+  },
 }
 
 M.blankline = {
