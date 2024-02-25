@@ -3,17 +3,7 @@ local settings = require "custom.settings"
 
 ---@type NvPluginSpec[]
 local plugins = {
-  {
-    "sheerun/vim-polyglot",
-    lazy = false,
-  },
-
-  {
-    "olimorris/persisted.nvim",
-    lazy = false,
-    opts = require "custom.configs.persisted",
-  },
-
+  -- LSP, linting, formatting
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -41,7 +31,34 @@ local plugins = {
     end,
   },
 
-  -- language specific
+  -- Treesitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = require "custom.configs.treesitter",
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    lazy = false,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter-refactor",
+    lazy = false,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+  },
+
+  -- Language support
+  {
+    "sheerun/vim-polyglot",
+    lazy = false,
+  },
+
   {
     "mrcjkb/rustaceanvim",
     dependencies = {
@@ -76,6 +93,35 @@ local plugins = {
     event = { "CmdlineEnter" },
   },
 
+  -- Utility
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    opts = overrides.blankline,
+  },
+
+  {
+    "abecodes/tabout.nvim",
+    opts = require "custom.configs.tabout",
+    lazy = false,
+    priority = 10,
+  },
+
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
+
+  {
+    "kevinhwang91/nvim-bqf",
+    ft = "qf",
+  },
+
+  {
+    "olimorris/persisted.nvim",
+    lazy = false,
+    opts = require "custom.configs.persisted",
+  },
+
   -- AI
   {
     "zbirenbaum/copilot.lua",
@@ -108,31 +154,10 @@ local plugins = {
     enabled = settings.codeium_enabled,
   },
 
-  -- override plugin configs
+  -- Override default plugin configs
   {
     "williamboman/mason.nvim",
     opts = overrides.mason,
-  },
-
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = require "custom.configs.treesitter",
-  },
-
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    lazy = false,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
-  },
-
-  {
-    "nvim-treesitter/nvim-treesitter-refactor",
-    lazy = false,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
   },
 
   {
@@ -143,23 +168,6 @@ local plugins = {
   {
     "hrsh7th/nvim-cmp",
     opts = overrides.cmp,
-  },
-
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    opts = overrides.blankline,
-  },
-
-  {
-    "abecodes/tabout.nvim",
-    opts = require "custom.configs.tabout",
-    lazy = false,
-    priority = 10,
-  },
-
-  {
-    "christoomey/vim-tmux-navigator",
-    lazy = false,
   },
 }
 

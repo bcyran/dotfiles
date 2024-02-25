@@ -1,6 +1,17 @@
 ---@type MappingsTable
 local M = {}
 
+local function toggle_quickfix()
+  local windows = vim.fn.getwininfo()
+  for _, win in pairs(windows) do
+    if win["quickfix"] == 1 then
+      vim.cmd.cclose()
+      return
+    end
+  end
+  vim.cmd.copen()
+end
+
 M.general = {
   n = {
     ["<leader>hl"] = { ":setlocal hls!<CR>", "toggle search highlighting" },
@@ -18,6 +29,8 @@ M.general = {
     ["<C-j>"] = { ":<C-U>TmuxNavigateDown<CR>", "navigate down to the split or tmux pane" },
     ["<C-k>"] = { ":<C-U>TmuxNavigateUp<CR>", "navigate up to the split or tmux pane" },
     ["<C-l>"] = { ":<C-U>TmuxNavigateRight<CR>", "navigate right to the split or tmux pane" },
+
+    ["<C-q>"] = { toggle_quickfix, "toggle quickfix list" },
   },
 }
 
