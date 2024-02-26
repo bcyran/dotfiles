@@ -5,4 +5,4 @@
 # description: Screenshot the entire screen
 # keywords: screenshot screen
 
-scr screen
+sleep 0.5 && scr screen

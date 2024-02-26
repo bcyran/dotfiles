@@ -5,4 +5,4 @@
 # description: Screenshot the active output
 # keywords: screenshot output monitor display
 
-scr output
+sleep 0.5 && scr output

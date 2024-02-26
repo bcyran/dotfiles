@@ -5,4 +5,4 @@
 # description: Screenshot the selected area
 # keywords: screenshot area select
 
-scr area
+sleep 0.5 && scr area

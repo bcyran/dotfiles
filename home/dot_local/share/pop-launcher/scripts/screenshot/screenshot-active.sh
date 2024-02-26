@@ -5,4 +5,4 @@
 # description: Screenshot the active window
 # keywords: screenshot active window
 
-scr active
+sleep 0.5 && scr active
