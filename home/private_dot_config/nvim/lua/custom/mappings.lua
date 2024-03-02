@@ -34,6 +34,9 @@ M.general = {
     ["dn"] = { vim.diagnostic.goto_next, "go to next diagnostics item" },
     ["dp"] = { vim.diagnostic.goto_prev, "go to previous diagnostics item" },
   },
+  t = {
+    ["<Esc>"] = { "<C-\\><C-n>", "exit terminal mode" },
+  },
 }
 
 M.nvterm = {
