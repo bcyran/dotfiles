@@ -31,6 +31,19 @@ local plugins = {
     end,
   },
 
+  {
+    "nvimdev/lspsaga.nvim",
+    event = { "LspAttach" },
+    opts = require "custom.configs.lspsaga",
+    init = function()
+      require("core.utils").load_mappings "lspsaga"
+    end,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+  },
+
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",

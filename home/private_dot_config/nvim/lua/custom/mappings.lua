@@ -23,6 +23,7 @@ end
 M.general = {
   n = {
     ["<leader>x"] = { close_buffer, "Close buffer" },
+    ["<C-q>"] = { toggle_quickfix, "toggle quickfix list" },
 
     ["<leader>hl"] = { ":setlocal hls!<CR>", "toggle search highlighting" },
     ["<leader>cs"] = { ":let @/=''<CR>", "clear search" },
@@ -39,10 +40,6 @@ M.general = {
     ["<C-j>"] = { ":<C-U>TmuxNavigateDown<CR>", "navigate down to the split or tmux pane" },
     ["<C-k>"] = { ":<C-U>TmuxNavigateUp<CR>", "navigate up to the split or tmux pane" },
     ["<C-l>"] = { ":<C-U>TmuxNavigateRight<CR>", "navigate right to the split or tmux pane" },
-
-    ["<C-q>"] = { toggle_quickfix, "toggle quickfix list" },
-    ["dn"] = { vim.diagnostic.goto_next, "go to next diagnostics item" },
-    ["dp"] = { vim.diagnostic.goto_prev, "go to previous diagnostics item" },
   },
   t = {
     ["<Esc>"] = { "<C-\\><C-n>", "exit terminal mode" },
@@ -171,6 +168,20 @@ M.illuminate = {
       end,
       "Go to the previous reference",
     },
+  },
+}
+
+M.lspsaga = {
+  plugin = true,
+
+  n = {
+    ["gr"] = { ":Lspsaga finder<CR>", "LSP references" },
+    ["dn"] = { ":Lspsaga diagnostic_jump_next<CR>", "go to next diagnostics item" },
+    ["dp"] = { ":Lspsaga diagnostic_jump_prev<CR>", "go to previous diagnostics item" },
+    ["<leader>ic"] = { ":Lspsaga incoming_calls<CR>", "incoming calls" },
+    ["<leader>oc"] = { ":Lspsaga outgoing_calls<CR>", "outgoing calls" },
+    ["<leader>ca"] = { ":Lspsaga code_action<CR>", "LSP code action" },
+    ["<C-o>"] = { ":Lspsaga outline<CR>", "Symbols outline" },
   },
 }
 
