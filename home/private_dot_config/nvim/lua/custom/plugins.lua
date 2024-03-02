@@ -138,6 +138,11 @@ local plugins = {
     end,
   },
 
+  {
+    "echasnovski/mini.bufremove",
+    lazy = false,
+  },
+
   -- AI
   {
     "zbirenbaum/copilot.lua",

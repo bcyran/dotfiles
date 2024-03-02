@@ -12,8 +12,18 @@ local function toggle_quickfix()
   vim.cmd.copen()
 end
 
+local function close_buffer()
+  if vim.bo.filetype == "terminal" then
+    require("nvchad.tabufline").close_buffer()
+  else
+    require("mini.bufremove").delete()
+  end
+end
+
 M.general = {
   n = {
+    ["<leader>x"] = { close_buffer, "Close buffer" },
+
     ["<leader>hl"] = { ":setlocal hls!<CR>", "toggle search highlighting" },
     ["<leader>cs"] = { ":let @/=''<CR>", "clear search" },
     ["<leader>ss"] = { ":setlocal spell!<CR>", "toggle spell check" },
