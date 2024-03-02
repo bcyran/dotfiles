@@ -122,6 +122,12 @@ local plugins = {
     opts = require "custom.configs.persisted",
   },
 
+  {
+    "karb94/neoscroll.nvim",
+    lazy = false,
+    opts = require "custom.configs.neoscroll",
+  },
+
   -- AI
   {
     "zbirenbaum/copilot.lua",
