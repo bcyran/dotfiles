@@ -128,6 +128,16 @@ local plugins = {
     opts = require "custom.configs.neoscroll",
   },
 
+  {
+    "RRethy/vim-illuminate",
+    lazy = false,
+    init = function()
+      local options = require "custom.configs.illuminate"
+      require("illuminate").configure(options)
+      require("core.utils").load_mappings "illuminate"
+    end,
+  },
+
   -- AI
   {
     "zbirenbaum/copilot.lua",

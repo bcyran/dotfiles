@@ -141,4 +141,24 @@ M.codeium = {
   },
 }
 
+M.illuminate = {
+  plugin = true,
+
+  n = {
+    ["sn"] = {
+      function()
+        require("illuminate").goto_next_reference(true)
+      end,
+      "Go to the next reference",
+    },
+
+    ["sp"] = {
+      function()
+        require("illuminate").goto_prev_reference(true)
+      end,
+      "Go to the previous reference",
+    },
+  },
+}
+
 return M
