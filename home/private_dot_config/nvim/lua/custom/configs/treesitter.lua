@@ -33,7 +33,7 @@ local options = {
   },
   indent = {
     enable = true,
-    disable = { 'dart' },
+    disable = { "dart" },
   },
   highlight = {
     enable = true,
@@ -88,8 +88,8 @@ local options = {
   },
   refactor = {
     highlight_definitions = {
-      enable = true,
-      clear_on_cursor_move = true,
+      enable = false,
+      clear_on_cursor_move = false,
     },
   },
 }
