@@ -181,7 +181,7 @@ M.lspsaga = {
     ["<leader>ic"] = { ":Lspsaga incoming_calls<CR>", "incoming calls" },
     ["<leader>oc"] = { ":Lspsaga outgoing_calls<CR>", "outgoing calls" },
     ["<leader>ca"] = { ":Lspsaga code_action<CR>", "LSP code action" },
-    ["<C-o>"] = { ":Lspsaga outline<CR>", "Symbols outline" },
+    ["<leader>ol"] = { ":Lspsaga outline<CR>", "Symbols outline" },
   },
 }
 
