@@ -8,15 +8,13 @@ opt.relativenumber = true
 opt.scrolloff = 5
 opt.title = true
 opt.breakindent = true
--- opt.listchars = {
---   eol = "¬",
---   tab = ">-",
---   space = "·",
---   trail = "~",
---   extends = ">",
---   precedes = "<",
--- }
 opt.incsearch = true
 opt.spelllang = "en,pl"
-opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-opt.pumblend = 0
+opt.pumblend = 0 -- disable transparency in popup completion menu
+
+vim.g.root_spec = {
+  { "pyproject.toml", "requirements.txt", "setup.cfg", "setup.py" },
+  "lsp",
+  { ".git", "lua" },
+  "cwd",
+}

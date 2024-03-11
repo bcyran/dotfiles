@@ -13,11 +13,7 @@ return {
         "typescript",
         "tsx",
         -- core dev
-        "python",
-        "rust",
-        "go",
         "dart",
-        "bash",
         -- markup
         "json",
         "yaml",

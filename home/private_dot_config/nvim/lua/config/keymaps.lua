@@ -18,12 +18,8 @@ map("n", "<tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 map("n", "<leader>h", "<cmd>split<cr>", { desc = "Split horizontal" })
 map("n", "<leader>v", "<cmd>vsplit<cr>", { desc = "Split vertical" })
 
--- map("n", "<C-n>", "<cmd>Neotree toggle<cr>", { desc = "Toggle file tree" })
-
 map("n", "<leader>fw", "<cmd>Telescope live_grep<cr>", { desc = "Grep files" })
 map("n", "<leader>fd", "<cmd>Telescope flutter commands<cr>", { desc = "Flutter commands" })
-
--- map({ "n", "v" }, "<leader>fm", format_buffer, { desc = "LSP format" })
 
 map("n", "dn", diagnostic_goto(true), { desc = "Next Diagnostic" })
 map("n", "dp", diagnostic_goto(false), { desc = "Prev Diagnostic" })
