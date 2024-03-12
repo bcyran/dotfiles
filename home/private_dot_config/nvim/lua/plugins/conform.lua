@@ -9,18 +9,6 @@ return {
         typescript = { "prettier" },
         css = { "prettier" },
         html = { "prettier" },
-        dart = { "dart_format" },
-      },
-
-      formatters = {
-        dart_format = {
-          inherit = true,
-          args = {
-            "format",
-            "--line-length",
-            "100",
-          },
-        },
       },
     },
   },
