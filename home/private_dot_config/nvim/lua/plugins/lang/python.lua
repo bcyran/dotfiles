@@ -137,7 +137,7 @@ return {
       })
     end,
     keys = {
-      { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" },
+      { "<leader>cv", "<cmd>VenvSelect<cr>", desc = "Select VirtualEnv" },
     },
   },
 }
