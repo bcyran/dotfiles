@@ -1,7 +1,6 @@
 [user]
     email = {{ .user.email }}
     name = Bazyli Cyran
-    signingkey = 93DCA98548AD35EBDDEC44E85B94D1C37EEA263B
 [core]
     editor = nvim
     excludesfile = ~/.gitignore
@@ -28,6 +27,7 @@
     swc = switch -c
     br = branch
     aa = add --all
+    sa = stash --all
     rh = reset HEAD
     rh1 = reset HEAD~1
     cm = commit
@@ -51,5 +51,11 @@
     ff = only
 {{- if eq .machine.id "home" }}
 [safe]
-	directory = /opt/flutter
+    directory = /opt/flutter
+[rerere]
+    enabled = true
+[branch]
+    sort = -committerdate
+[column]
+    ui = auto
 {{- end }}
