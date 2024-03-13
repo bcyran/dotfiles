@@ -23,3 +23,6 @@ map("n", "<leader>fd", "<cmd>Telescope flutter commands<cr>", { desc = "Flutter 
 
 map("n", "dn", diagnostic_goto(true), { desc = "Next Diagnostic" })
 map("n", "dp", diagnostic_goto(false), { desc = "Prev Diagnostic" })
+
+map("n", "<leader><tab>n", "<cmd>tabnext<cr>", { desc = "Next tab" })
+map("n", "<leader><tab>p", "<cmd>tabprevious<cr>", { desc = "Previous tab" })

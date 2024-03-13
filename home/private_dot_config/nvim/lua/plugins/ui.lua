@@ -59,4 +59,29 @@ return {
       { "<C-l>", "<cmd>TmuxNavigateRight<cr>", desc = "Navigate right" },
     },
   },
+
+  {
+    "tiagovla/scope.nvim",
+    config = true,
+  },
+
+  {
+    "folke/persistence.nvim",
+    dependencies = { "tiagovla/scope.nvim" },
+    opts = {
+      pre_save = function()
+        vim.cmd([[ScopeSaveState]])
+      end,
+    },
+    keys = {
+      {
+        "<leader>ql",
+        function()
+          require("persistence").load({ last = true })
+          vim.cmd([[ScopeLoadState]])
+        end,
+        { desc = "Load last session" },
+      },
+    },
+  },
 }
