@@ -25,6 +25,7 @@
     cob = checkout -b
     sw = switch
     swc = switch -c
+    sr = "!f() { git for-each-ref --count=10 --sort=-committerdate --format='%(refname:short)|%(committerdate:relative)|%(subject)|%(authorname)' refs/heads | column -ts'|' | fzf +m | cut -d ' ' -f 1 | xargs -o git switch; }; f"
     br = branch
     aa = add --all
     sa = stash --all
@@ -34,7 +35,8 @@
     cmm = commit -m
     cma = commit --amend
     cmane = commit --amend --no-edit
-    l = log --oneline -10
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lp = l -p
     df = diff
     dfc = diff --cached
     pf = push --force-with-lease
