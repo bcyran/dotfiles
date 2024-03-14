@@ -20,4 +20,18 @@ return {
       use_default_keymaps = false,
     },
   },
+
+  {
+    "jiaoshijie/undotree",
+    dependencies = "nvim-lua/plenary.nvim",
+    opts = {
+      position = "right",
+      window = {
+        winblend = 0,
+      },
+    },
+    keys = {
+      { "<leader>cu", "<cmd>lua require('undotree').toggle()<cr>", desc = "Toggle undotree" },
+    },
+  },
 }
