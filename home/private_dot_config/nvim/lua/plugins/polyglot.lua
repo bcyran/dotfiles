@@ -1,5 +1,0 @@
-return {
-  {
-    "sheerun/vim-polyglot",
-  },
-}
