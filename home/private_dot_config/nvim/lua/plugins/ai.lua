@@ -15,8 +15,7 @@ return {
     },
     opts = {
       panel = {
-        enabled = true,
-        auto_refresh = false,
+        enabled = false,
       },
       suggestion = {
         enabled = true,
@@ -74,6 +73,60 @@ return {
       "CopilotChatFixDiagnostic",
       "CopilotChatCommit",
       "CopilotChatCommitStaged",
+      "CopilotChatBuffer",
+    },
+    opts = {
+      proxy = os.getenv("http_proxy"),
+      name = "Copilot",
+      selection = function(source)
+        return require("CopilotChat.select").visual(source)
+      end,
+    },
+    config = function(_, opts)
+      local chat = require("CopilotChat")
+      local select = require("CopilotChat.select")
+
+      -- Override default prompts
+      opts.prompts = {
+        Commit = {
+          prompt = "Write commit message for the changes using conventional commit format",
+          selection = select.gitdiff,
+        },
+        CommitStaged = {
+          prompt = "Write commit message for the changes using conventional commit format",
+          selection = function(source)
+            return select.gitdiff(source, true)
+          end,
+        },
+      }
+      chat.setup(opts)
+
+      vim.api.nvim_create_user_command("CopilotChatBuffer", function(args)
+        chat.ask(args.args, { selection = select.buffer })
+      end, { nargs = "*", range = true })
+    end,
+    keys = {
+      {
+        "<leader>av",
+        function()
+          local input = vim.fn.input("Chat about selection: ")
+          if input ~= "" then
+            vim.cmd("CopilotChat " .. input)
+          end
+        end,
+        desc = "Copilot chat about visual selection",
+        mode = "v",
+      },
+      {
+        "<leader>ab",
+        function()
+          local input = vim.fn.input("Chat about the buffer: ")
+          if input ~= "" then
+            vim.cmd("CopilotChatBuffer " .. input)
+          end
+        end,
+        desc = "Copilot chat about current buffer",
+      },
     },
   },
 
