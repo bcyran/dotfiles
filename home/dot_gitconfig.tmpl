@@ -35,7 +35,8 @@
     cmm = commit -m
     cma = commit --amend
     cmane = commit --amend --no-edit
-    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    l = ll -15
+    ll = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     lp = l -p
     df = diff
     dfc = diff --cached
@@ -51,13 +52,13 @@
     cr = chain rebase
 [pull]
     ff = only
-{{- if eq .machine.id "home" }}
-[safe]
-    directory = /opt/flutter
 [rerere]
     enabled = true
 [branch]
     sort = -committerdate
 [column]
     ui = auto
+{{- if eq .machine.id "home" }}
+[safe]
+    directory = /opt/flutter
 {{- end }}
