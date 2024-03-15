@@ -3,119 +3,142 @@
   "spacing": 15,
   "hyprland/workspaces": {
     "all-outputs": false,
-    "format": "{name} <span rise='-1750'>{icon}</span>",
+    "format": "{name} <span rise='-800'>{icon} </span>",
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "6": "",
-      "7": "",
-      "8": "",
-      "9": "",
-      "10": "",
-      "11": "",
-    },
+      "1": "󰖟",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "󰖟",
+      "6": "",
+      "7": "󰍹",
+      "8": "󰻞",
+      "9": "",
+      "10": "󰲸",
+      "11": ""
+    }
   },
   "hyprland/window": {
-    "max-length": 60,
+    "max-length": 60
   },
   "clock": {
-    "format": "<span rise='-1750'></span> {:%H:%M, %a %e %B}",
-    "tooltip-format": "<big>{:%Y %b}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "<span rise='-800'> </span>  {:%H:%M, %a %e %B}",
+    "tooltip-format": "<big>{:%Y %b}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "custom/mpris": {
     "exec": "~/.config/waybar/modules/mpris.sh",
     "return-type": "json",
-    "format": "<span rise='-1750'>{icon}</span> {}",
+    "format": "<span rise='-800'>{icon} </span> {}",
     "format-icons": {
-      "playing": "",
-      "paused": "",
+      "playing": "󰐍",
+      "paused": "󰏦"
     },
     "on-click": "playerctl play-pause",
-    "max-length": 50,
+    "max-length": 50
   },
   "custom/philipstv": {
     "exec": "~/.config/waybar/modules/philipstv.sh",
     "interval": 60,
-    "format": "<span rise='-1750'></span> {}",
+    "format": "<span rise='-800'>󰻅</span> {}",
     "on-click": "philipstv key pause",
     "on-click-right": "philipstv key play",
     "on-click-middle": "philipstv key mute",
     "on-scroll-up": "philipstv key volup",
     "on-scroll-down": "philipstv key voldown",
     "on-double-click": "philipstv-gui",
-    "tooltip": false,
+    "tooltip": false
   },
   "custom/vpn": {
     "exec": "~/.config/waybar/modules/vpn.sh",
     "return-type": "json",
-    "format": "<span rise='-1750'>{icon}</span> {}",
+    "format": "<span rise='-800'>{icon} </span> {}",
     "format-icons": {
-      "on": "",
-      "off": "",
+      "on": "󰒙",
+      "off": ""
     },
-    "interval": 60,
+    "interval": 60
   },
   "custom/updates": {
     "exec": "~/.config/waybar/modules/updates.sh",
-    "format": "<span rise='-1750'></span> {}",
+    "format": "<span rise='-800'> </span>  {}",
     "interval": 600,
-    "tooltip": false,
+    "tooltip": false
   },
   "custom/sunset": {
     "return-type": "json",
     "exec": "~/.config/waybar/modules/sunset.sh",
     "interval": 15,
-    "format": "<span rise='-1750'>{icon}</span> {}",
+    "format": "<span rise='-800'>{icon} </span> {}",
     "format-icons": {
-      "on": "",
-      "off": "",
+      "on": "󱩍",
+      "off": "󰹐"
     },
-    "interval": 15,
     "on-click": "~/.config/waybar/modules/sunset.sh toggle",
-    "tooltip": false,
+    "tooltip": false
   },
   "custom/backlight": {
     "exec": "~/.config/waybar/modules/light.sh",
-    "format": "<span rise='-1750'></span> {}",
+    "format": "<span rise='-800'>󰃟 </span>  {}",
     "on-scroll-up": "~/.config/waybar/modules/light.sh inc",
     "on-scroll-down": "~/.config/waybar/modules/light.sh dec",
-    "tooltip": false,
+    "tooltip": false
   },
   "bluetooth": {
     "format": "",
     "tooltip-format": "",
-    "format-connected": "<span rise='-1750'></span> {num_connections}",
+    "format-connected": "<span rise='-800'>󰂯</span> {num_connections}",
     "tooltip-format-connected": "{num_connections} connected:\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "• {device_alias}",
     "tooltip-format-enumerate-connected-battery": "• {device_alias} ({device_battery_percentage}%)"
   },
   "pulseaudio": {
-    "format": "<span rise='-1750'>{icon}</span> {volume}%",
-    "format-muted": "<span rise='-1750'></span> {volume}%",
+    "format": "<span rise='-800'>{icon}</span>  {volume}%",
+    "format-muted": "<span rise='-800'>󰝟</span>  {volume}%",
     "format-icons": {
-      "default": ["", "", ""]
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
     },
     "scroll-step": 5,
     "on-click": "pavucontrol",
+    "on-click-middle": "volume toggle"
   },
   "network": {
     "interface": "{{ .machine.network.wlan }}",
-    "format-wifi": "<span rise='-1750'></span> {essid}",
+    "format-wifi": "<span rise='-800'>{icon}</span>   {essid}",
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
     "tooltip-format": "{ifname}: {ipaddr}/{cidr} ({signalStrength}%)",
-    "format-disconnected": "",
+    "format-disconnected": ""
   },
   "battery": {
-    "format": "<span rise='-1750'></span> {capacity}%",
-    "format-charging": "<span rise='-1750'></span> {capacity}%",
-    "format-plugged": "<span rise='-1750'></span> {capacity}%",
-    "full-at": 95,
+    "format": "<span rise='-800'>{icon}</span> {capacity}%",
+    "format-charging": "<span rise='-800'>󰂄</span> {capacity}%",
+    "format-plugged": "<span rise='-800'>󰂄</span> {capacity}%",
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ],
+    "full-at": 95
   },
   "tray": {
     "spacing": 10
-  },
+  }
 }
-
 // vim:ft=json
