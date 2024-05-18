@@ -276,7 +276,7 @@ windowrulev2 = noshadow, title:Calls Widget
 # Startup
 exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec-once = /usr/lib/polkit-kde-authentication-agent-1
-exec-once = swww init
+exec-once = swww-daemon
 exec-once = blueman-applet
 {{- if .settings.timewall }}
 exec-once = sleep 5 && timewall set --daemon
