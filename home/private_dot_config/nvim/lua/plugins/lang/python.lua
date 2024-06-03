@@ -116,30 +116,16 @@ return {
   -- Virutalenv selector
   {
     "linux-cultist/venv-selector.nvim",
-    cmd = { "VenvSelect", "VenvSelectCached", "VenvSelectCurrent" },
-    opts = function(_, opts)
-      return vim.tbl_deep_extend("force", opts, {
-        name = {
-          "venv",
-          ".venv",
-          "env",
-          ".env",
+    ft = "python",
+    branch = "regexp",
+    opts = {
+      settings = {
+        options = {
+          enable_cached_venvs = true,
+          notify_user_on_venv_activation = true,
         },
-      })
-    end,
-    init = function()
-      vim.api.nvim_create_autocmd("VimEnter", {
-        desc = "Auto select virtualenv Nvim open",
-        pattern = "*",
-        callback = function()
-          local venv = vim.fn.findfile("pyproject.toml", vim.fn.getcwd() .. ";")
-          if venv ~= "" then
-            require("venv-selector").retrieve_from_cache()
-          end
-        end,
-        once = true,
-      })
-    end,
+      },
+    },
     keys = {
       { "<leader>cv", "<cmd>VenvSelect<cr>", desc = "Select VirtualEnv" },
     },
