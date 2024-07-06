@@ -1,7 +1,3 @@
-if vim.fn.executable("nix") ~= 1 then
-  return {}
-end
-
 return {
   -- Ensure external deps are installed
   {

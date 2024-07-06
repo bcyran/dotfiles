@@ -1,7 +1,3 @@
-if vim.fn.executable("flutter") ~= 1 then
-  return {}
-end
-
 return {
   -- Add Dart & related treesitter syntaxes
   {
