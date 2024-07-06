@@ -95,7 +95,7 @@ dwindle {
 }
 
 master {
-    new_is_master = false
+    new_status = slave
 }
 
 gestures {
@@ -111,6 +111,12 @@ misc {
     key_press_enables_dpms = false
     force_default_wallpaper = 0
     animate_manual_resizes = true
+}
+
+cursor {
+    inactive_timeout = 60
+    hide_on_key_press = true
+    persistent_warps = true
 }
 
 # Workspaces
