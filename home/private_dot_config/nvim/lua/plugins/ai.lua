@@ -154,6 +154,7 @@ return {
         python = true,
         bash = true,
         lua = true,
+        dart = true,
       }
       vim.keymap.set("i", "<C-y>", function()
         return vim.fn["codeium#Accept"]()
