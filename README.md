@@ -1,3 +1,6 @@
+> [!WARNING]
+> This repo is archived because I moved my setup to NixOS and Home Manager. See my [nix-config](https://github.com/bcyran/nix-config) ✨.
+
 # dotfiles
 Personal setup for [Hyprland](https://hyprland.org/), [neovim](https://neovim.io/), [fish](https://fishshell.com/), [tmux](https://github.com/tmux/tmux/wiki) and more.
 Main OS used is [Arch Linux](https://archlinux.org/).
